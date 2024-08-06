@@ -1,12 +1,16 @@
 import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        sans: ["Roboto", "sans-serif"],
+        serif: ["Lora", "serif"],
+      },
+      colors: {
+        darkBackground: "#111111",
+        gray: "#9F9F9F"
       },
     },
   },
