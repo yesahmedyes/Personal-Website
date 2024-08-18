@@ -18,7 +18,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 
   return (
-    <html lang="en" className={`${GeistSans.variable} tracking-wide`}>
+    <html lang="en" className={`${GeistSans.variable} tracking-wide leading-relaxed`}>
       <body>
         <TRPCReactProvider>
           <Navbar />

@@ -6,7 +6,7 @@ export default function HeroSection() {
       className="flex h-screen w-full justify-center bg-bgDark"
       data-aos="fade-up"
     >
-      <div className="flex pt-5 w-9/12 flex-col place-items-center justify-center text-white">
+      <div className="flex w-9/12 pb-40 flex-col place-items-center justify-center text-white">
         <div className="flex flex-row place-items-center gap-4">
           <div className="text-center text-textGray">Hey there</div>
           <div className="pb-1">

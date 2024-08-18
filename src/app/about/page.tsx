@@ -3,7 +3,7 @@ import { GithubLogoIcon, LinkedinLogoIcon } from "../svgs";
 export default async function About() {
   return (
     <div className="from-bgDark to-bgDarkShade flex w-full justify-center bg-gradient-to-b">
-      <div className="flex pt-32 w-full flex-col place-items-start justify-start px-6 pb-32 text-white lg:w-9/12 lg:px-0 2xl:w-8/12">
+      <div className="flex pt-12 w-full flex-col place-items-start justify-start px-6 pb-32 text-white lg:w-9/12 lg:px-0 2xl:w-8/12">
         <div className="flex w-full flex-col gap-12 lg:flex-row">
           <div
             className="aspect-square cursor-pointer rounded-2xl bg-[#E2D6CD] bg-[url('/images/me.png')] bg-[length:80%] bg-[left_1rem_top_2rem] bg-no-repeat lg:w-1/2"
