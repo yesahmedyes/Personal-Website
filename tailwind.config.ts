@@ -5,12 +5,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Roboto", "sans-serif"],
+        sans: ["Calibri", "sans-serif"],
         serif: ["Lora", "serif"],
       },
       colors: {
-        darkBackground: "#111111",
-        gray: "#9F9F9F"
+        bgDark: "#0F0F0F",
+        bgDarkShade: "#111111",
+        componentDark: "#1A1A1A",
+        textGray: "#cccccc",
       },
     },
   },
