@@ -16,12 +16,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-
   return (
-    <html lang="en" className={`${GeistSans.variable} tracking-wide leading-relaxed`}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} leading-relaxed tracking-wide`}
+    >
       <body>
         <TRPCReactProvider>
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
         </TRPCReactProvider>
       </body>

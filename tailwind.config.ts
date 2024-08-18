@@ -5,7 +5,6 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Calibri", "sans-serif"],
         serif: ["Lora", "serif"],
       },
       colors: {

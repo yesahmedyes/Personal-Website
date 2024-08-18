@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
-import * as AOS from "aos";
+// import * as AOS from "aos";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -21,13 +21,17 @@ const Navbar: React.FC = () => {
     { href: "/notes", label: "Notes" },
   ];
 
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      delay: 50,
-      duration: 1000,
-    });
-  }, []);
+  const validPathNames = ["/", "/home", "/about", "/notes"];
+
+  // useEffect(() => {
+  //   AOS.init({
+  //     once: true,
+  //     delay: 50,
+  //     duration: 1000,
+  //   });
+  // }, []);
+
+  if (!validPathNames.includes(pathname)) return null;
 
   return (
     <div className="mt-8 flex w-full justify-center lg:mt-10">
