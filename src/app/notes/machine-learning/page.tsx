@@ -1,112 +1,104 @@
-"use client";
-
-import Link from "next/link";
-import { useState } from "react";
+import NotesPage from "../_components/notesPage";
+import LinksSection from "../_components/linksSection";
 
 export default async function MachineLearning() {
-  const [topic, setTopic] = useState<string | null>(null);
-
   const data = [
     {
       title: "Linear Regression",
+      link: "/notes/machine-learning/linear-regression",
     },
     {
       title: "Classification and Logistic Regression",
+      link: "/notes/machine-learning/logistic-regression",
     },
     {
       title: "Generalized Linear Models",
+      link: "/notes/machine-learning/generalized-linear-models",
     },
     {
       title: "Generative Learning Algorithms",
+      link: "/notes/machine-learning/generative-learning-algorithms",
     },
     {
       title: "Gaussian Discriminant Analysis",
+      link: "/notes/machine-learning/gaussian-discriminant-analysis",
     },
     {
       title: "Naive Bayes",
+      link: "/notes/machine-learning/naive-bayes",
     },
     {
       title: "Kernel Methods",
+      link: "/notes/machine-learning/kernel-methods",
     },
     {
       title: "Deep Learning",
+      link: "/notes/machine-learning/deep-learning",
     },
     {
       title: "Generalization and Regularization",
+      link: "/notes/machine-learning/regularization",
     },
     {
       title: "Clustering and K-Means",
+      link: "/notes/machine-learning/clustering",
     },
     {
       title: "Principal Component Analysis",
+      link: "/notes/machine-learning/principal-component-analysis",
     },
     {
       title: "Independent Component Analysis",
+      link: "/notes/machine-learning/independent-component-analysis",
     },
     {
       title: "Expectation Maximization Algorithms",
+      link: "/notes/machine-learning/expectation-maximization-algorithms",
     },
     {
       title: "Gaussian Mixture Models",
+      link: "/notes/machine-learning/gaussian-mixture-models",
     },
     {
       title: "Factor Analysis",
+      link: "/notes/machine-learning/factor-analysis",
     },
     {
       title: "Variational Autoencoders",
+      link: "/notes/machine-learning/variational-autoencoders",
     },
     {
       title: "Self-Supervised Learning",
+      link: "/notes/machine-learning/self-supervised-learning",
     },
     {
       title: "Reinforcement Learning 1",
+      link: "/notes/machine-learning/reinforcement-learning-1",
     },
     {
       title: "Reinforcement Learning 2",
-    }
+      link: "/notes/machine-learning/reinforcement-learning-2",
+    },
   ];
 
   return (
     <div className="from-bgDark to-bgDarkShade flex h-screen w-full justify-center bg-gradient-to-b">
-      <div className="flex h-screen w-full flex-row overflow-y-auto">
-        <div className="bg-componentDark flex h-full w-3/12 flex-col gap-4 px-8 py-12 font-light text-white text-opacity-95 overflow-y-auto no-scrollbar">
-          {!topic &&
-            data.map((item, index) => (
-              <div
-                onClick={() => setTopic(item.title)}
-                key={index}
-                className="cursor-pointer hover:text-orange-500"
-              >
-                {item.title}
-              </div>
-            ))}
-        </div>
-        <div className="flex h-full w-9/12 flex-col place-items-center overflow-y-auto py-12 text-opacity-95">
-          <div className="flex w-10/12 flex-col rounded-sm bg-white p-12 gap-8">
-            <div className="font-medium text-3xl font-serif w-full text-center">Machine Learning</div>
-            <div className="leading-loose font-roboto">
+      <div className="flex h-screen w-full flex-row justify-center overflow-y-auto">
+        <div className="flex h-full w-9/12 flex-col place-items-center py-12 text-opacity-95">
+          <NotesPage heading="Machine Learning">
+            <div className="font-roboto leading-loose">
               These notes are adapted from and meant to be a supplementary
               resource to the Andrew Ng's notes for the CS229 Machine Learning
               Course at Stanford.
             </div>
-            <div className="flex flex-col gap-3.5 w-full bg-[#CCE5FE] p-10 rounded">
-              {data.map((item, index) => (
-                <div
-                  onClick={() => setTopic(item.title)}
-                  key={index}
-                  className="cursor-pointer text-[#007bff] hover:text-[#004085]"
-                >
-                  {index + 1}. {item.title}
-                </div>
-              ))}
-            </div>
-            <div className="leading-loose italic">
+            <LinksSection links={data} />
+            <div className="italic leading-loose">
               <span className="font-semibold">Acknowledgments: </span>
               These notes are adapted from and meant to be a supplementary
               resource to the Andrew Ng's Notes for the CS229 Machine Learning
               Course at Stanford.
             </div>
-          </div>
+          </NotesPage>
         </div>
       </div>
     </div>
