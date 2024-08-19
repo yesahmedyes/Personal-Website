@@ -1,9 +1,9 @@
-interface NotesPageProps {
+interface MainProps {
   heading: string;
   children: React.ReactNode;
 }
 
-export default function NotesPage({ heading, children }: NotesPageProps) {
+export default function Main({ heading, children }: MainProps) {
   return (
     <div className="flex h-screen w-full justify-center bg-gradient-to-b from-bgDark to-bgDarkShade">
       <div className="flex h-screen w-full flex-row justify-center overflow-y-auto">

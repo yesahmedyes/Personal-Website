@@ -3,12 +3,12 @@
 import React, { type ReactElement } from "react";
 import { useEffect, useRef, useState } from "react";
 
-interface NotesPageWithSidebarProps {
+interface MainWithSidebarProps {
   heading: string;
   children: React.ReactNode;
 }
 
-export default function NotesPageWithSidebar(props: NotesPageWithSidebarProps) {
+export default function MainWithSidebar(props: MainWithSidebarProps) {
   const { heading, children } = props;
 
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -73,19 +73,19 @@ export default function NotesPageWithSidebar(props: NotesPageWithSidebarProps) {
   return (
     <div className="flex h-screen w-full justify-center bg-gradient-to-b from-bgDark to-bgDarkShade">
       <div className="flex h-screen w-full flex-row overflow-y-auto">
-        <div className="no-scrollbar flex h-full w-3/12 flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
+        <div className="no-scrollbar flex h-full w-[300px] flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
           {sectionIds.map((id) => (
             <div
-              className={`cursor-pointer hover:text-orange-500 ${activeSection === id && "text-orange-400"}`}
+              className={`cursor-pointer hover:text-orange-500 ${activeSection === id && "text-orange-500"}`}
               key={id}
             >
               {id}
             </div>
           ))}
         </div>
-        <div className="flex h-full w-9/12 flex-col place-items-center overflow-y-auto py-12 text-opacity-95">
-          <div className="flex w-10/12 flex-col gap-6 rounded-sm bg-white p-16">
-            <div className="w-full pb-2 text-center font-serif text-3xl font-medium">
+        <div className="flex h-full flex-grow flex-col place-items-center overflow-y-auto py-12 text-opacity-95">
+          <div className="flex w-9/12 flex-col gap-8 rounded-sm bg-white p-16">
+            <div className="w-full pb-6 text-center font-serif text-3xl font-medium">
               {heading}
             </div>
             {childrenWithRefs}

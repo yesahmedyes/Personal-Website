@@ -1,22 +1,19 @@
-import NotesPageWithSidebar from "../../_components/notesPageWithSidebar";
+import MainWithSidebar from "../../_components/mainWithSidebar";
+import Section from "../../_components/section";
 
 export default function LinearRegression() {
   return (
-    <NotesPageWithSidebar
-      heading="Linear Regression"
-    >
-      <div
-        id="First Section"
-        className="h-screen w-full bg-orange-50"
-      ></div>
-      <div
-        id="Second Section"
-        className="h-screen w-full bg-purple-50"
-      ></div>
-      <div
-        id="Third Section"
-        className="h-screen w-full bg-rose-50"
-      ></div>
-    </NotesPageWithSidebar>
+    <MainWithSidebar heading="Linear Regression">
+      <Section heading="First Section">
+        <div>
+          <div className="flex flex-row place-items-center gap-2">
+            Here is some inline math: <span>$x^2 + y^2 = z^2$</span>
+          </div>
+        </div>
+      </Section>
+
+      <div id="Second Section" className="h-screen w-full bg-purple-50"></div>
+      <div id="Third Section" className="h-screen w-full bg-rose-50"></div>
+    </MainWithSidebar>
   );
 }

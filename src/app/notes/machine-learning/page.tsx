@@ -1,5 +1,5 @@
-import NotesPage from "../_components/notesPage";
 import LinksSection from "../_components/linksSection";
+import Main from "../_components/main";
 
 export default function MachineLearning() {
   const data = [
@@ -82,7 +82,7 @@ export default function MachineLearning() {
   ];
 
   return (
-    <NotesPage heading="Machine Learning">
+    <Main heading="Machine Learning">
       <div className="font-roboto leading-loose">
         These notes are adapted from and meant to be a supplementary resource to
         the Andrew Ng&apos;s notes for the CS229 Machine Learning Course at
@@ -95,6 +95,6 @@ export default function MachineLearning() {
         the Andrew Ng&apos;s Notes for the CS229 Machine Learning Course at
         Stanford.
       </div>
-    </NotesPage>
+    </Main>
   );
 }

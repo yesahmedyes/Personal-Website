@@ -4,7 +4,7 @@ interface LinksSectionProps {
   links: { title: string; link: string }[];
 }
 
-export default function LinksPage({ links }: LinksSectionProps) {
+export default function LinksSection({ links }: LinksSectionProps) {
   return (
     <div className="flex w-full flex-col gap-3.5 rounded bg-blue-50 p-10">
       {links.map((item, index) => (
