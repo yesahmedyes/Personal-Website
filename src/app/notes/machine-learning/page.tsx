@@ -1,7 +1,7 @@
 import NotesPage from "../_components/notesPage";
 import LinksSection from "../_components/linksSection";
 
-export default async function MachineLearning() {
+export default function MachineLearning() {
   const data = [
     {
       title: "Linear Regression",
@@ -82,25 +82,19 @@ export default async function MachineLearning() {
   ];
 
   return (
-    <div className="from-bgDark to-bgDarkShade flex h-screen w-full justify-center bg-gradient-to-b">
-      <div className="flex h-screen w-full flex-row justify-center overflow-y-auto">
-        <div className="flex h-full w-9/12 flex-col place-items-center py-12 text-opacity-95">
-          <NotesPage heading="Machine Learning">
-            <div className="font-roboto leading-loose">
-              These notes are adapted from and meant to be a supplementary
-              resource to the Andrew Ng's notes for the CS229 Machine Learning
-              Course at Stanford.
-            </div>
-            <LinksSection links={data} />
-            <div className="italic leading-loose">
-              <span className="font-semibold">Acknowledgments: </span>
-              These notes are adapted from and meant to be a supplementary
-              resource to the Andrew Ng's Notes for the CS229 Machine Learning
-              Course at Stanford.
-            </div>
-          </NotesPage>
-        </div>
+    <NotesPage heading="Machine Learning">
+      <div className="font-roboto leading-loose">
+        These notes are adapted from and meant to be a supplementary resource to
+        the Andrew Ng&apos;s notes for the CS229 Machine Learning Course at
+        Stanford.
       </div>
-    </div>
+      <LinksSection links={data} />
+      <div className="italic leading-loose">
+        <span className="font-semibold">Acknowledgments: </span>
+        These notes are adapted from and meant to be a supplementary resource to
+        the Andrew Ng&apos;s Notes for the CS229 Machine Learning Course at
+        Stanford.
+      </div>
+    </NotesPage>
   );
 }

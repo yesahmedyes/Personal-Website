@@ -1,6 +1,6 @@
 import { GithubLogoIcon, LinkedinLogoIcon } from "../svgs";
 
-export default async function About() {
+export default function About() {
   return (
     <div className="from-bgDark to-bgDarkShade flex w-full justify-center bg-gradient-to-b">
       <div className="flex pt-12 w-full flex-col place-items-start justify-start px-6 pb-32 text-white lg:w-9/12 lg:px-0 2xl:w-8/12">

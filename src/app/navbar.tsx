@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
-// import * as AOS from "aos";
+import * as AOS from "aos";
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -23,19 +23,19 @@ const Navbar: React.FC = () => {
 
   const validPathNames = ["/", "/home", "/about", "/notes"];
 
-  // useEffect(() => {
-  //   AOS.init({
-  //     once: true,
-  //     delay: 50,
-  //     duration: 1000,
-  //   });
-  // }, []);
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      delay: 50,
+      duration: 1000,
+    });
+  }, []);
 
   if (!validPathNames.includes(pathname)) return null;
 
   return (
     <div className="mt-8 flex w-full justify-center lg:mt-10">
-      <div className="bg-componentDark text-gray-200 top-0 flex flex-row justify-center gap-5 rounded-full border border-white/5 px-6 py-2.5 text-sm font-normal tracking-wider transition-all hover:px-7">
+      <div className="top-0 flex flex-row justify-center gap-5 rounded-full border border-white/5 bg-componentDark px-6 py-2.5 text-sm font-normal tracking-wider text-gray-200 transition-all hover:px-7">
         {Links.map((link) => (
           <Link key={link.href} href={link.href}>
             <div
