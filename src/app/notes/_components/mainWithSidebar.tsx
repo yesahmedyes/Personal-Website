@@ -79,9 +79,9 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   }
 
   return (
-    <div className="flex h-screen w-full justify-center bg-gradient-to-b from-bgDark to-bgDarkShade">
-      <div className="flex h-screen w-full flex-row overflow-y-auto">
-        <div className="no-scrollbar flex h-full w-3/12 flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
+    <div className="flex h-full w-full justify-center bg-gradient-to-b from-bgDark to-bgDarkShade overflow-y-auto">
+      <div className="flex h-full w-full flex-row">
+        <div className="no-scrollbar flex min-h-full w-3/12 flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
           {sectionIds.map((id) => (
             <div
               onClick={() => {
