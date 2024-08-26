@@ -37,7 +37,7 @@ export default function MachineLearning() {
     },
     {
       title: "Generalization and Regularization",
-      link: "/notes/machine-learning/regularization",
+      link: "/notes/machine-learning/generalization-and-regularization",
     },
     {
       title: "Clustering and K-Means",

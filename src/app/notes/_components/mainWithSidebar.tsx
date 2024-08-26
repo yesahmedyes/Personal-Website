@@ -70,12 +70,24 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
     }
   });
 
+  function scrollToSection(id: string) {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
   return (
     <div className="flex h-screen w-full justify-center bg-gradient-to-b from-bgDark to-bgDarkShade">
       <div className="flex h-screen w-full flex-row overflow-y-auto">
-        <div className="no-scrollbar flex h-full w-[300px] flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
+        <div className="no-scrollbar flex h-full w-3/12 flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
           {sectionIds.map((id) => (
             <div
+              onClick={() => {
+                setActiveSection(id);
+                scrollToSection(id);
+              }}
               className={`cursor-pointer hover:text-orange-500 ${activeSection === id && "text-orange-500"}`}
               key={id}
             >
@@ -83,7 +95,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
             </div>
           ))}
         </div>
-        <div className="flex h-full flex-grow flex-col place-items-center overflow-y-auto py-12 text-opacity-95">
+        <div className="flex h-full w-9/12 flex-col place-items-center overflow-y-auto py-12 text-opacity-95 overflow-x-hidden">
           <div className="flex w-9/12 flex-col gap-8 rounded-sm bg-white p-16">
             <div className="w-full pb-6 text-center font-serif text-3xl font-medium">
               {heading}
