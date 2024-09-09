@@ -228,7 +228,7 @@ export function WavingHandIcon() {
   );
 }
 
-export function LinkedinLogoIcon({ size = 24, color = "#eeeeee" }) {
+export function LinkedinLogoIcon({ size = 24, color = "#dddddd" }) {
   return (
     <svg viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width={size} height={size}>
       <g>
@@ -241,7 +241,7 @@ export function LinkedinLogoIcon({ size = 24, color = "#eeeeee" }) {
   );
 }
 
-export function GithubLogoIcon({ size = 24, color = "#eeeeee" }) {
+export function GithubLogoIcon({ size = 24, color = "#dddddd" }) {
   return (
     <svg width={size} height={size} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
