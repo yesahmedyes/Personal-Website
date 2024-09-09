@@ -32,10 +32,11 @@ export default function ComplexityBounds() {
           </div>
           <div>
             Note that the expression <InlineMath math="1\{h(x_i) \neq y_i\}" />{" "}
-            simply means "<InlineMath math="1" /> if{" "}
-            <InlineMath math="h(x_i) \neq y_i" /> and <InlineMath math="0" />{" "}
-            otherwise." So we are essentially just adding up the number of
-            misclassified examples over the entire training set.
+            simply means &quot;
+            <InlineMath math="1" /> if <InlineMath math="h(x_i) \neq y_i" /> and{" "}
+            <InlineMath math="0" /> otherwise.&quot; So we are essentially just
+            adding up the number of misclassified examples over the entire
+            training set.
           </div>
           <div>
             {" "}

@@ -48,13 +48,7 @@ export function ArrowDownIcon() {
 
 export function WavingHandIcon() {
   return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 80 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M44.8965 37.3225C45.7322 38.2432 46.4789 39.4482 46.1607 39.7665C45.8425 40.0847 44.8668 39.5076 44.1201 38.7609C43.3735 38.0141 41.5917 45.9484 41.4178 46.3514C41.2905 46.6527 39.2117 49.0287 38.1257 51.2944C37.7651 52.0497 37.816 54.3239 37.6803 54.4596C37.133 55.007 36.4457 54.9476 34.9482 53.6238C33.4549 52.3 32.6785 60.1706 34.4603 61.4138C37.5063 63.5395 43.6026 71.9956 51.6503 71.9956C60.9622 71.9956 69.5869 62.2793 69.5869 55.147C69.5869 48.0189 67.4954 45.3119 67.6312 39.3337C67.7457 34.2719 71.4239 31.8577 71.4239 29.3289C71.4239 27.2032 68.2633 26.6855 67.2282 26.6855C65.387 26.6855 60.6738 29.0446 60.6738 35.252C60.6738 37.6662 59.9823 39.8513 57.5132 39.8513C55.0442 39.8513 52.2824 36.457 50.6152 33.8136"
         fill="url(#paint0_linear)"
@@ -91,10 +85,7 @@ export function WavingHandIcon() {
         d="M33.9471 37.6112C34.7532 38.4173 41.5918 45.9485 41.4221 46.3516C43.5348 43.5046 35.3429 35.1376 31.3763 30.9116C27.9357 27.2457 27.346 24.0381 23.9903 22.2349C22.7431 23.7411 23.7358 25.591 24.2873 26.3972C24.9194 27.3179 33.1411 36.805 33.9471 37.6112Z"
         fill="url(#paint8_linear)"
       />
-      <path
-        d="M41.2653 46.5173C41.0234 46.6658 40.5312 46.6785 39.7717 46.2373C40.336 46.6997 40.8622 46.8737 41.2653 46.5173Z"
-        fill="url(#paint9_linear)"
-      />
+      <path d="M41.2653 46.5173C41.0234 46.6658 40.5312 46.6785 39.7717 46.2373C40.336 46.6997 40.8622 46.8737 41.2653 46.5173Z" fill="url(#paint9_linear)" />
       <path
         d="M26.5017 61.6179C26.4508 61.6179 26.3999 61.6094 26.349 61.5967C21.1012 59.9971 15.4165 54.2606 14.1819 49.3219C14.1141 49.0461 14.2795 48.7618 14.5595 48.6939C14.8353 48.626 15.1195 48.7915 15.1874 49.0715C16.3243 53.6242 21.7885 59.1231 26.6502 60.6081C26.9217 60.6929 27.0787 60.9815 26.9939 61.253C26.926 61.4737 26.7223 61.6179 26.5017 61.6179Z"
         fill="#955500"
@@ -152,223 +143,83 @@ export function WavingHandIcon() {
         fill="url(#paint19_linear)"
       />
       <defs>
-        <linearGradient
-          id="paint0_linear"
-          x1="65.0642"
-          y1="73.8382"
-          x2="57.3873"
-          y2="55.8548"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint0_linear" x1="65.0642" y1="73.8382" x2="57.3873" y2="55.8548" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint1_linear"
-          x1="71.5866"
-          y1="76.6479"
-          x2="57.6706"
-          y2="53.1894"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint1_linear" x1="71.5866" y1="76.6479" x2="57.6706" y2="53.1894" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint2_linear"
-          x1="23.5636"
-          y1="48.5439"
-          x2="33.0508"
-          y2="55.5289"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint2_linear" x1="23.5636" y1="48.5439" x2="33.0508" y2="55.5289" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint3_linear"
-          x1="20.1094"
-          y1="30.053"
-          x2="36.7558"
-          y2="47.4734"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint3_linear" x1="20.1094" y1="30.053" x2="36.7558" y2="47.4734" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint4_linear"
-          x1="38.0868"
-          y1="21.833"
-          x2="47.7473"
-          y2="37.0119"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint4_linear" x1="38.0868" y1="21.833" x2="47.7473" y2="37.0119" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint5_linear"
-          x1="28.1165"
-          y1="24.3547"
-          x2="41.2271"
-          y2="42.0632"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint5_linear" x1="28.1165" y1="24.3547" x2="41.2271" y2="42.0632" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint6_linear"
-          x1="32.8867"
-          y1="40.3991"
-          x2="27.3841"
-          y2="45.5821"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint6_linear" x1="32.8867" y1="40.3991" x2="27.3841" y2="45.5821" gradientUnits="userSpaceOnUse">
           <stop stop-color="#F0C492" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint7_linear"
-          x1="43.7062"
-          y1="26.4916"
-          x2="35.4263"
-          y2="33.9655"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint7_linear" x1="43.7062" y1="26.4916" x2="35.4263" y2="33.9655" gradientUnits="userSpaceOnUse">
           <stop stop-color="#F0C492" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint8_linear"
-          x1="36.091"
-          y1="31.8173"
-          x2="24.7064"
-          y2="40.139"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint8_linear" x1="36.091" y1="31.8173" x2="24.7064" y2="40.139" gradientUnits="userSpaceOnUse">
           <stop stop-color="#F0C492" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint9_linear"
-          x1="44.5716"
-          y1="43.419"
-          x2="33.1874"
-          y2="51.7427"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint9_linear" x1="44.5716" y1="43.419" x2="33.1874" y2="51.7427" gradientUnits="userSpaceOnUse">
           <stop stop-color="#F0C492" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <radialGradient
-          id="paint10_radial"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(59.5159 29.9035) scale(13.6657 13.6676)"
-        >
+        <radialGradient id="paint10_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(59.5159 29.9035) scale(13.6657 13.6676)">
           <stop stop-color="#DEBA94" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </radialGradient>
-        <linearGradient
-          id="paint11_linear"
-          x1="45.2212"
-          y1="25.0238"
-          x2="38.1487"
-          y2="31.5779"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint11_linear" x1="45.2212" y1="25.0238" x2="38.1487" y2="31.5779" gradientUnits="userSpaceOnUse">
           <stop offset="0.3072" stop-color="#D2A374" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint12_linear"
-          x1="39.8062"
-          y1="28.5769"
-          x2="30.4913"
-          y2="36.9707"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint12_linear" x1="39.8062" y1="28.5769" x2="30.4913" y2="36.9707" gradientUnits="userSpaceOnUse">
           <stop offset="0.3072" stop-color="#D2A374" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint13_linear"
-          x1="36.6586"
-          y1="37.6567"
-          x2="25.1588"
-          y2="47.3152"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint13_linear" x1="36.6586" y1="37.6567" x2="25.1588" y2="47.3152" gradientUnits="userSpaceOnUse">
           <stop offset="0.3072" stop-color="#D2A374" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint14_linear"
-          x1="24.1117"
-          y1="44.6746"
-          x2="37.4802"
-          y2="55.5405"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint14_linear" x1="24.1117" y1="44.6746" x2="37.4802" y2="55.5405" gradientUnits="userSpaceOnUse">
           <stop offset="0.3118" stop-color="#DEBA94" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint15_linear"
-          x1="26.6703"
-          y1="31.2037"
-          x2="37.1072"
-          y2="47.0725"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint15_linear" x1="26.6703" y1="31.2037" x2="37.1072" y2="47.0725" gradientUnits="userSpaceOnUse">
           <stop offset="0.3118" stop-color="#D2A374" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint16_linear"
-          x1="34.8441"
-          y1="32.3371"
-          x2="37.7765"
-          y2="30.095"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint16_linear" x1="34.8441" y1="32.3371" x2="37.7765" y2="30.095" gradientUnits="userSpaceOnUse">
           <stop offset="0.3118" stop-color="#F0C492" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint17_linear"
-          x1="46.9502"
-          y1="27.0993"
-          x2="41.5445"
-          y2="55.9641"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint17_linear" x1="46.9502" y1="27.0993" x2="41.5445" y2="55.9641" gradientUnits="userSpaceOnUse">
           <stop offset="0.3118" stop-color="#DEBA94" stop-opacity="0" />
           <stop offset="1" stop-color="#D2A374" />
         </linearGradient>
-        <linearGradient
-          id="paint18_linear"
-          x1="44.2494"
-          y1="54.3063"
-          x2="36.0838"
-          y2="68.5654"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint18_linear" x1="44.2494" y1="54.3063" x2="36.0838" y2="68.5654" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
-        <linearGradient
-          id="paint19_linear"
-          x1="70.6811"
-          y1="86.7385"
-          x2="36.5232"
-          y2="18.7768"
-          gradientUnits="userSpaceOnUse"
-        >
+        <linearGradient id="paint19_linear" x1="70.6811" y1="86.7385" x2="36.5232" y2="18.7768" gradientUnits="userSpaceOnUse">
           <stop offset="0.00132565" stop-color="#D2A374" />
           <stop offset="1" stop-color="#DEBA94" />
         </linearGradient>
@@ -379,15 +230,7 @@ export function WavingHandIcon() {
 
 export function LinkedinLogoIcon({ size = 24, color = "#eeeeee" }) {
   return (
-    <svg
-      viewBox="0 0 256 256"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      preserveAspectRatio="xMidYMid"
-      width={size}
-      height={size}
-    >
+    <svg viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width={size} height={size}>
       <g>
         <path
           fill={color}
@@ -400,13 +243,7 @@ export function LinkedinLogoIcon({ size = 24, color = "#eeeeee" }) {
 
 export function GithubLogoIcon({ size = 24, color = "#eeeeee" }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 15 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width={size} height={size} viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"

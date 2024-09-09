@@ -5,7 +5,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
-import 'katex/dist/katex.min.css';
+import "katex/dist/katex.min.css";
 
 export const metadata: Metadata = {
   title: "Ahmed Haroon",
@@ -13,19 +13,11 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} leading-relaxed tracking-wide`}
-    >
+    <html lang="en" className={`${GeistSans.variable} leading-relaxed tracking-wide`}>
       <body>
-        <TRPCReactProvider>
-          {/* <Navbar /> */}
-          {children}
-        </TRPCReactProvider>
+        <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
   );

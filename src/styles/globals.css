@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
 html {
   scroll-behavior: smooth;
-  background-color: #0f0f0f;
 }
 
 ::-webkit-scrollbar {
@@ -22,10 +23,10 @@ html {
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  display: none;
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* for IE and Edge */
-  scrollbar-width: none; /* for Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
