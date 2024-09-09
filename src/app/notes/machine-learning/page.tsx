@@ -84,16 +84,12 @@ export default function MachineLearning() {
   return (
     <Main heading="Machine Learning">
       <div className="font-roboto leading-loose">
-        These notes are adapted from and meant to be a supplementary resource to
-        the Andrew Ng&apos;s notes for the CS229 Machine Learning Course at
-        Stanford.
+        These notes are adapted from and meant to be a supplementary resource to the Andrew Ng&apos;s notes for the CS229 Machine Learning Course at Stanford.
       </div>
       <LinksSection links={data} />
       <div className="italic leading-loose">
         <span className="font-semibold">Acknowledgments: </span>
-        These notes are adapted from and meant to be a supplementary resource to
-        the Andrew Ng&apos;s Notes for the CS229 Machine Learning Course at
-        Stanford.
+        These notes are adapted from and meant to be a supplementary resource to the Andrew Ng&apos;s Notes for the CS229 Machine Learning Course at Stanford.
       </div>
     </Main>
   );

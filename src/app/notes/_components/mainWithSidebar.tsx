@@ -97,9 +97,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
         </div>
         <div className="flex h-full w-9/12 flex-col place-items-center overflow-y-auto py-12 text-opacity-95 overflow-x-hidden">
           <div className="flex w-9/12 flex-col gap-8 rounded-sm bg-white p-16">
-            <div className="w-full pb-6 text-center font-serif text-3xl font-medium">
-              {heading}
-            </div>
+            <div className="w-full pb-6 text-center font-serif text-3xl font-medium">{heading}</div>
             {childrenWithRefs}
           </div>
         </div>
