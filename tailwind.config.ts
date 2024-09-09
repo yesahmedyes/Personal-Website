@@ -5,13 +5,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Manrope", "sans-serif"],
+        // sans: ["Manrope", "sans-serif"],
         serif: ["Lora", "serif"],
       },
       colors: {
         bgDark: "#000000",
         textWhite: "#DDDDDD",
         textGray: "#AAAAAA",
+        textBlack: "#222222",
       },
     },
   },

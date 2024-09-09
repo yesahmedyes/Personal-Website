@@ -30,7 +30,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex flex-row absolute text-textGray gap-5 pt-8">
+    <div className="flex flex-row absolute text-textGray gap-5 pt-8 font-light">
       {links.map((link) => (
         <Link key={link.name} href={link.href} className={`cursor-pointer ${isActive(link.href)}`}>
           {link.name}

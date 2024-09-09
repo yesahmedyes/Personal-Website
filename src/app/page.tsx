@@ -11,7 +11,7 @@ export default function Main() {
             <Navbar />
             <div className="flex flex-col flex-grow gap-5 justify-center pb-6 2xl:pb-14">
               <div className="text-textWhite text-4xl font-medium font-serif">I&apos;m Ahmed.</div>
-              <div className="text-textGray text-lg font-medium pb-5 leading-9 text-justify">
+              <div className="text-textGray text-lg font-normal pb-5 leading-9 text-justify">
                 An aspiring reinforcement learning researcher focused on building algorithms that can help robots learn through experimentation.
               </div>
               <Socials />
@@ -19,8 +19,8 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col h-full w-4/5 place-self-center py-20 gap-8">
-        <div className="text-[#222222] text-2xl font-semibold">Notes</div>
+      <div className="flex flex-col h-full w-4/5 place-self-center py-20 gap-7">
+        <div className="text-textBlack text-2xl font-bold">Notes</div>
         <NotesList />
       </div>
     </div>
