@@ -36,8 +36,8 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/deep-learning",
     },
     {
-      title: "Generalization and Regularization",
-      link: "/notes/machine-learning/generalization-and-regularization",
+      title: "Generalization",
+      link: "/notes/machine-learning/generalization",
     },
     {
       title: "Clustering and K-Means",
@@ -83,11 +83,8 @@ export default function MachineLearning() {
 
   return (
     <Main heading="Machine Learning">
-      <div className="font-roboto leading-loose">
-        These notes are adapted from and meant to be a supplementary resource to the Andrew Ng&apos;s notes for the CS229 Machine Learning Course at Stanford.
-      </div>
       <LinksSection links={data} />
-      <div className="italic leading-loose">
+      <div className="italic">
         <span className="font-semibold">Acknowledgments: </span>
         These notes are adapted from and meant to be a supplementary resource to the Andrew Ng&apos;s Notes for the CS229 Machine Learning Course at Stanford.
       </div>

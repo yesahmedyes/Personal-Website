@@ -9,7 +9,8 @@ export default {
         serif: ["Lora", "serif"],
       },
       colors: {
-        bgDark: "#000000",
+        bgDark: "#070707",
+        bgLessDark: "#151515",
         textWhite: "#DDDDDD",
         textGray: "#AAAAAA",
         textBlack: "#222222",

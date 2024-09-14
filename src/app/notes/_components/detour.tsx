@@ -1,7 +1,7 @@
 export default function Detour({ children, about }: { children: React.ReactNode; about: string }) {
   return (
-    <div className="my-3 flex flex-col gap-5 rounded bg-purple-50 px-5 py-4">
-      <div className="font-medium">Let&apos;s take a little detour to learn about {about}.</div>
+    <div className="my-3 flex flex-col gap-4 rounded bg-purple-50 px-6 py-6">
+      <div className="font-semibold">{about}</div>
       {children}
     </div>
   );

@@ -79,9 +79,9 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   }
 
   return (
-    <div className="flex h-full w-full justify-center bg-gradient-to-b from-bgDark to-bgDarkShade overflow-y-auto">
+    <div className="flex h-full w-full justify-center bg-bgLessDark">
       <div className="flex h-full w-full flex-row">
-        <div className="no-scrollbar flex min-h-full w-3/12 flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
+        <div className="no-scrollbar bg-bgDark flex min-h-full w-[350px] flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
           {sectionIds.map((id) => (
             <div
               onClick={() => {
@@ -95,7 +95,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
             </div>
           ))}
         </div>
-        <div className="flex h-full w-9/12 flex-col place-items-center overflow-y-auto py-12 text-opacity-95 overflow-x-hidden">
+        <div className="flex min-h-full w-full flex-col place-items-center overflow-y-auto py-16 overflow-x-hidden">
           <div className="flex w-9/12 flex-col gap-8 rounded-sm bg-white p-16">
             <div className="w-full pb-6 text-center font-serif text-3xl font-medium">{heading}</div>
             {childrenWithRefs}
