@@ -15,8 +15,6 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   const [sectionIds, setSectionIds] = useState<string[]>([]);
   const sectionRefs = useRef<React.RefObject<HTMLParagraphElement>[]>([]);
 
-  const mainContentRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const childrenCount = React.Children.count(children);
 
@@ -25,13 +23,12 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(entry);
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.3, root: mainContentRef.current },
+      { threshold: 0 },
     );
 
     sectionRefs.current.forEach((ref) => {
@@ -97,9 +94,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
             </div>
           ))}
         </div>
-        <div ref={mainContentRef} className="flex min-h-full w-full flex-col place-items-center overflow-y-auto gap-12 py-16 overflow-x-hidden ml-[350px]">
-          {childrenWithRefs}
-        </div>
+        <div className="flex min-h-full w-full flex-col place-items-center overflow-y-auto gap-12 py-16 overflow-x-hidden ml-[350px]">{childrenWithRefs}</div>
       </div>
     </div>
   );
