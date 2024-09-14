@@ -7,9 +7,9 @@ import Derivation from "~/app/notes/_components/derivation";
 import DerivationContent from "~/app/notes/_components/derivationContent";
 import Info from "~/app/notes/_components/info";
 
-export default function LearningTheory() {
+export default function ComplexityBounds() {
   return (
-    <Section heading="Learning Theory">
+    <Section heading="Complexity Bounds">
       <Subsection>
         <Content>
           <div>

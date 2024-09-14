@@ -4,17 +4,18 @@ import React, { type ReactElement } from "react";
 import { useEffect, useRef, useState } from "react";
 
 interface MainWithSidebarProps {
-  heading: string;
   children: React.ReactNode;
 }
 
 export default function MainWithSidebar(props: MainWithSidebarProps) {
-  const { heading, children } = props;
+  const { children } = props;
 
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const [sectionIds, setSectionIds] = useState<string[]>([]);
   const sectionRefs = useRef<React.RefObject<HTMLParagraphElement>[]>([]);
+
+  const mainContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const childrenCount = React.Children.count(children);
@@ -24,12 +25,13 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          console.log(entry);
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.3 },
+      { threshold: 0.3, root: mainContentRef.current },
     );
 
     sectionRefs.current.forEach((ref) => {
@@ -79,9 +81,9 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   }
 
   return (
-    <div className="flex h-full w-full justify-center bg-bgLessDark">
+    <div className="flex flex-col h-full w-full justify-center bg-bgLessDark">
       <div className="flex h-full w-full flex-row">
-        <div className="no-scrollbar bg-bgDark flex min-h-full w-[350px] flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
+        <div className="no-scrollbar fixed bg-bgDark flex min-h-full w-[350px] flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
           {sectionIds.map((id) => (
             <div
               onClick={() => {
@@ -95,11 +97,8 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
             </div>
           ))}
         </div>
-        <div className="flex min-h-full w-full flex-col place-items-center overflow-y-auto py-16 overflow-x-hidden">
-          <div className="flex w-9/12 flex-col gap-8 rounded-sm bg-white p-16">
-            <div className="w-full pb-6 text-center font-serif text-3xl font-medium">{heading}</div>
-            {childrenWithRefs}
-          </div>
+        <div ref={mainContentRef} className="flex min-h-full w-full flex-col place-items-center overflow-y-auto gap-12 py-16 overflow-x-hidden ml-[350px]">
+          {childrenWithRefs}
         </div>
       </div>
     </div>

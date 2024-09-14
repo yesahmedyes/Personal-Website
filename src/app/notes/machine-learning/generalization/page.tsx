@@ -1,10 +1,12 @@
 import MainWithSidebar from "../../_components/mainWithSidebar";
-import LearningTheory from "./components/learningTheory";
+import BiasVarianceTradeoff from "./components/biasVarianceTradeoff";
+import ComplexityBounds from "./components/complexityBounds";
 
 export default function Page() {
   return (
-    <MainWithSidebar heading="Generalization">
-      <LearningTheory />
+    <MainWithSidebar>
+      <BiasVarianceTradeoff />
+      <ComplexityBounds />
     </MainWithSidebar>
   );
 }
