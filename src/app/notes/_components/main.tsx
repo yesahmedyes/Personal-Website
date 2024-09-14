@@ -28,7 +28,7 @@ export default function Main({ heading, children }: MainProps) {
       <div className="flex h-full w-full flex-row justify-center overflow-y-auto">
         {width > 0 && (
           <div style={{ width: `${width}px` }} className={`flex h-full w-full flex-col place-items-center py-16`}>
-            <div className="flex w-9/12 flex-col gap-6 rounded-sm bg-white p-16">
+            <div className="flex w-10/12 2xl:w-9/12 flex-col gap-6 rounded-sm bg-white p-16">
               <div className="w-full pb-2 text-center font-serif text-3xl font-medium">{heading}</div>
               {children}
             </div>

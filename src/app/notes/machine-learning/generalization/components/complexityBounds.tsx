@@ -6,6 +6,7 @@ import Subsection from "~/app/notes/_components/subsection";
 import Derivation from "~/app/notes/_components/derivation";
 import DerivationContent from "~/app/notes/_components/derivationContent";
 import Info from "~/app/notes/_components/info";
+import Lemma from "~/app/notes/_components/lemma";
 
 export default function ComplexityBounds() {
   return (
@@ -82,12 +83,12 @@ export default function ComplexityBounds() {
         </Content>
       </Subsection>
       <Derivation>
-        <DerivationContent>
-          <div>Note that for any k events the union bound of probabilities tells us that</div>
+        <Lemma>
+          <div>For any k events the union bound of probabilities tells us that</div>
           <div>
             <BlockMath math="P(A_1 \cup \cdots \cup A_k) \leq P(A_1) + P(A_2) + ... + P(A_k)" />
           </div>
-        </DerivationContent>
+        </Lemma>
         <DerivationContent>
           <div>
             The probability that there exists a hypothesis in our set <InlineMath math="\mathcal{H}" /> for which the difference between the empirical error and the true error is more than{" "}
@@ -194,8 +195,8 @@ export default function ComplexityBounds() {
         <div>Using our uniform convergence assumption, we can see that:</div>
         <BlockMath math="\epsilon(\hat{h}) \leq \epsilon(h^*) + 2\sqrt{\frac{1}{2n} \log \frac{2k}{\delta}}" />
         <div>
-          With a probability of <InlineMath math="1 - \delta" />, the true risk of our selected hypothesis is less than or equal to the true risk of the best hypothesis + some term that depends on the
-          number of hypotheses and the number of training examples.
+          With a probability of <InlineMath math="1 - \delta" />, the true error of our selected hypothesis is less than or equal to the true error of the best hypothesis + some term that depends on
+          the number of hypotheses and the number of training examples.
         </div>
         <div>
           The first term on the right can be thought of as the bias. And the second term can be thought of as the variance. We see that as we increase k, the first term either stays the same or
@@ -209,11 +210,19 @@ export default function ComplexityBounds() {
         <DerivationContent>
           <div className="flex flex-col">
             <BlockMath math="\left| \epsilon(\hat{h}) - \hat{\epsilon}(\hat{h}) \right| \leq \gamma" />
-            <BlockMath math="\Rightarrow \epsilon(\hat{h}) \leq \hat{\epsilon}(\hat{h}) + \gamma" />
             <Info
               info={
                 <div>
-                  <InlineMath math="\hat{h}" /> by definition minimizes our estimated empirical risk.
+                  Using uniform convergence and the fact that <InlineMath math="\hat{h}" /> minimizes empirical error
+                </div>
+              }
+            >
+              <BlockMath math="\Rightarrow \epsilon(\hat{h}) \leq \hat{\epsilon}(\hat{h}) + \gamma" />
+            </Info>
+            <Info
+              info={
+                <div>
+                  <InlineMath math="\hat{h}" /> by definition minimizes our estimated empirical error.
                 </div>
               }
             >
@@ -222,7 +231,7 @@ export default function ComplexityBounds() {
             <Info
               info={
                 <div>
-                  Using uniform convergence, we know that <InlineMath math="\hat{\epsilon}(h^*) \leq \epsilon(h^*) + \gamma" />
+                  Using uniform convergence and the fact that <InlineMath math="h^*" /> minimizes true error, we know that <InlineMath math="\hat{\epsilon}(h^*) \leq \epsilon(h^*) + \gamma" />
                 </div>
               }
             >
