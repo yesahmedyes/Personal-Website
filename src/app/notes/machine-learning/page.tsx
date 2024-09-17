@@ -7,78 +7,78 @@ export default function MachineLearning() {
       title: "Linear Regression",
       link: "/notes/machine-learning/linear-regression",
     },
-    {
-      title: "Classification and Logistic Regression",
-      link: "/notes/machine-learning/logistic-regression",
-    },
-    {
-      title: "Generalized Linear Models",
-      link: "/notes/machine-learning/generalized-linear-models",
-    },
-    {
-      title: "Generative Learning Algorithms",
-      link: "/notes/machine-learning/generative-learning-algorithms",
-    },
-    {
-      title: "Gaussian Discriminant Analysis",
-      link: "/notes/machine-learning/gaussian-discriminant-analysis",
-    },
-    {
-      title: "Naive Bayes",
-      link: "/notes/machine-learning/naive-bayes",
-    },
-    {
-      title: "Kernel Methods",
-      link: "/notes/machine-learning/kernel-methods",
-    },
-    {
-      title: "Deep Learning",
-      link: "/notes/machine-learning/deep-learning",
-    },
+    // {
+    //   title: "Classification and Logistic Regression",
+    //   link: "/notes/machine-learning/logistic-regression",
+    // },
+    // {
+    //   title: "Generalized Linear Models",
+    //   link: "/notes/machine-learning/generalized-linear-models",
+    // },
+    // {
+    //   title: "Generative Learning Algorithms",
+    //   link: "/notes/machine-learning/generative-learning-algorithms",
+    // },
+    // {
+    //   title: "Gaussian Discriminant Analysis",
+    //   link: "/notes/machine-learning/gaussian-discriminant-analysis",
+    // },
+    // {
+    //   title: "Naive Bayes",
+    //   link: "/notes/machine-learning/naive-bayes",
+    // },
+    // {
+    //   title: "Kernel Methods",
+    //   link: "/notes/machine-learning/kernel-methods",
+    // },
+    // {
+    //   title: "Deep Learning",
+    //   link: "/notes/machine-learning/deep-learning",
+    // },
     {
       title: "Generalization",
       link: "/notes/machine-learning/generalization",
     },
-    {
-      title: "Clustering and K-Means",
-      link: "/notes/machine-learning/clustering",
-    },
-    {
-      title: "Principal Component Analysis",
-      link: "/notes/machine-learning/principal-component-analysis",
-    },
-    {
-      title: "Independent Component Analysis",
-      link: "/notes/machine-learning/independent-component-analysis",
-    },
+    // {
+    //   title: "Clustering and K-Means",
+    //   link: "/notes/machine-learning/clustering",
+    // },
+    // {
+    //   title: "Principal Component Analysis",
+    //   link: "/notes/machine-learning/principal-component-analysis",
+    // },
+    // {
+    //   title: "Independent Component Analysis",
+    //   link: "/notes/machine-learning/independent-component-analysis",
+    // },
     {
       title: "Expectation Maximization Algorithms",
-      link: "/notes/machine-learning/expectation-maximization-algorithms",
+      link: "/notes/machine-learning/em-algorithm",
     },
     {
       title: "Gaussian Mixture Models",
       link: "/notes/machine-learning/gaussian-mixture-models",
     },
-    {
-      title: "Factor Analysis",
-      link: "/notes/machine-learning/factor-analysis",
-    },
-    {
-      title: "Variational Autoencoders",
-      link: "/notes/machine-learning/variational-autoencoders",
-    },
-    {
-      title: "Self-Supervised Learning",
-      link: "/notes/machine-learning/self-supervised-learning",
-    },
-    {
-      title: "Reinforcement Learning 1",
-      link: "/notes/machine-learning/reinforcement-learning-1",
-    },
-    {
-      title: "Reinforcement Learning 2",
-      link: "/notes/machine-learning/reinforcement-learning-2",
-    },
+    // {
+    //   title: "Factor Analysis",
+    //   link: "/notes/machine-learning/factor-analysis",
+    // },
+    // {
+    //   title: "Variational Autoencoders",
+    //   link: "/notes/machine-learning/variational-autoencoders",
+    // },
+    // {
+    //   title: "Self-Supervised Learning",
+    //   link: "/notes/machine-learning/self-supervised-learning",
+    // },
+    // {
+    //   title: "Reinforcement Learning 1",
+    //   link: "/notes/machine-learning/reinforcement-learning-1",
+    // },
+    // {
+    //   title: "Reinforcement Learning 2",
+    //   link: "/notes/machine-learning/reinforcement-learning-2",
+    // },
   ];
 
   return (

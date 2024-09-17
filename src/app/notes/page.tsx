@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-import { notes_data } from "../data";
 import NotesList from "../_components/notesList";
 
 export default function Notes() {

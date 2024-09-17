@@ -2,7 +2,6 @@ import Content from "~/app/notes/_components/content";
 import Section from "~/app/notes/_components/section";
 import { InlineMath, BlockMath } from "react-katex";
 import Detour from "~/app/notes/_components/detour";
-import Subsection from "~/app/notes/_components/subsection";
 import Derivation from "~/app/notes/_components/derivation";
 import DerivationContent from "~/app/notes/_components/derivationContent";
 import Info from "~/app/notes/_components/info";
@@ -11,30 +10,27 @@ import Lemma from "~/app/notes/_components/lemma";
 export default function ComplexityBounds() {
   return (
     <Section heading="Complexity Bounds">
-      <Subsection>
-        <Content>
-          <div>
-            For any hypothesis <InlineMath math="h" />, the true error is given by:
-          </div>
-          <div>
-            <BlockMath math="\epsilon(h) = P(h(x) \neq y)" />
-          </div>
-          <div>
-            However, since we have no way of determining the underlying probability distribution <InlineMath math="\mathcal{D}" />, we cannot determine the true error of the hypothesis. Instead, we
-            estimate the empirical error of the hypothesis over our <InlineMath math="n" /> training examples.
-          </div>
-          <div>
-            <BlockMath math="\hat{\epsilon}(h) = \frac{1}{n} \sum_{i=1}^{n} 1\{h(x_i) \neq y_i\}" />
-          </div>
-          <div>
-            Let <InlineMath math="\mathcal{H}" /> be the set of all possible hypotheses that we are considering. To find the hypothesis that minimizes the empirical error over our training set, we
-            find:
-          </div>
-          <div>
-            <BlockMath math="\hat{h} = argmin_{h \in \mathcal{H}} \hat{\epsilon}(h)" />
-          </div>
-        </Content>
-      </Subsection>
+      <Content>
+        <div>
+          For any hypothesis <InlineMath math="h" />, the true error is given by:
+        </div>
+        <div>
+          <BlockMath math="\epsilon(h) = P(h(x) \neq y)" />
+        </div>
+        <div>
+          However, since we have no way of determining the underlying probability distribution <InlineMath math="\mathcal{D}" />, we cannot determine the true error of the hypothesis. Instead, we
+          estimate the empirical error of the hypothesis over our <InlineMath math="n" /> training examples.
+        </div>
+        <div>
+          <BlockMath math="\hat{\epsilon}(h) = \frac{1}{n} \sum_{i=1}^{n} 1\{h(x_i) \neq y_i\}" />
+        </div>
+        <div>
+          Let <InlineMath math="\mathcal{H}" /> be the set of all possible hypotheses that we are considering. To find the hypothesis that minimizes the empirical error over our training set, we find:
+        </div>
+        <div>
+          <BlockMath math="\hat{h} = argmin_{h \in \mathcal{H}} \hat{\epsilon}(h)" />
+        </div>
+      </Content>
       <Detour about="Hoeffding Inequality">
         <Content>
           <div>
@@ -59,29 +55,27 @@ export default function ComplexityBounds() {
           </div>
         </Content>
       </Detour>
-      <Subsection>
-        <Content>
-          <div>Using Hoeffding inequality, we note that the true error and the estimated empirical error of our selected hypothesis follow the following inequality:</div>
-          <div>
-            <BlockMath math="P\left( \left|\epsilon(h_i) - \hat{\epsilon}(h_i)\right | > \gamma \right) \leq 2\exp\left(-2\gamma^2 n\right)" />
-          </div>
-          <div>
-            Now we want to find an inequality for our entire set of hypotheses <InlineMath math="\mathcal{H} = \{ h_1, \dots, h_k \}" />. We see that the following inequality holds:
-          </div>
-          <div>
-            <BlockMath math="P\left(\forall h \in \mathcal{H}.\left|\epsilon(h_i) - \hat{\epsilon}(h_i)\right | \leq \gamma \right) \geq 1 - 2k\exp\left(-2\gamma^2 n\right)" />
-          </div>
-          <div>We call this the uniform convergence result.</div>
-          <div>
-            This means that as n increases, the probability of the true error being close to the empirical error is bounded by a bigger value. Whereas, as we increases the number of hypotheses in our
-            set, this probability is actually bounded by a smaller value.
-          </div>
-          <div>
-            In the context of learning, we can say that the more complex our model, the lower our probability of minimizing the empirical error. And the more the number of training examples, the
-            higher our probability of minimizing the empirical error.
-          </div>
-        </Content>
-      </Subsection>
+      <Content>
+        <div>Using Hoeffding inequality, we note that the true error and the estimated empirical error of our selected hypothesis follow the following inequality:</div>
+        <div>
+          <BlockMath math="P\left( \left|\epsilon(h_i) - \hat{\epsilon}(h_i)\right | > \gamma \right) \leq 2\exp\left(-2\gamma^2 n\right)" />
+        </div>
+        <div>
+          Now we want to find an inequality for our entire set of hypotheses <InlineMath math="\mathcal{H} = \{ h_1, \dots, h_k \}" />. We see that the following inequality holds:
+        </div>
+        <div>
+          <BlockMath math="P\left(\forall h \in \mathcal{H}.\left|\epsilon(h_i) - \hat{\epsilon}(h_i)\right | \leq \gamma \right) \geq 1 - 2k\exp\left(-2\gamma^2 n\right)" />
+        </div>
+        <div>We call this the uniform convergence result.</div>
+        <div>
+          This means that as n increases, the probability of the true error being close to the empirical error is bounded by a bigger value. Whereas, as we increases the number of hypotheses in our
+          set, this probability is actually bounded by a smaller value.
+        </div>
+        <div>
+          In the context of learning, we can say that the more complex our model, the lower our probability of minimizing the empirical error. And the more the number of training examples, the higher
+          our probability of minimizing the empirical error.
+        </div>
+      </Content>
       <Derivation>
         <Lemma>
           <div>For any k events the union bound of probabilities tells us that</div>
@@ -119,21 +113,19 @@ export default function ComplexityBounds() {
           </div>
         </DerivationContent>
       </Derivation>
-      <Subsection>
-        <Content>
-          <div>
-            Now let <InlineMath math="\delta = 2k\exp\left(-2\gamma^2 n\right)" />
-          </div>
-          <div>
-            We see that if we want the probability of &quot;the true error being within <InlineMath math="\gamma" /> to the empirical error for all hypothesiss under our consideration&quot; to be at
-            least <InlineMath math="1 - \delta" />, our <InlineMath math="n" /> needs to be atleast as large as:
-          </div>
-          <div>
-            {" "}
-            <BlockMath math="n \geq \frac{1}{2\gamma^2} \log \frac{2k}{\delta}" />
-          </div>
-        </Content>
-      </Subsection>
+      <Content>
+        <div>
+          Now let <InlineMath math="\delta = 2k\exp\left(-2\gamma^2 n\right)" />
+        </div>
+        <div>
+          We see that if we want the probability of &quot;the true error being within <InlineMath math="\gamma" /> to the empirical error for all hypothesiss under our consideration&quot; to be at
+          least <InlineMath math="1 - \delta" />, our <InlineMath math="n" /> needs to be atleast as large as:
+        </div>
+        <div>
+          {" "}
+          <BlockMath math="n \geq \frac{1}{2\gamma^2} \log \frac{2k}{\delta}" />
+        </div>
+      </Content>
       <Derivation>
         <DerivationContent>
           <div className="flex flex-col">
@@ -156,17 +148,16 @@ export default function ComplexityBounds() {
           </div>
         </DerivationContent>
       </Derivation>
-      <Subsection>
-        <Content>
-          <div>
-            Similarly, we can also see that given <InlineMath math="k" /> and <InlineMath math="n" />, the difference between the true error and the empirical error (for all hypotheses is our set)
-            will always be less than:
-          </div>
-          <div>
-            <BlockMath math="\left|\epsilon(h_i) - \hat{\epsilon}(h_i)\right | \leq \sqrt{\frac{1}{2n} \log \frac{2k}{\delta}}" />
-          </div>
-        </Content>
-      </Subsection>
+      <Content>
+        <div>
+          Similarly, we can also see that given <InlineMath math="k" /> and <InlineMath math="n" />, the difference between the true error and the empirical error (for all hypotheses is our set) will
+          always be less than:
+        </div>
+        <div>
+          <BlockMath math="\left|\epsilon(h_i) - \hat{\epsilon}(h_i)\right | \leq \sqrt{\frac{1}{2n} \log \frac{2k}{\delta}}" />
+        </div>
+      </Content>
+
       <Derivation>
         <DerivationContent>
           <div className="flex flex-col">
