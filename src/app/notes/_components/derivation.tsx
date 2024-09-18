@@ -12,7 +12,7 @@ export default function Derivation({ children }: { children: React.ReactNode }) 
         {!opened && <div className="text-blue-500 hover:text-blue-900 cursor-pointer">See derivation</div>}
         <ArrowDown2 size={16} className={`text-blue-900 transition-all ${opened && "rotate-180"}`} />
       </div>
-      {opened && <div className="flex flex-col px-2 gap-3">{children}</div>}
+      {opened && <div className="flex flex-col px-2 gap-4">{children}</div>}
     </div>
   );
 }

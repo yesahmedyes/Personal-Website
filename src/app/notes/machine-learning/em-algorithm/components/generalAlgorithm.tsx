@@ -12,7 +12,7 @@ export default function GeneralAlgorithm() {
     <Section title="Expectancy Maximization Algorithm" heading="General Algorithm">
       <Content>
         <div>
-          Suppose we have a latent variable model <InlineMath math="p(x, z; \theta)" /> with z being the latent variables. The density of x can be obtained using marginal probability over z:
+          Suppose we have a latent variable model <InlineMath math="p(x, z; \theta)" /> with <InlineMath math="z" /> being the latent variable. The density of <InlineMath math="x" /> can be obtained using marginal probability over <InlineMath math="z" />:
         </div>
         <div>
           <BlockMath math="p(x; \theta) = \sum_z p(x, z; \theta)" />
@@ -28,7 +28,7 @@ export default function GeneralAlgorithm() {
           However, the above equation is not concave with respect to <InlineMath math="\theta" />. Hence, we can not use gradient ascent to find the maximum likelihood estimate.
         </div>
         <div>
-          Moreover, if <InlineMath math="p(x^{(i)}; z; \theta)" /> is an exponential family distribution, then taking the derivative of the above equation with respect to <InlineMath math="\theta" />{" "}
+          Moreover, if <InlineMath math="p(x; z; \theta)" /> is an exponential family distribution, then taking the derivative of the above equation with respect to <InlineMath math="\theta" />{" "}
           doesn&apos;t typically lead to a solvable expression.
         </div>
         <div>
