@@ -3,6 +3,7 @@ import Content from "~/app/notes/_components/content";
 import Derivation from "~/app/notes/_components/derivation";
 import DerivationContent from "~/app/notes/_components/derivationContent";
 import Info from "~/app/notes/_components/info";
+import Lemma from "~/app/notes/_components/lemma";
 import MyLink from "~/app/notes/_components/myLink";
 import Section from "~/app/notes/_components/section";
 
@@ -102,38 +103,235 @@ export default function MixturesOfGaussians() {
           update equations for each of the parameters:
         </div>
         <div className="flex flex-col">
-          <BlockMath math="\phi_j = \frac{1}{n} \sum_{i=1}^n w_j^{(i)}" />
+          <BlockMath math="\phi_l = \frac{1}{n} \sum_{i=1}^n w_l^{(i)}" />
 
-          <BlockMath math="\mu_j = \frac{\sum_{i=1}^n w_j^{(i)} x^{(i)}}{\sum_{i=1}^n w_j^{(i)}}" />
+          <BlockMath math="\mu_l = \frac{\sum_{i=1}^n w_l^{(i)} x^{(i)}}{\sum_{i=1}^n w_l^{(i)}}" />
 
-          <BlockMath math="\Sigma_j = \frac{\sum_{i=1}^n w_j^{(i)} (x^{(i)} - \mu_j)(x^{(i)} - \mu_j)^T}{\sum_{i=1}^n w_j^{(i)}}" />
+          <BlockMath math="\Sigma_l = \frac{\sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l)(x^{(i)} - \mu_l)^T}{\sum_{i=1}^n w_l^{(i)}}" />
         </div>
       </Content>
-      <Derivation>
-        <DerivationContent>
-          <div className="flex flex-col">
-            <BlockMath math="\sum_{i=1}^{n} \sum_{j=1}^{k} \left[w_j^{(i)} \log  \frac{p(x^{(i)} | z^{(i)} = j; \mu, \Sigma) p(z^{(i)} = j; \phi)}{w_j^{(i)}}\right]" />
-            <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \log \left(\frac{\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \exp \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right) \phi_j}{w_j^{(i)}} \right)" />
-            <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) + \log(\phi_j) - \log(w_j^{(i)})\right]" />
-          </div>
-        </DerivationContent>
-        <DerivationContent>
-          <div>
-            We derivative with respect to <InlineMath math="\mu_j" />:
-          </div>
-          <div className="flex flex-col">
-            <Info
-              info={
-                <div>
-                  Ignoring terms that do not depend on <InlineMath math="\mu_l" /> since their derivatives are <InlineMath math="0" />.
-                </div>
-              }
-            >
-              <BlockMath math="\nabla \mu_l \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[-\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right]" />
-            </Info>
-          </div>
-        </DerivationContent>
-      </Derivation>
+      <div className="flex flex-col">
+        <Derivation>
+          <DerivationContent>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^{n} \sum_{j=1}^{k} \left[w_j^{(i)} \log  \frac{p(x^{(i)} | z^{(i)} = j; \mu, \Sigma) p(z^{(i)} = j; \phi)}{w_j^{(i)}}\right]" />
+              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \log \left(\frac{\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \exp \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right) \phi_j}{w_j^{(i)}} \right)" />
+              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) + \log(\phi_j) - \log(w_j^{(i)})\right]" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              We take derivative with respect to <InlineMath math="\mu_j" />:
+            </div>
+            <div className="flex flex-col">
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="\mu_l" /> since their derivatives are <InlineMath math="0" />.
+                  </div>
+                }
+              >
+                <BlockMath math="\nabla_{\mu_l} \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[-\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right]" />
+              </Info>
+              <BlockMath math="= \sum_{i=1}^n \left(\nabla_{\mu_l} \sum_{j=1}^k w_j^{(i)} \left[-\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right] \right)" />
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="\mu_l" /> since their derivatives are <InlineMath math="0" />.
+                  </div>
+                }
+              >
+                <BlockMath math="= \sum_{i=1}^n \nabla_{\mu_l} \left[w_l^{(i)} \left(-\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right) \right]" />
+              </Info>
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} \left( x^{(i)T}\Sigma_l^{-1} x^{(i)} - \mu_l^T \Sigma_l^{-1} x^{(i)} - x^{(i)T}\Sigma_l^{-1} \mu_l + \mu_l^T \Sigma_l^{-1} \mu_l \right) \right] \right)" />
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      <InlineMath math="\Sigma_l^{-1}" /> is a symmetric matrix.
+                    </div>
+                    <div>
+                      For any symmetric matrix <InlineMath math="A" />, <InlineMath math="\nabla_{x} \left(x^T A x \right) = 2Ax" />
+                    </div>
+                  </div>
+                }
+              >
+                <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left[-\frac{1}{2} \left( - \Sigma_l^{-1} x^{(i)} - \Sigma_l^{-T} x^{(i)} + 2 \left(\Sigma_l^{-1} \mu_l \right) \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div>
+                    For symmetric matrices <InlineMath math="(A^{-1})^T = A^{-1}" />
+                  </div>
+                }
+              >
+                <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left[-\frac{1}{2} \left( - \Sigma_l^{-1} x^{(i)} - \Sigma_l^{-1} x^{(i)} + 2 \left(\Sigma_l^{-1} \mu_l \right) \right) \right]" />
+              </Info>
+              <BlockMath math="= \sum_{i=1}^{n} w_l^{(i)} \left( \Sigma_l^{-1} x^{(i)} - \Sigma_l^{-1} \mu_l \right)" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              Setting this equal to <InlineMath math="0" /> and simplifying, we get:
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^n \left[ w_l^{(i)} \Sigma_l^{-1} x^{(i)} \right] = \sum_{i=1}^n \left[ w_l^{(i)} \Sigma_l^{-1} \mu_l \right]" />
+              <Info
+                info={
+                  <div>
+                    Since <InlineMath math="w_l^{(i)}" /> is just a scalar
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \sum_{i=1}^n \left[ \Sigma_l^{-1} w_l^{(i)} x^{(i)} \right] = \sum_{i=1}^n \left[\Sigma_l^{-1} w_l^{(i)} \mu_l \right]" />
+              </Info>
+              <Info
+                info={
+                  <div>
+                    Since <InlineMath math="\Sigma_l^{-1}" /> and <InlineMath math="\mu_l^{-1}" /> do not depend on <InlineMath math="i" />
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \Sigma_l^{-1} \left[\sum_{i=1}^n w_l^{(i)} x^{(i)} \right] = \Sigma_l^{-1} \left[ \sum_{i=1}^n w_l^{(i)}\right] \mu_l" />
+              </Info>
+              <BlockMath math="\Rightarrow \left[\sum_{i=1}^n w_l^{(i)} x^{(i)} \right] = \left[ \sum_{i=1}^n w_l^{(i)}\right] \mu_l" />
+              <BlockMath math="\Rightarrow \mu_l = \frac{\sum_{i=1}^n w_l^{(i)} x^{(i)}}{\sum_{i=1}^n w_l^{(i)}}" />
+            </div>
+          </DerivationContent>
+        </Derivation>
+        <Derivation>
+          <DerivationContent>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^{n} \sum_{j=1}^{k} \left[w_j^{(i)} \log  \frac{p(x^{(i)} | z^{(i)} = j; \mu, \Sigma) p(z^{(i)} = j; \phi)}{w_j^{(i)}}\right]" />
+              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) + \log(\phi_j) - \log(w_j^{(i)})\right]" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              We take derivative with respect to <InlineMath math="\phi_j" />:
+            </div>
+            <div className="flex flex-col">
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="\phi" /> since their derivatives are <InlineMath math="0" />.
+                  </div>
+                }
+              >
+                <BlockMath math="\nabla_{\phi_l} \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \log(\phi_j)" />
+              </Info>
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              For this we use the fact that <InlineMath math="\left(\sum_{j=1}^k \phi_j \right) = 1" /> to find the derivative by constructing a Lagrangian
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="\mathcal{L}(\phi) = \sum_{i=1}^{n} \sum_{j=1}^{k} w_j^{(i)} \log \phi_j + \beta \left( \sum_{j=1}^{k} \phi_j - 1 \right)" />
+              <BlockMath math="\frac{\partial}{\partial \phi_l} \mathcal{L}(\phi) = \sum_{i=1}^{n} \frac{w_l^{(i)}}{\phi_l} + \beta" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              Setting this equal to <InlineMath math="0" /> and simplifying, we get:
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^{n} \frac{w_l^{(i)}}{\phi_l} + \beta = 0" />
+              <BlockMath math="\Rightarrow \sum_{i=1}^{n} \frac{w_l^{(i)}}{\phi_l} = -\beta" />
+              <BlockMath math="\Rightarrow \phi_l = \sum_{i=1}^{n} \frac{w_l^{(i)}}{-\beta}" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              Using the constraint, we find the value of <InlineMath math="\beta" />
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="\left(\sum_{j=1}^k \phi_j \right) = 1" />
+              <BlockMath math="\Rightarrow \sum_{j=1}^k \left(\sum_{i=1}^{n} \frac{w_j^{(i)}}{-\beta}\right) = 1" />
+              <BlockMath math="\Rightarrow \sum_{j=1}^k \left(\sum_{i=1}^{n} w_j^{(i)}\right) = -\beta" />
+              <BlockMath math="\Rightarrow \sum_{i=1}^n \left(\sum_{j=1}^{k} w_j^{(i)}\right) = -\beta" />
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      Since <InlineMath math="\sum_{j=1}^k w_j^{(i)}" />
+                    </div>
+                    <div>
+                      <InlineMath math="= \sum_{j=1}^k p(z^{(i)} = j | x) = 1" />.
+                    </div>
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \sum_{i=1}^n 1 = -\beta" />
+              </Info>
+              <BlockMath math="\Rightarrow -\beta = n" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              Putting it together, we get: <BlockMath math="\phi_l = \sum_{i=1}^{n} \frac{w_l^{(i)}}{n}" />
+            </div>
+          </DerivationContent>
+        </Derivation>
+        <Derivation>
+          <DerivationContent>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^{n} \sum_{j=1}^{k} \left[w_j^{(i)} \log  \frac{p(x^{(i)} | z^{(i)} = j; \mu, \Sigma) p(z^{(i)} = j; \phi)}{w_j^{(i)}}\right]" />
+              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) + \log(\phi_j) - \log(w_j^{(i)})\right]" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              We take derivative with respect to <InlineMath math="\Sigma_j" />:
+            </div>
+            <div className="flex flex-col">
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="\Sigma" /> since their derivatives are <InlineMath math="0" />.
+                  </div>
+                }
+              >
+                <BlockMath math="\nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) \right] \right)" />
+              </Info>
+              <BlockMath math="= \nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[-\log \left((2\pi)^{d/2} \right) -\log \left(|\Sigma_j|^{1/2}\right)  + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left(\nabla_{\Sigma_l} \left[-\log \left(|\Sigma_j|^{1/2}\right)  -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left(- \nabla_{\Sigma_l} \left[\log |\Sigma_j|^{1/2} \right] -\frac{1}{2} \nabla_{\Sigma_l} \left[ (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right] \right)" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>We are going to find the two derivates separately,</div>
+            <div className="flex flex-col">
+              <BlockMath math=" \nabla_{\Sigma_l} \left[\log |\Sigma_l|^{1/2} \right]" />
+              <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \nabla_{\Sigma_l} \left[|\Sigma_l|^{1/2} \right]" />
+              <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \left( |\Sigma_l|^{-1/2} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
+              <BlockMath math="= \left(\frac{1}{|\Sigma_l|} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
+              <Info
+                info={
+                  <div>
+                    Derivative of determinant of <InlineMath math="A" /> is equal to <InlineMath math="|A| (A^{-1})^T" />
+                  </div>
+                }
+              >
+                <BlockMath math="= \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-T} " />
+              </Info>
+              <Info
+                info={
+                  <div>
+                    For symmetric matrices <InlineMath math="(A^{-1})^T = A^{-1}" />
+                  </div>
+                }
+              >
+                <BlockMath math="= \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-1} " />
+              </Info>
+            </div>
+          </DerivationContent>
+          <Lemma>
+            <div></div>
+          </Lemma>
+        </Derivation>
+      </div>
     </Section>
   );
 }
