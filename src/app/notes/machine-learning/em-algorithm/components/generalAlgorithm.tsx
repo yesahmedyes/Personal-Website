@@ -157,7 +157,7 @@ export default function GeneralAlgorithm() {
       <Algorithm>
         <BlockMath math="\text{Repeat until convergence \{}" />
         <BlockMath math="\hspace{2em} \text{(E-step) For each } i, \text{ set } \text{\{}" />
-        <BlockMath math="\hspace{4em} Q_i(z^{(i)}) := p(z^{(i)} \mid x^{(i)}; \theta)." />
+        <BlockMath math="\hspace{4em} Q_i(z^{(i)}) := p(z^{(i)} | x^{(i)}; \theta)." />
         <BlockMath math="\hspace{2em} \text{\}}" />
         <BlockMath math="\hspace{2em} \text{(M-step) Set } \text{\{}" />
         <BlockMath math="\hspace{4em} \theta := \arg \max_{\theta} \sum_{i=1}^{n} \text{ELBO}(x^{(i)}; Q_i, \theta) " />
@@ -166,11 +166,10 @@ export default function GeneralAlgorithm() {
       </Algorithm>
       <Content>
         <div>
-          In the <InlineMath math="E" /> step we find the distributions over <InlineMath math="z^{(i)}" />{" "}
-          for which the <InlineMath math="\text{ELBO}" /> and <InlineMath math="p(x;\theta)" /> are equal for our current value of <InlineMath math="\theta" />.
+          In the <InlineMath math="E" /> step we find the estimated distributions over <InlineMath math="z^{(i)}" /> using our current value of <InlineMath math="\theta" />.
         </div>
         <div>
-          In the <InlineMath math="M" /> step we find the new value of <InlineMath math="\theta" /> that maximizes our new <InlineMath math="\text{ELBO}" /> with <InlineMath math="Q_i(z^{(i)}) := p(z^{(i)} \mid x^{(i)}; \theta)" />.
+          In the <InlineMath math="M" /> step we update the value of <InlineMath math="\theta" /> to maximizes the <InlineMath math="\text{ELBO}" /> for which it is equal to <InlineMath math="p(x; \theta)" /> for our current values of <InlineMath math="\theta" />.
         </div>
       </Content>
     </Section>

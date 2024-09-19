@@ -1,4 +1,5 @@
 import { BlockMath, InlineMath } from "react-katex";
+import Algorithm from "~/app/notes/_components/algorithm";
 import Content from "~/app/notes/_components/content";
 import Derivation from "~/app/notes/_components/derivation";
 import DerivationContent from "~/app/notes/_components/derivationContent";
@@ -121,7 +122,7 @@ export default function MixturesOfGaussians() {
           </DerivationContent>
           <DerivationContent>
             <div>
-              We take derivative with respect to <InlineMath math="\mu_j" />:
+              We take derivative with respect to <InlineMath math="\mu_l" />:
             </div>
             <div className="flex flex-col">
               <Info
@@ -209,7 +210,7 @@ export default function MixturesOfGaussians() {
           </DerivationContent>
           <DerivationContent>
             <div>
-              We take derivative with respect to <InlineMath math="\phi_j" />:
+              We take derivative with respect to <InlineMath math="\phi_l" />:
             </div>
             <div className="flex flex-col">
               <Info
@@ -281,9 +282,16 @@ export default function MixturesOfGaussians() {
               <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) + \log(\phi_j) - \log(w_j^{(i)})\right]" />
             </div>
           </DerivationContent>
+          <Lemma>
+            <div className="flex flex-col place-items-start">
+              <div className="pb-1">We won&apos;t prove this here, but there are two Lemmas we need here:</div>
+              <BlockMath math="\text{1. } \nabla_A | A | = |A|(A^{-1})^T" />
+              <BlockMath math="\text{2. } \nabla_A \left(x^T A^{-1} x \right) = -A^{-1} x x^T A^{-1}" />
+            </div>
+          </Lemma>
           <DerivationContent>
             <div>
-              We take derivative with respect to <InlineMath math="\Sigma_j" />:
+              We take derivative with respect to <InlineMath math="\Sigma_l" />:
             </div>
             <div className="flex flex-col">
               <Info
@@ -296,8 +304,16 @@ export default function MixturesOfGaussians() {
                 <BlockMath math="\nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) \right] \right)" />
               </Info>
               <BlockMath math="= \nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[-\log \left((2\pi)^{d/2} \right) -\log \left(|\Sigma_j|^{1/2}\right)  + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) \right] \right)" />
-              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left(\nabla_{\Sigma_l} \left[-\log \left(|\Sigma_j|^{1/2}\right)  -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right] \right)" />
-              <BlockMath math="= \sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left(- \nabla_{\Sigma_l} \left[\log |\Sigma_j|^{1/2} \right] -\frac{1}{2} \nabla_{\Sigma_l} \left[ (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j) \right] \right)" />
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="\Sigma" /> since their derivatives are <InlineMath math="0" />.
+                  </div>
+                }
+              >
+                <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left(\nabla_{\Sigma_l} \left[-\log \left(|\Sigma_l|^{1/2}\right)  -\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
+              </Info>
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left(- \nabla_{\Sigma_l} \left[\log |\Sigma_l|^{1/2} \right] -\frac{1}{2} \nabla_{\Sigma_l} \left[ (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
             </div>
           </DerivationContent>
           <DerivationContent>
@@ -305,16 +321,10 @@ export default function MixturesOfGaussians() {
             <div className="flex flex-col">
               <BlockMath math=" \nabla_{\Sigma_l} \left[\log |\Sigma_l|^{1/2} \right]" />
               <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \nabla_{\Sigma_l} \left[|\Sigma_l|^{1/2} \right]" />
-              <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \left( |\Sigma_l|^{-1/2} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
-              <BlockMath math="= \left(\frac{1}{|\Sigma_l|} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
-              <Info
-                info={
-                  <div>
-                    Derivative of determinant of <InlineMath math="A" /> is equal to <InlineMath math="|A| (A^{-1})^T" />
-                  </div>
-                }
-              >
-                <BlockMath math="= \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-T} " />
+              <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \left( \frac{1}{2} |\Sigma_l|^{-1/2} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
+              <BlockMath math="= \frac{1}{2} \left( \frac{1}{|\Sigma_l|} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
+              <Info info={<div>Using Lemma 1</div>}>
+                <BlockMath math="= \frac{1}{2} \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-T} " />
               </Info>
               <Info
                 info={
@@ -323,15 +333,74 @@ export default function MixturesOfGaussians() {
                   </div>
                 }
               >
-                <BlockMath math="= \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-1} " />
+                <BlockMath math="= \frac{1}{2} \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-1} " />
+              </Info>
+              <BlockMath math="= \frac{1}{2} \Sigma_l^{-1} " />
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="\nabla_{\Sigma_l} \left[ (x^{(i)} - \mu_l)^T \Sigma_j^{-1} (x^{(i)} - \mu_l) \right]" />
+              <BlockMath math="= -\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1}" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>Putting them together, we get:</div>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^n w_l^{(i)} \left(- \frac{1}{2} \left[\Sigma_l^{-1} \right] -\frac{1}{2} \left[ -\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left[ \frac{1}{2} \left(- \Sigma_l^{-1} + \Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right) \right]" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              Setting this equal to <InlineMath math="0" /> and simplifying, we get:
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} \right) = \sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right)" />
+              <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right)" />
+              <Info
+                info={
+                  <div>
+                    <InlineMath math="\Sigma_l^{-1}" /> does not depend on <InlineMath math="i" /> and <InlineMath math="w_l^{(i)}" /> is a scalar.
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \right) \Sigma_l^{-1}" />
+              </Info>
+              <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \right) \Sigma_l^{-1}" />
+              <BlockMath math="\Rightarrow \Sigma_l \left(\sum_{i=1}^n w_l^{(i)} \right)   = \Sigma_l \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \right)" />
+              <BlockMath math="\Rightarrow \Sigma_l \left(\sum_{i=1}^n w_l^{(i)} \right)   = \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T " />
+              <Info
+                info={
+                  <div>
+                    Since <InlineMath math="w_l^{(i)}" /> is a scalar.
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \Sigma_l = \frac{\sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T}{\sum_{i=1}^n w_l^{(i)} }" />
               </Info>
             </div>
           </DerivationContent>
-          <Lemma>
-            <div></div>
-          </Lemma>
         </Derivation>
       </div>
+      <Algorithm>
+        <BlockMath math="\text{Repeat until convergence \{}" />
+        <BlockMath math="\hspace{2em} \text{(E-step) For each } i \text{ and } j, \text{ set } \text{\{}" />
+        <BlockMath math="\hspace{4em} w_j^{(i)} := p(z^{(i)} = j \mid x^{(i)}; \phi, \mu, \Sigma)." />
+        <BlockMath math="\hspace{2em} \text{\}}" />
+        <BlockMath math="\hspace{2em} \text{(M-step) For each } j, \text{ set } \text{\{}" />
+        <BlockMath math="\hspace{4em} \phi_j := \frac{1}{n} \sum_{i=1}^n w_j^{(i)} " />
+        <BlockMath math="\hspace{4em} \mu_j := \frac{\sum_{i=1}^n w_j^{(i)} x^{(i)}}{\sum_{i=1}^n w_j^{(i)}} " />
+        <BlockMath math="\hspace{4em} \Sigma_j := \frac{\sum_{i=1}^n w_j^{(i)} (x^{(i)} - \mu_j)(x^{(i)} - \mu_j)^T}{\sum_{i=1}^n w_j^{(i)}} " />
+        <BlockMath math="\hspace{2em} \text{\}}" />
+        <BlockMath math="\text{\}}" />
+      </Algorithm>
+      <Content>
+        <div>
+          In the <InlineMath math="E" /> step, we estimate the probability of each <InlineMath math="z^{(i)}" /> given <InlineMath math="x^{(i)}" /> using the current parameters <InlineMath math="\phi, \mu, \Sigma" />.
+        </div>
+        <div>
+          In the <InlineMath math="M" /> step, we update the value of our parameters to maximize the <InlineMath math="\text{ELBO}" /> for which it is equal to <InlineMath math="p(x; \mu, \Sigma)" /> for our current values of <InlineMath math="\phi, \mu, \Sigma" />.
+        </div>
+      </Content>
     </Section>
   );
 }
