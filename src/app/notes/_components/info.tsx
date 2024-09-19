@@ -11,7 +11,7 @@ export default function Info({ children, info }: InfoProps) {
       {children}
       <div className="group relative">
         <InfoCircle className="text-orange-500" size={14} />
-        <div className="absolute center-0 hidden leading-8 max-w-[200px] text-xs w-max group-hover:block bg-white border rounded-md px-3 py-2 whitespace-normal bottom-0 mb-4 ml-1 drop-shadow-sm">{info}</div>
+        <div className="absolute center-0 hidden leading-8 max-w-[250px] text-xs w-max group-hover:block bg-white border rounded-md px-3 py-2 whitespace-normal bottom-0 mb-4 ml-1 drop-shadow-sm">{info}</div>
       </div>
     </div>
   );

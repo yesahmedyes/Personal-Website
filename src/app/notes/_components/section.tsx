@@ -9,7 +9,7 @@ export default function Section({ heading, children, title }: SectionProps) {
     <div id={heading} className="flex w-10/12 2xl:w-9/12 flex-col gap-8 rounded-sm bg-white p-16">
       <div className="flex w-full flex-col text-sm gap-5">
         {title && <div className="w-full pb-8 text-center font-serif text-3xl font-medium">{title}</div>}
-        <div className="font-serif text-2xl font-medium pb-0.5">{heading}</div>
+        <div className="font-serif text-2xl font-medium pb">{heading}</div>
         {children}
       </div>
     </div>

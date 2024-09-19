@@ -14,7 +14,7 @@ export default function LMSAlgorithm() {
           We define a function <InlineMath math="h_{\theta}(x)" /> to model the <InlineMath math="d" /> features in each <InlineMath math="x^{(i)}" /> as:
         </div>
         <div>
-          <BlockMath math="h_{\theta}(x) = \sum_{i=1}^{n} \theta_j x_j^{(i)} = \theta^T x" />
+          <BlockMath math="h_{\theta}(x) = \sum_{j=1}^{d} \theta_j x_j^{(i)} = \theta^T x" />
         </div>
         <div>
           For <InlineMath math="n" /> training examples, we also define a cost function that we want to minimize:
@@ -26,7 +26,7 @@ export default function LMSAlgorithm() {
           Taking the derivative with respect to any <InlineMath math="\theta_j" /> we get:
         </div>
         <div className="flex flex-col">
-          <BlockMath math="\frac{\partial}{\partial \theta_j} J(\theta) = \left( h_{\theta}(x) - y \right ) x_j" />
+          <BlockMath math="\frac{\partial}{\partial \theta_j} J(\theta) = \sum_{i=1}^{n} \left[ h_\theta(x^{(i)}) - y^{(i)} \right] x_j^{(i)} " />
         </div>
       </Content>
       <Derivation>
@@ -45,12 +45,6 @@ export default function LMSAlgorithm() {
               <BlockMath math="= \sum_{i=1}^{n} \left[\left( h_\theta(x^{(i)}) - y^{(i)} \right) \cdot \frac{\partial}{\partial \theta_j} \left( \theta_j x_j^{(i)} \right) \right]" />
             </Info>
             <BlockMath math="= \sum_{i=1}^{n} \left[\left( h_\theta(x^{(i)}) - y^{(i)} \right) \cdot x_j^{(i)} \right]" />
-          </div>
-          <div>
-            Writing this in vector form where <InlineMath math="x" /> and <InlineMath math="y" /> have <InlineMath math="n" /> rows, each containing a training example, we get:
-          </div>
-          <div>
-            <BlockMath math="\frac{\partial}{\partial \theta_j} J(\theta) = \left( h_{\theta}(x) - y \right ) x_j" />
           </div>
         </DerivationContent>
       </Derivation>
