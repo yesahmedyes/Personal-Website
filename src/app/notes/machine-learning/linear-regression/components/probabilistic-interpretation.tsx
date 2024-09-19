@@ -18,7 +18,7 @@ export default function ProbabilisticInterpretation() {
         </div>
         <div>
           This can be rewritten as <InlineMath math="\epsilon^{(i)} = \theta^T x^{(i)} - y^{(i)}" />. Now, since <InlineMath math="\epsilon^{(i)} \sim \mathcal{N}(0, \sigma^2)" />, hence{" "}
-          <InlineMath math="\left(\theta^T x^{(i)} - y^{(i)} \right) \sim \mathcal{N}(0, \sigma^2)" />.
+          <InlineMath math="\left(y^{(i)} - \theta^T x^{(i)} \right) \sim \mathcal{N}(0, \sigma^2)" />.
         </div>
         <div>
           Finally, if we are given <InlineMath math="x^{(i)}" />, then <InlineMath math="y^{(i)} \mid x^{(i)}" /> will also follow <InlineMath math="\mathcal{N} (0, \sigma^2)" /> shifted by{" "}
