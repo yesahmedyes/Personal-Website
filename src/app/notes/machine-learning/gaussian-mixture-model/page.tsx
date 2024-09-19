@@ -1,5 +1,5 @@
 import MainWithSidebar from "../../_components/mainWithSidebar";
-import MixturesOfGaussians from "./components/mixturesOfGaussians";
+import MixturesOfGaussians from "./components/gaussian-mixture-model";
 
 export default function Page() {
   return (

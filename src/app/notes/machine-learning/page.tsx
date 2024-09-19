@@ -57,7 +57,7 @@ export default function MachineLearning() {
     },
     {
       title: "Gaussian Mixture Models",
-      link: "/notes/machine-learning/gaussian-mixture-models",
+      link: "/notes/machine-learning/gaussian-mixture-model",
     },
     // {
     //   title: "Factor Analysis",

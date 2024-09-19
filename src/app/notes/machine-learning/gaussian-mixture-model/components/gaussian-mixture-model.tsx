@@ -10,7 +10,7 @@ import Section from "~/app/notes/_components/section";
 
 export default function MixturesOfGaussians() {
   return (
-    <Section heading="Mixtures of Gaussians">
+    <Section heading="Gaussian Mixture Model">
       <Content>
         <div>
           Suppose that we are given a training set <InlineMath math="(x^{(1)}, x^{(2)}, \ldots, x^{(n)})" /> and we wish to model the data by specifying a joint distribution{" "}
