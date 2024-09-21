@@ -53,20 +53,20 @@ export default function MachineLearning() {
     // },
     {
       title: "Expectation Maximization Algorithms",
-      link: "/notes/machine-learning/em-algorithm",
+      link: "/notes/machine-learning/em-algorithms",
     },
     {
       title: "Gaussian Mixture Models",
-      link: "/notes/machine-learning/gaussian-mixture-model",
+      link: "/notes/machine-learning/gaussian-mixture-models",
     },
     // {
     //   title: "Factor Analysis",
     //   link: "/notes/machine-learning/factor-analysis",
     // },
-    // {
-    //   title: "Variational Autoencoders",
-    //   link: "/notes/machine-learning/variational-autoencoders",
-    // },
+    {
+      title: "Variational Autoencoders",
+      link: "/notes/machine-learning/variational-autoencoders",
+    },
     // {
     //   title: "Self-Supervised Learning",
     //   link: "/notes/machine-learning/self-supervised-learning",

@@ -45,8 +45,8 @@ export default function OtherInterpretations() {
           <BlockMath math="\text{ELBO}(x; Q, \theta) = \log p(x) - D_{KL}(Q \parallel p_{z | x})" />
         </div>
         <div>
-          This shows us that <InlineMath math="\text{ELBO}" /> is maximized when the KL divergence between <InlineMath math="Q(z)" /> and <InlineMath math="p(z | x; \theta)" /> is minimized, which is
-          when they are equal. This is exactly what we saw while deriving the algorithm a
+          This shows us that <InlineMath math="\text{ELBO}" /> is maximized for a given value of <InlineMath math="\theta" /> when the KL divergence between <InlineMath math="Q(z)" /> and <InlineMath math="p(z | x; \theta)" /> is minimized, which is
+          when they are equal. This is exactly what we saw while deriving the algorithm above.
         </div>
       </Content>
       <Derivation>

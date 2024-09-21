@@ -10,7 +10,7 @@ export default function ConvergenceProof() {
           It can be shown that the EM algorithm converges to the maximum likelihood estimate of <InlineMath math="\theta" /> as the number of iterations goes to infinity.
         </div>
         <div>
-          We saw that the for any given value of <InlineMath math="\theta" /> and any distribution over <InlineMath math="z" />, our log-likelihood <InlineMath math="\ell(\theta) = p(x;\theta)" /> is
+          We saw that the for any given value of <InlineMath math="\theta" /> and any distribution over <InlineMath math="z" />, our log-likelihood <InlineMath math="\ell(\theta) = \log p(x;\theta)" /> is
           always greater than the <InlineMath math="\text{ELBO}(x; Q, \theta)" />.
         </div>
         <div>

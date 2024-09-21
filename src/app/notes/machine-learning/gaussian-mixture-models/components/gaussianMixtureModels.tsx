@@ -10,11 +10,11 @@ import Section from "~/app/notes/_components/section";
 
 export default function MixturesOfGaussians() {
   return (
-    <Section heading="Gaussian Mixture Model">
+    <Section title="Gaussian Mixture Models">
       <Content>
         <div>
           Suppose that we are given a training set <InlineMath math="(x^{(1)}, x^{(2)}, \ldots, x^{(n)})" /> and we wish to model the data by specifying a joint distribution{" "}
-          <InlineMath math="p(x^{(i)}, z)" /> where <InlineMath math="z(i) \sim \text{Multinomial}(\phi)" /> is a latent variable where <InlineMath math="p(z^{(i)} = j) = \phi_j" />. Moreover, we
+          <InlineMath math="p(x^{(i)}, z^{(i)})" /> where <InlineMath math="z^{(i)} \sim \text{Multinomial}(\phi)" /> is a latent variable where <InlineMath math="p(z^{(i)} = j) = \phi_j" />. Moreover, we
           assume that <InlineMath math="\left(x^{(i)} | z^{(i)} = j\right) \sim \mathcal{N}(\mu_j, \Sigma_j)" />.
         </div>
         <div>To maximize the log likelihood, we need to maximize:</div>

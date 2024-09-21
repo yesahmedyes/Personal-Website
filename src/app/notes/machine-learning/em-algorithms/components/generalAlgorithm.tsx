@@ -12,14 +12,13 @@ export default function GeneralAlgorithm() {
     <Section title="Expectancy Maximization Algorithm" heading="General Algorithm">
       <Content>
         <div>
-          Suppose we have a latent variable model <InlineMath math="p(x, z; \theta)" /> with <InlineMath math="z" /> being the latent variable. The density of <InlineMath math="x" /> can be obtained using marginal probability over <InlineMath math="z" />:
+          Suppose we have a latent variable model <InlineMath math="p(x, z; \theta)" /> with <InlineMath math="z" /> being the latent variable. The density of <InlineMath math="x" /> can be obtained
+          using marginal probability over <InlineMath math="z" />:
         </div>
         <div>
           <BlockMath math="p(x; \theta) = \sum_z p(x, z; \theta)" />
         </div>
-        <div>
-          Now to find the maximum likelihood estimate of <InlineMath math="\theta" />, we need to maximize the following function:
-        </div>
+        <div>Now to maximize likelihood, we need to maximize the following function:</div>
         <div>
           <BlockMath math="\ell(\theta) = \sum_{i=1}^n \log p(x^{(i)}; \theta)" />
           <BlockMath math="= \sum_{i=1}^n \log \sum_{z^{(i)}} p(x^{(i)}; z^{(i)}; \theta)" />
@@ -151,7 +150,7 @@ export default function GeneralAlgorithm() {
         </div>
         <div>
           Therefore,
-          <BlockMath math="\log p(x: \theta) \geq \text{ELBO}(x; Q, \theta)" />
+          <BlockMath math="\log p(x; \theta) \geq \text{ELBO}(x; Q, \theta)" />
         </div>
       </Content>
       <Algorithm>
@@ -166,10 +165,13 @@ export default function GeneralAlgorithm() {
       </Algorithm>
       <Content>
         <div>
-          In the <InlineMath math="E" /> step we find the estimated distributions over <InlineMath math="z^{(i)}" /> using our current value of <InlineMath math="\theta" />.
+          In the <InlineMath math="E" /> step we find the estimated distributions over <InlineMath math="z^{(i)}" /> using our current value of <InlineMath math="\theta" /> and thus our current
+          estimated distribution over <InlineMath math="x^{(i)}" /> given <InlineMath math="z^{(i)}" />. We do so using the Bayes&apos; rule:
         </div>
+        <BlockMath math="p(z^{(i)} = j | x^{(i)}; \theta) = \frac{p(x^{(i)} | z^{(i)} = j; \theta) p(z^{(i)} = j; \theta)}{\sum_{l=1}^k p(x^{(i)} | z^{(i)} = l; \theta) p(z^{(i)} = l; \theta)}" />
         <div>
-          In the <InlineMath math="M" /> step we update the value of <InlineMath math="\theta" /> to maximizes the <InlineMath math="\text{ELBO}" /> for which it is equal to <InlineMath math="p(x; \theta)" /> for our current values of <InlineMath math="\theta" />.
+          In the <InlineMath math="M" /> step we update the value of <InlineMath math="\theta" /> to maximizes the <InlineMath math="\text{ELBO}" /> for which it is equal to{" "}
+          <InlineMath math="\log p(x; \theta)" /> for our current values of <InlineMath math="\theta" />.
         </div>
       </Content>
     </Section>
