@@ -16,7 +16,7 @@ export default function VariationalAutoencoder() {
           network <InlineMath math="g(z ; \theta)" /> that maps <InlineMath math="z \in R^k" /> to <InlineMath math="R^d" />.
         </div>
         <div>
-          Also, let <InlineMath math="x" /> given <InlineMath math="z" /> follow a normal distribution <InlineMath math="x | z \sim \mathcal{N}\left(g(z ; \theta), \sigma^2 I \right)" />. We can find
+          Also, let <InlineMath math="x" /> given <InlineMath math="z" /> follow a normal distribution <InlineMath math="x | z \sim \mathcal{N}\left(g(z ; \theta), \, \sigma^2 I \right)" />. We can find
           this distribution using an <MyLink href="em-algorithms">Expectation Maximization Algorithm</MyLink>.
         </div>
         <div>

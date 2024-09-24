@@ -7,10 +7,10 @@ export default function MachineLearning() {
       title: "Linear Regression",
       link: "/notes/machine-learning/linear-regression",
     },
-    // {
-    //   title: "Classification and Logistic Regression",
-    //   link: "/notes/machine-learning/logistic-regression",
-    // },
+    {
+      title: "Classification and Logistic Regression",
+      link: "/notes/machine-learning/logistic-regression",
+    },
     // {
     //   title: "Generalized Linear Models",
     //   link: "/notes/machine-learning/generalized-linear-models",
