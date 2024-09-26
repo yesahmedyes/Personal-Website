@@ -55,9 +55,9 @@ export default function ProbabilisticInterpretation() {
           <div className="flex flex-col">
             <BlockMath math="\ell(\theta) = \log \prod_{i=1}^{n} p(y^{(i)} \mid x^{(i)}; \theta)" />
             <BlockMath math="= \sum_{i=1}^{n} \log p(y^{(i)} \mid x^{(i)}; \theta)" />
-            <BlockMath math="= \sum_{i=1}^{n} \log \left[\frac{1}{\sqrt{2\pi\sigma}} \exp \left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right) \right]" />
-            <BlockMath math="= \sum_{i=1}^{n} \left( \log \left[\frac{1}{\sqrt{2\pi\sigma}} \right] -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right)" />
-            <BlockMath math="= n \left( \log \left[\frac{1}{\sqrt{2\pi\sigma}} \right] \right) -\frac{1}{2\sigma^2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right)" />
+            <BlockMath math="= \sum_{i=1}^{n} \log \left[\frac{1}{\sigma\sqrt{2\pi}} \exp \left( -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right) \right]" />
+            <BlockMath math="= \sum_{i=1}^{n} \left( \log \left[\frac{1}{\sigma\sqrt{2\pi}} \right] -\frac{(y^{(i)} - \theta^T x^{(i)})^2}{2\sigma^2} \right)" />
+            <BlockMath math="= n \left( \log \left[\frac{1}{\sigma\sqrt{2\pi}} \right] \right) -\frac{1}{2\sigma^2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right)" />
           </div>
         </DerivationContent>
         <DerivationContent>
@@ -66,7 +66,7 @@ export default function ProbabilisticInterpretation() {
           </div>
           <div className="flex flex-col">
             <BlockMath math="\theta = \arg \max_{\theta} \ell(\theta)" />
-            <BlockMath math="= \arg \max_{\theta} \left[ n \left( \log \left[\frac{1}{\sqrt{2\pi\sigma}} \right] \right) -\frac{1}{2\sigma^2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right) \right]" />
+            <BlockMath math="= \arg \max_{\theta} \left[ n \left( \log \left[\frac{1}{\sigma\sqrt{2\pi}} \right] \right) -\frac{1}{2\sigma^2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right) \right]" />
             <Info
               info={
                 <div>
@@ -77,6 +77,15 @@ export default function ProbabilisticInterpretation() {
               <BlockMath math="= \arg \max_{\theta} \left[ -\frac{1}{2\sigma^2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right) \right]" />
             </Info>
             <BlockMath math="= \arg \min_{\theta} \left[ \frac{1}{2\sigma^2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right) \right]" />
+            <Info
+              info={
+                <div>
+                  Excluding <InlineMath math="\sigma^2" /> does not change the result
+                </div>
+              }
+            >
+              <BlockMath math="= \arg \min_{\theta} \left[ \frac{1}{2}  \left( \sum_{i=1}^{n} (y^{(i)} - \theta^T x^{(i)})^2 \right) \right]" />
+            </Info>
           </div>
         </DerivationContent>
       </Derivation>

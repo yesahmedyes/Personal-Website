@@ -16,8 +16,8 @@ export default function VariationalAutoencoder() {
           network <InlineMath math="g(z ; \theta)" /> that maps <InlineMath math="z \in R^k" /> to <InlineMath math="R^d" />.
         </div>
         <div>
-          Also, let <InlineMath math="x" /> given <InlineMath math="z" /> follow a normal distribution <InlineMath math="x | z \sim \mathcal{N}\left(g(z ; \theta), \, \sigma^2 I \right)" />. We can find
-          this distribution using an <MyLink href="em-algorithms">Expectation Maximization Algorithm</MyLink>.
+          Also, let <InlineMath math="x" /> given <InlineMath math="z" /> follow a normal distribution <InlineMath math="x | z \sim \mathcal{N}\left(g(z ; \theta), \, \sigma^2 I \right)" />. We can
+          find this distribution using an <MyLink href="em-algorithms">Expectation Maximization Algorithm</MyLink>.
         </div>
         <div>
           Note that for <MyLink href="gaussian-mixture-models">Gaussian Mixture Models</MyLink>, the optimal choice of <InlineMath math="Q(z) = p(z | x; \theta)" /> and we found it using Bayes&apos;
@@ -85,17 +85,17 @@ export default function VariationalAutoencoder() {
           Similarly, taking the derivative of our <InlineMath math="\text{ELBO}" /> with respect to <InlineMath math="\phi" /> and <InlineMath math="\psi" />, we get:
         </div>
         <div className="flex flex-col">
-          <BlockMath math="\nabla_{\phi} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \sum_{i=1}^n \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \left[\nabla_{\phi} \log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) + \nabla_{\phi} \log p \left(\hat{z}^{(i)}; \theta \right) - \nabla_{\phi} \log Q_i \left(\hat{z}^{(i)} \right) \right]" />
-          <BlockMath math="\nabla_{\psi} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \sum_{i=1}^n \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \left[\nabla_{\psi} \log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) + \nabla_{\psi} \log p \left(\hat{z}^{(i)}; \theta \right) - \nabla_{\psi} \log Q_i \left(\hat{z}^{(i)} \right) \right]" />
+          <BlockMath math="\nabla_{\phi} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \sum_{i=1}^n \left[ \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \left[\nabla_{\phi} \log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) \right] - \nabla_{\phi} \, D_{KL}\left(Q_i(\hat{z}^{(i)}) \parallel p(\hat{z}^{(i)} \right) \right ]" />
+          <BlockMath math="\nabla_{\psi} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \sum_{i=1}^n \left[ \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \left[\nabla_{\psi} \log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) \right] - \nabla_{\psi} \, D_{KL}\left(Q_i(\hat{z}^{(i)}) \parallel p(\hat{z}^{(i)} \right) \right ]" />
         </div>
         <div>
           where <InlineMath math="\hat{z}^{(i)}" /> is just the reparameterized version of <InlineMath math="z^{(i)}" /> and{" "}
           <InlineMath math="\hat{z}^{(i)} = q(x^{(i)}; \, \phi) + v(x^{(i)}; \, \psi) \odot \xi^{(i)}" />
         </div>
+        <div>We can find all three derivatives by backpropagating through their respective neural networks.</div>
         <div>
-          We can find all three derivatives by backpropagating through their respective neural networks. <InlineMath math="p(x^{(i)} \mid z^{(i)}; \theta)" /> depends on the decoder neural network{" "}
-          <InlineMath math="g(z^{(i)} ; \theta)" />. And <InlineMath math="Q_i(z^{(i)})" /> depends on the encoder neural networks <InlineMath math="q(x^{(i)}; \phi)" /> and{" "}
-          <InlineMath math="v(x^{(i)}; \psi)" />.
+          <InlineMath math="p(x^{(i)} \mid z^{(i)}; \theta)" /> depends on the decoder neural network <InlineMath math="g(z^{(i)} ; \theta)" />. And <InlineMath math="Q_i(z^{(i)})" /> depends on the
+          encoder neural networks <InlineMath math="q(x^{(i)}; \phi)" /> and <InlineMath math="v(x^{(i)}; \psi)" />.
         </div>
         <div>
           Ofcourse, since we still have an expectancy, we will have to take multiple samples of <InlineMath math="z^{(i)}" /> in case of <InlineMath math="\theta" />, and{" "}
@@ -134,7 +134,17 @@ export default function VariationalAutoencoder() {
           <DerivationContent>
             <div className="flex flex-col">
               <BlockMath math="\nabla_{\phi} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \nabla_{\phi} \, \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log \frac{p(x^{(i)}, z^{(i)}; \theta)}{Q_i(z^{(i)})} \right]" />
-              <BlockMath math="= \nabla_{\phi} \, \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log p(x^{(i)} \mid z^{(i)}; \theta) + \log p(z^{(i)}; \theta) - \log Q_i(z^{(i)}) \right]" />
+              <BlockMath math="= \nabla_{\phi} \, \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log p(x^{(i)} \mid z^{(i)}; \theta) + \log p(z^{(i)}) - \log Q_i(z^{(i)}) \right]" />
+              <BlockMath math="= \nabla_{\phi} \, \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log p(x^{(i)} \mid z^{(i)}; \theta) - \log \frac{Q_i(z^{(i)})}{p(z^{(i)}; \theta)} \right]" />
+              <Info
+                info={
+                  <div>
+                    <BlockMath math="D_{KL}(Q \parallel p) = \mathbb{E}_{z \sim Q} \left[ \log \frac{Q(z)}{p(z)} \right]" />
+                  </div>
+                }
+              >
+                <BlockMath math="= \nabla_{\phi} \, \sum_{i=1}^n \left( \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log p(x^{(i)} \mid z^{(i)}; \theta) \right] - D_{KL}\left(Q_i(z^{(i)}) \parallel p(z^{(i)} \right) \right)" />
+              </Info>
             </div>
             <div>
               However, since <InlineMath math="Q_i" /> depends on <InlineMath math="\phi" />, therefore{" "}
@@ -150,8 +160,8 @@ export default function VariationalAutoencoder() {
               plugging <InlineMath math="\hat{z}^{(i)}" /> into the equation, we get:
             </div>
             <div className="flex flex-col">
-              <BlockMath math="\nabla_{\phi} \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \nabla_{\phi} \, \sum_{i=1}^n \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \, \left[\log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) + \log p \left(\hat{z}^{(i)}; \theta \right) - \log Q_i \left(\hat{z}^{(i)} \right) \right]" />
-              <BlockMath math="= \sum_{i=1}^n \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \left[\nabla_{\phi} \log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) + \nabla_{\phi} \log p \left(\hat{z}^{(i)}; \theta \right) - \nabla_{\phi} \log Q_i \left(\hat{z}^{(i)} \right) \right]" />
+              <BlockMath math="\nabla_{\phi} \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right) = \nabla_{\phi} \, \sum_{i=1}^n \left[ \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \, \left[\log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) \right] - D_{KL}\left(Q_i(\hat{z}^{(i)}) \parallel p(\hat{z}^{(i)} \right) \right]" />
+              <BlockMath math="= \sum_{i=1}^n \left[ \mathbb{E}_{\xi^{(i)} \sim \mathcal{N}(0, 1)} \left[\nabla_{\phi} \log p \left(x^{(i)} \mid \hat{z}^{(i)}; \theta \right) \right] - \nabla_{\phi} \, D_{KL}\left(Q_i(\hat{z}^{(i)}) \parallel p(\hat{z}^{(i)} \right) \right ]" />
             </div>
             <div>
               The solution for the derivate of <InlineMath math="\text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right)" /> with respect to <InlineMath math="\psi" /> is similar.
