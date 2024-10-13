@@ -146,7 +146,7 @@ export default function GeneralAlgorithm() {
       <Content>
         <div>For convenience, let&apos;s define Evidence Lower Bound (ELBO) as:</div>
         <div>
-          <BlockMath math="\text{ELBO}(x; Q, \theta) = \mathbb{E}_{z \sim Q(z)}\left[\log p(x, z; \theta)\right] = \sum_z \left[Q(z) \log\frac{p(x, z; \theta)}{Q(z)}\right]" />
+          <BlockMath math="\text{ELBO}(x; Q, \theta) = \mathbb{E}_{z \sim Q(z)}\left[\log\frac{p(x, z; \theta)}{Q(z)}\right] = \sum_z \left[Q(z) \log\frac{p(x, z; \theta)}{Q(z)}\right]" />
         </div>
         <div>
           Therefore,
