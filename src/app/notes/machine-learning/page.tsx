@@ -9,7 +9,7 @@ export default function MachineLearning() {
     },
     {
       title: "Classification and Logistic Regression",
-      link: "/notes/machine-learning/logistic-regression",
+      link: "/notes/machine-learning/classification",
     },
     {
       title: "Generative Learning Algorithms",

@@ -3,7 +3,6 @@ import Content from "~/app/notes/_components/content";
 import Derivation from "~/app/notes/_components/derivation";
 import DerivationContent from "~/app/notes/_components/derivationContent";
 import Info from "~/app/notes/_components/info";
-import Lemma from "~/app/notes/_components/lemma";
 import Section from "~/app/notes/_components/section";
 
 export default function LogisticRegression() {
@@ -69,7 +68,13 @@ export default function LogisticRegression() {
               <BlockMath math="= \frac{\partial}{\partial \theta_j}\sum_{i=1}^n \left( y^{(i)} \cdot \log h_{\theta}(x^{(i)}) + (1 - y^{(i)}) \cdot \log(1 - h_{\theta}(x^{(i)}) \right)" />
               <BlockMath math="= \frac{\partial}{\partial \theta_j} \sum_{i=1}^n \left(y^{(i)} \cdot \log  g(\theta^T x^{(i)} ) + (1 - y^{(i)}) \cdot \log (1 - g(\theta^T x^{(i)}) ) \right)" />
               <BlockMath math="= \sum_{i=1}^n \left( \left[\frac{y^{(i)}}{g(\theta^T x^{(i)})}  - \frac{1 - y^{(i)}}{1 - g(\theta^T x^{(i)})} \right] \cdot \frac{\partial}{\partial \theta_j} \left[g(\theta^T x^{(i)}) \right] \right)" />
-              <Info info={<div><BlockMath math="\frac{a}{b} - \frac{1-a}{1-b} = \frac{a-b}{b(1-b)}" /> </div>}>
+              <Info
+                info={
+                  <div>
+                    <BlockMath math="\frac{a}{b} - \frac{1-a}{1-b} = \frac{a-b}{b(1-b)}" />{" "}
+                  </div>
+                }
+              >
                 <BlockMath math="= \sum_{i=1}^n \left( \left[\frac{y^{(i)} - g(\theta^T x^{(i)})}{g(\theta^T x^{(i)}) \cdot \left(1 - g(\theta^T x^{(i)}) \right)} \right] \cdot \frac{\partial}{\partial \theta_j} \left[g(\theta^T x^{(i)}) \right] \right)" />
               </Info>
               <Info
@@ -81,13 +86,41 @@ export default function LogisticRegression() {
               >
                 <BlockMath math="= \sum_{i=1}^n \left( \left[\frac{y^{(i)} - g(\theta^T x^{(i)})}{g(\theta^T x^{(i)}) \cdot \left(1 - g(\theta^T x^{(i)}) \right)} \right] \cdot g(\theta^T x^{(i)}) \cdot \left(1 - g(\theta^T x^{(i)}) \right) \cdot \frac{\partial}{\partial \theta_j} \left[\theta^T x^{(i)} \right] \right)" />
               </Info>
-              <BlockMath math="= \sum_{i=1}^n \left( \left[y^{(i)} - g(\theta^T x^{(i)}) \right] \cdot \frac{\partial}{\partial \theta_j} \left[\theta^T x^{(i)} \right] \right)" />
-              <BlockMath math="= \sum_{i=1}^n \left( \left[y^{(i)} - g(\theta^T x^{(i)}) \right] \cdot x_j^{(i)} \right)" />
+              <BlockMath math="= \sum_{i=1}^n \left(y^{(i)} - g(\theta^T x^{(i)}) \right) \cdot x_j^{(i)}" />
               <BlockMath math="= \sum_{i=1}^n \left(y^{(i)} - h_{\theta}(x^{(i)}) \right) \cdot x_j^{(i)}" />
             </div>
           </DerivationContent>
         </Derivation>
       </div>
+      <Content>
+        <div>
+          Also, note that maximizing the log-likelihood is equivalent to minimizing the logistic loss where <InlineMath math="t = \theta^T x" />
+        </div>
+        <div>
+          <BlockMath math="\arg \min_{\theta} \ell_{logistic}(t, y) = \arg \max_{\theta} \ell(\theta)" />
+        </div>
+      </Content>
+      <Derivation>
+        <DerivationContent>
+          <div className="flex flex-col">
+            <BlockMath math="\arg \min_{\theta} \ell_{logistic}(t, y)" />
+            <BlockMath math="= \arg \min_{\theta} \left[ y \log \left(1 + e^{-t} \right) + (1 - y) \log \left(1 + e^{t} \right) \right]" />
+            <Info
+              info={
+                <div>
+                  <BlockMath math="- \log a = \log \left(\frac{1}{a} \right)" />
+                </div>
+              }
+            >
+              <BlockMath math="= \arg \max_{\theta} \left[ y \log \left(\frac{1}{1 + e^{-t}} \right) + (1 - y) \log \left(\frac{1}{1 + e^{t}} \right) \right]" />
+            </Info>
+            <BlockMath math="= \arg \max_{\theta} \left[ y \log \left(\frac{1}{1 + e^{-\theta^T x}} \right) + (1 - y) \log \left(\frac{1}{1 + e^{\theta^T x}} \right) \right]" />
+            <BlockMath math="= \arg \max_{\theta} \left[ y \log \left(\frac{1}{1 + e^{-\theta^T x}} \right) + (1 - y) \log \left(\frac{1}{1 + e^{\theta^T x}} \right) \right]" />
+            <BlockMath math="= \arg \max_{\theta} \left[ y \log \left(\frac{1}{1 + e^{-\theta^T x}} \right) + (1 - y) \log \left(1 - \frac{1}{1 + e^{-\theta^T x}} \right) \right]" />
+            <BlockMath math="= \arg \max_{\theta} \ell(\theta)" />
+          </div>
+        </DerivationContent>
+      </Derivation>
     </Section>
   );
 }
