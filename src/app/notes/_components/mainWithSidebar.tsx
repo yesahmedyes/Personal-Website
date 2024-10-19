@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import React, { type ReactElement } from "react";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,6 +15,12 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
 
   const [sectionIds, setSectionIds] = useState<string[]>([]);
   const sectionRefs = useRef<React.RefObject<HTMLParagraphElement>[]>([]);
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   useEffect(() => {
     const childrenCount = React.Children.count(children);
@@ -80,21 +87,36 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   return (
     <div className="flex flex-col h-full w-full justify-center bg-bgLessDark">
       <div className="flex h-full w-full flex-row">
-        <div className="no-scrollbar fixed bg-bgDark flex min-h-full w-[350px] flex-col gap-4 overflow-y-auto bg-componentDark px-8 py-12 font-light text-white text-opacity-95">
-          {sectionIds.map((id) => (
-            <div
-              onClick={() => {
-                setActiveSection(id);
-                scrollToSection(id);
-              }}
-              className={`cursor-pointer hover:text-orange-500 ${activeSection === id && "text-orange-500"}`}
-              key={id}
-            >
-              {id}
+        {isSidebarOpen && (
+          <div className="transition-all duration-300 no-scrollbar fixed bg-bgDark flex min-h-full w-[350px] flex-col gap-5 overflow-y-auto bg-componentDark px-8 pb-12 pt-6 font-light text-white text-opacity-95">
+            <div onClick={toggleSidebar} className="place-self-end text-white hover:text-orange-500 cursor-pointer">
+              <ArrowLeft2 size={20} />
             </div>
-          ))}
+
+            {sectionIds.map((id) => (
+              <div
+                onClick={() => {
+                  setActiveSection(id);
+                  scrollToSection(id);
+                }}
+                className={`cursor-pointer hover:text-orange-500 ${activeSection === id && "text-orange-500"}`}
+                key={id}
+              >
+                {id}
+              </div>
+            ))}
+          </div>
+        )}
+        {!isSidebarOpen && (
+          <div className="transition-all duration-300 fixed gap-5 overflow-y-auto px-8 pt-6">
+            <div onClick={toggleSidebar} className="place-self-end text-white hover:text-orange-500 cursor-pointer">
+              <ArrowRight2 size={20} />
+            </div>
+          </div>
+        )}
+        <div className={`transition-all duration-300 flex min-h-full w-full flex-col place-items-center overflow-y-auto gap-12 py-16 overflow-x-hidden ${isSidebarOpen ? "ml-[350px]" : "w-10/12 2xl:w-9/12 p-16"}`}>
+          {childrenWithRefs}
         </div>
-        <div className="flex min-h-full w-full flex-col place-items-center overflow-y-auto gap-12 py-16 overflow-x-hidden ml-[350px]">{childrenWithRefs}</div>
       </div>
     </div>
   );
