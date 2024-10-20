@@ -33,16 +33,16 @@ export default function GDA() {
         </div>
         <div>The log-likelihood of the data is then given by:</div>
         <div>
-          <BlockMath math="\ell(\phi, \mu_0, \mu_1, \Sigma) = \log \prod_{i=1}^n \, p(x^{(i)}, y^{(i)}; \phi, \mu_0, \mu_1, \Sigma)" />
+          <BlockMath math="\ell(\phi, \mu_0, \mu_1, \Sigma) = \log \prod_{i=1}^n \, p\left(x^{(i)}, y^{(i)}; \phi, \mu_0, \mu_1, \Sigma\right)" />
         </div>
         <div>
           By maximizing <InlineMath math="\ell" /> with respect to the parameters, we find the maximum likelihood estimate of the parameters to be:
         </div>
         <div className="flex flex-col">
-          <BlockMath math="\phi = \frac{1}{n} \sum_{i=1}^n 1\{y^{(i)} = 1\}" />
-          <BlockMath math="\mu_0 = \frac{\sum_{i=1}^n 1\{y^{(i)} = 0\} x^{(i)}}{\sum_{i=1}^n 1\{y^{(i)} = 0\}}" />
-          <BlockMath math="\mu_1 = \frac{\sum_{i=1}^n 1\{y^{(i)} = 1\} x^{(i)}}{\sum_{i=1}^n 1\{y^{(i)} = 1\}}" />
-          <BlockMath math="\Sigma = \frac{1}{n} \sum_{i=1}^n (x^{(i)} - \mu_{y^{(i)}})(x^{(i)} - \mu_{y^{(i)}})^T" />
+          <BlockMath math="\phi = \frac{1}{n} \sum_{i=1}^n 1\left\{y^{(i)} = 1\right\}" />
+          <BlockMath math="\mu_0 = \frac{\sum_{i=1}^n 1\left\{y^{(i)} = 0\right\} x^{(i)}}{\sum_{i=1}^n 1\left\{y^{(i)} = 0\right\}}" />
+          <BlockMath math="\mu_1 = \frac{\sum_{i=1}^n 1\left\{y^{(i)} = 1\right\} x^{(i)}}{\sum_{i=1}^n 1\left\{y^{(i)} = 1\right\}}" />
+          <BlockMath math="\Sigma = \frac{1}{n} \sum_{i=1}^n \left(x^{(i)} - \mu_{y^{(i)}}\right) \left(x^{(i)} - \mu_{y^{(i)}}\right)^T" />
         </div>
       </Content>
       <div className="flex flex-col">
