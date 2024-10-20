@@ -24,10 +24,6 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/learning-theory",
     },
     {
-      title: "Clustering and K-Means",
-      link: "/notes/machine-learning/clustering",
-    },
-    {
       title: "Principal Component Analysis",
       link: "/notes/machine-learning/principal-component-analysis",
     },
@@ -50,6 +46,10 @@ export default function MachineLearning() {
     {
       title: "Variational Autoencoders",
       link: "/notes/machine-learning/variational-autoencoders",
+    },
+    {
+      title: "Decision Trees",
+      link: "/notes/machine-learning/decision-trees",
     },
     {
       title: "Reinforcement Learning",

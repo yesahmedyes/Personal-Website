@@ -14,8 +14,8 @@ export default function MixturesOfGaussians() {
       <Content>
         <div>
           Suppose that we are given a training set <InlineMath math="(x^{(1)}, x^{(2)}, \ldots, x^{(n)})" /> and we wish to model the data by specifying a joint distribution{" "}
-          <InlineMath math="p(x^{(i)}, z^{(i)})" /> where <InlineMath math="z^{(i)} \sim \text{Multinomial}(\phi)" /> is a latent variable where <InlineMath math="p(z^{(i)} = j) = \phi_j" />. Moreover, we
-          assume that <InlineMath math="\left(x^{(i)} | z^{(i)} = j\right) \sim \mathcal{N}(\mu_j, \Sigma_j)" />.
+          <InlineMath math="p(x^{(i)}, z^{(i)})" /> where <InlineMath math="z^{(i)} \sim \text{Multinomial}(\phi)" /> is a latent variable where <InlineMath math="p(z^{(i)} = j) = \phi_j" />.
+          Moreover, we assume that <InlineMath math="\left(x^{(i)} | z^{(i)} = j\right) \sim \mathcal{N}(\mu_j, \Sigma_j)" />.
         </div>
         <div>To maximize the log likelihood, we need to maximize:</div>
         <div>
@@ -142,9 +142,8 @@ export default function MixturesOfGaussians() {
                   </div>
                 }
               >
-                <BlockMath math="= \sum_{i=1}^n \nabla_{\mu_l} \left[w_l^{(i)} \left(-\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right) \right]" />
+                <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
               </Info>
-              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
               <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} \left( x^{(i)T}\Sigma_l^{-1} x^{(i)} - \mu_l^T \Sigma_l^{-1} x^{(i)} - x^{(i)T}\Sigma_l^{-1} \mu_l + \mu_l^T \Sigma_l^{-1} \mu_l \right) \right] \right)" />
               <Info
                 info={
@@ -301,9 +300,9 @@ export default function MixturesOfGaussians() {
                   </div>
                 }
               >
-                <BlockMath math="\nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \left(\frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} \right) + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) \right] \right)" />
+                <BlockMath math="\nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[\log \frac{1}{(2\pi)^{d/2} |\Sigma_j|^{1/2}} -\frac{1}{2} \left(x^{(i)} - \mu_j\right)^T \Sigma_j^{-1} \left(x^{(i)} - \mu_j\right) \right] \right)" />
               </Info>
-              <BlockMath math="= \nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[-\log \left((2\pi)^{d/2} \right) -\log \left(|\Sigma_j|^{1/2}\right)  + \left( -\frac{1}{2} (x^{(i)} - \mu_j)^T \Sigma_j^{-1} (x^{(i)} - \mu_j)\right) \right] \right)" />
+              <BlockMath math="= \nabla_{\Sigma_l} \left(\sum_{i=1}^n \sum_{j=1}^k w_j^{(i)} \left[-\log \, (2\pi)^{d/2}  -\log \, |\Sigma_j|^{1/2}  -\frac{1}{2} \left(x^{(i)} - \mu_j\right)^T \Sigma_j^{-1} \left(x^{(i)} - \mu_j\right) \right] \right)" />
               <Info
                 info={
                   <div>
@@ -311,9 +310,9 @@ export default function MixturesOfGaussians() {
                   </div>
                 }
               >
-                <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left(\nabla_{\Sigma_l} \left[-\log \left(|\Sigma_l|^{1/2}\right)  -\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
+                <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left(\nabla_{\Sigma_l} \left[-\log \, |\Sigma_l|^{1/2}   -\frac{1}{2} \left(x^{(i)} - \mu_l\right)^T \Sigma_l^{-1} \left(x^{(i)} - \mu_l\right) \right] \right)" />
               </Info>
-              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left(- \nabla_{\Sigma_l} \left[\log |\Sigma_l|^{1/2} \right] -\frac{1}{2} \nabla_{\Sigma_l} \left[ (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left(- \nabla_{\Sigma_l} \left[\log \, |\Sigma_l|^{1/2} \right] -\frac{1}{2} \nabla_{\Sigma_l} \left[ \left(x^{(i)} - \mu_l\right)^T \Sigma_l^{-1} \left(x^{(i)} - \mu_l\right) \right] \right)" />
             </div>
           </DerivationContent>
           <DerivationContent>
@@ -321,15 +320,11 @@ export default function MixturesOfGaussians() {
             <div className="flex flex-col">
               <BlockMath math=" \nabla_{\Sigma_l} \left[\log |\Sigma_l|^{1/2} \right]" />
               <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \nabla_{\Sigma_l} \left[|\Sigma_l|^{1/2} \right]" />
-              <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \left( \frac{1}{2} |\Sigma_l|^{-1/2} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
-              <BlockMath math="= \frac{1}{2} \left( \frac{1}{|\Sigma_l|} \right) \nabla_{\Sigma_l} |\Sigma_l| " />
-              <Info info={<div>Using Lemma 1</div>}>
-                <BlockMath math="= \frac{1}{2} \left(\frac{1}{|\Sigma_l|} |\Sigma_l| \right) \Sigma_l^{-T} " />
-              </Info>
+              <BlockMath math="= \left(\frac{1}{|\Sigma_l|^{1/2}} \right) \left( \frac{1}{2} |\Sigma_l|^{-1/2} \right) \nabla_{\Sigma_l} \, |\Sigma_l| " />
               <Info
                 info={
                   <div>
-                    For symmetric matrices <InlineMath math="(A^{-1})^T = A^{-1}" />
+                    Using lemma 1 and the fact that for symmetric matrices <InlineMath math="(A^{-1})^T = A^{-1}" />
                   </div>
                 }
               >
@@ -338,15 +333,15 @@ export default function MixturesOfGaussians() {
               <BlockMath math="= \frac{1}{2} \Sigma_l^{-1} " />
             </div>
             <div className="flex flex-col">
-              <BlockMath math="\nabla_{\Sigma_l} \left[ (x^{(i)} - \mu_l)^T \Sigma_j^{-1} (x^{(i)} - \mu_l) \right]" />
-              <BlockMath math="= -\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1}" />
+              <BlockMath math="\nabla_{\Sigma_l} \left[ \left(x^{(i)} - \mu_l \right)^T \Sigma_j^{-1} \left(x^{(i)} - \mu_l \right) \right]" />
+              <BlockMath math="= -\Sigma_l^{-1} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T \Sigma_l^{-1}" />
             </div>
           </DerivationContent>
           <DerivationContent>
             <div>Putting them together, we get:</div>
             <div className="flex flex-col">
-              <BlockMath math="\sum_{i=1}^n w_l^{(i)} \left(- \frac{1}{2} \left[\Sigma_l^{-1} \right] -\frac{1}{2} \left[ -\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right] \right)" />
-              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left[ \frac{1}{2} \left(- \Sigma_l^{-1} + \Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right) \right]" />
+              <BlockMath math="\sum_{i=1}^n w_l^{(i)} \left(- \frac{1}{2} \left[\Sigma_l^{-1} \right] -\frac{1}{2} \left[ -\Sigma_l^{-1} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T \Sigma_l^{-1} \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left[ \frac{1}{2} \left(- \Sigma_l^{-1} + \Sigma_l^{-1} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T \Sigma_l^{-1} \right) \right]" />
             </div>
           </DerivationContent>
           <DerivationContent>
@@ -354,8 +349,7 @@ export default function MixturesOfGaussians() {
               Setting this equal to <InlineMath math="0" /> and simplifying, we get:
             </div>
             <div className="flex flex-col">
-              <BlockMath math="\sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} \right) = \sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right)" />
-              <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \Sigma_l^{-1} \right)" />
+              <BlockMath math="\sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} \right) = \sum_{i=1}^n w_l^{(i)} \left(\Sigma_l^{-1} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T \Sigma_l^{-1} \right)" />
               <Info
                 info={
                   <div>
@@ -363,11 +357,10 @@ export default function MixturesOfGaussians() {
                   </div>
                 }
               >
-                <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \right) \Sigma_l^{-1}" />
+                <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T \right) \Sigma_l^{-1}" />
               </Info>
-              <BlockMath math="\Rightarrow \left(\sum_{i=1}^n w_l^{(i)} \right) \Sigma_l^{-1}   = \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \right) \Sigma_l^{-1}" />
-              <BlockMath math="\Rightarrow \Sigma_l \left(\sum_{i=1}^n w_l^{(i)} \right)   = \Sigma_l \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T \right)" />
-              <BlockMath math="\Rightarrow \Sigma_l \left(\sum_{i=1}^n w_l^{(i)} \right)   = \sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T " />
+              <BlockMath math="\Rightarrow \Sigma_l \left(\sum_{i=1}^n w_l^{(i)} \right)   = \Sigma_l \, \Sigma_l^{-1} \left( \sum_{i=1}^n w_l^{(i)} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T \right)" />
+              <BlockMath math="\Rightarrow \Sigma_l \left(\sum_{i=1}^n w_l^{(i)} \right)   = \sum_{i=1}^n w_l^{(i)} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T " />
               <Info
                 info={
                   <div>
@@ -375,7 +368,7 @@ export default function MixturesOfGaussians() {
                   </div>
                 }
               >
-                <BlockMath math="\Rightarrow \Sigma_l = \frac{\sum_{i=1}^n w_l^{(i)} (x^{(i)} - \mu_l) (x^{(i)} - \mu_l)^T}{\sum_{i=1}^n w_l^{(i)} }" />
+                <BlockMath math="\Rightarrow \Sigma_l = \frac{\sum_{i=1}^n w_l^{(i)} \left(x^{(i)} - \mu_l \right) \left(x^{(i)} - \mu_l \right)^T}{\sum_{i=1}^n w_l^{(i)} }" />
               </Info>
             </div>
           </DerivationContent>
@@ -395,10 +388,12 @@ export default function MixturesOfGaussians() {
       </Algorithm>
       <Content>
         <div>
-          In the <InlineMath math="E" /> step, we estimate the probability of each <InlineMath math="z^{(i)}" /> given <InlineMath math="x^{(i)}" /> using the current parameters <InlineMath math="\phi, \mu, \Sigma" />.
+          In the <InlineMath math="E" /> step, we estimate the probability of each <InlineMath math="z^{(i)}" /> given <InlineMath math="x^{(i)}" /> using the current parameters{" "}
+          <InlineMath math="\phi, \mu, \Sigma" />.
         </div>
         <div>
-          In the <InlineMath math="M" /> step, we update the value of our parameters to maximize the <InlineMath math="\text{ELBO}" /> for which it is equal to <InlineMath math="p(x; \mu, \Sigma)" /> for our current values of <InlineMath math="\phi, \mu, \Sigma" />.
+          In the <InlineMath math="M" /> step, we update the value of our parameters to maximize the <InlineMath math="\text{ELBO}" /> for which it is equal to <InlineMath math="p(x; \mu, \Sigma)" />{" "}
+          for our current values of <InlineMath math="\phi, \mu, \Sigma" />.
         </div>
       </Content>
     </Section>
