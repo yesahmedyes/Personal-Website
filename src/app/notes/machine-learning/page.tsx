@@ -20,8 +20,8 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/kernel-methods",
     },
     {
-      title: "Generalization",
-      link: "/notes/machine-learning/generalization",
+      title: "Learning Theory",
+      link: "/notes/machine-learning/learning-theory",
     },
     {
       title: "Clustering and K-Means",

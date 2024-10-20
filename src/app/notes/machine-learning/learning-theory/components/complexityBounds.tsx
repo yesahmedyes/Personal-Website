@@ -132,7 +132,6 @@ export default function ComplexityBounds() {
             <BlockMath math="\delta = 2k\exp\left(-2\gamma^2 n\right)" />
             <BlockMath math="\Rightarrow \frac{\delta}{2k} = \exp\left(-2\gamma^2 n\right)" />
             <BlockMath math="\Rightarrow \log\left(\frac{\delta}{2k}\right) = -2\gamma^2 n" />
-            <BlockMath math="\Rightarrow \log\left(\frac{\delta}{2k}\right) = -2\gamma^2 n" />
             <BlockMath math="\Rightarrow -\frac{1}{2\gamma^2}\log\left(\frac{\delta}{2k}\right) = n" />
             <Info info={<InlineMath math="-log(a) = log\left(\frac{1}{a}\right)" />}>
               <BlockMath math="\Rightarrow \frac{1}{2\gamma^2}\log\left(\frac{2k}{\delta}\right) = n" />
@@ -163,7 +162,6 @@ export default function ComplexityBounds() {
           <div className="flex flex-col">
             <BlockMath math="\delta = 2k\exp\left(-2\gamma^2 n\right)" />
             <BlockMath math="\Rightarrow \frac{\delta}{2k} = \exp\left(-2\gamma^2 n\right)" />
-            <BlockMath math="\Rightarrow \log\left(\frac{\delta}{2k}\right) = -2\gamma^2 n" />
             <BlockMath math="\Rightarrow \log\left(\frac{\delta}{2k}\right) = -2\gamma^2 n" />
             <BlockMath math="\Rightarrow -\frac{1}{2n}\log\left(\frac{\delta}{2k}\right) = \gamma^2" />
             <BlockMath math="\Rightarrow \sqrt{\frac{1}{2n}\log\frac{2k}{\delta}} = \gamma" />

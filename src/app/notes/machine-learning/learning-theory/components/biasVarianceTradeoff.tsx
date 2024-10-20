@@ -8,7 +8,7 @@ import Lemma from "~/app/notes/_components/lemma";
 
 export default function BiasVarianceTradeoff() {
   return (
-    <Section title="Generalization" heading="Bias-Variance Tradeoff">
+    <Section title="Learning Theory" heading="Bias-Variance Tradeoff">
       <Content>
         <div>
           Let <InlineMath math="S" /> be our set of training examples that are related using the following equation:
