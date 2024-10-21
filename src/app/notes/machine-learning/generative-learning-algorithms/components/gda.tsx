@@ -49,7 +49,7 @@ export default function GDA() {
         <Derivation>
           <DerivationContent>
             <div className="flex flex-col">
-              <BlockMath math="\arg \max \, \ell(\phi, \mu_0, \mu_1, \Sigma) = \arg \max \, \left( \log \prod_{i=1}^n \, p (x^{(i)}, y^{(i)}; \phi, \mu_0, \mu_1, \Sigma) \right)" />
+              <BlockMath math="\ell(\phi, \mu_0, \mu_1, \Sigma) = \log \, \prod_{i=1}^n \, p (x^{(i)}, y^{(i)}; \phi, \mu_0, \mu_1, \Sigma)" />
               <Info
                 info={
                   <div>
@@ -57,10 +57,10 @@ export default function GDA() {
                   </div>
                 }
               >
-                <BlockMath math="= \arg \max \, \left( \log \prod_{i=1}^n p(x^{(i)} \mid y^{(i)}; \mu_{y^{(i)}}, \Sigma) \cdot p(y^{(i)}; \phi) \right)" />
+                <BlockMath math="= \log \, \prod_{i=1}^n p(x^{(i)} \mid y^{(i)}; \mu_{y^{(i)}}, \Sigma) \cdot p(y^{(i)}; \phi)" />
               </Info>
-              <BlockMath math="= \arg \max \, \sum_{i=1}^n \left({y^{(i)}} \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 1; \mu_1, \Sigma \right) + \, (1-y^{(i)}) \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 0; \mu_0, \Sigma \right) \right." />
-              <BlockMath math="\left. + \, \log \, {y^{(i)}} \cdot p\left(y^{(i)} = 1; \phi\right) + \, \log \, (1 - y^{(i)}) \cdot p\left(y^{(i)} = 0; \phi\right) \right)" />
+              <BlockMath math="= \sum_{i=1}^n \left[{y^{(i)}} \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 1; \mu_1, \Sigma \right) + \, (1-y^{(i)}) \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 0; \mu_0, \Sigma \right) \right." />
+              <BlockMath math="\left. + \, \log \, {y^{(i)}} \cdot p\left(y^{(i)} = 1; \phi\right) + \, \log \, (1 - y^{(i)}) \cdot p\left(y^{(i)} = 0; \phi\right) \right]" />
             </div>
           </DerivationContent>
           <DerivationContent>
@@ -100,8 +100,8 @@ export default function GDA() {
         <Derivation>
           <DerivationContent>
             <div className="flex flex-col">
-              <BlockMath math="\arg \max \, \sum_{i=1}^n \left({y^{(i)}} \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 1; \mu_1, \Sigma \right) + \, (1-y^{(i)}) \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 0; \mu_0, \Sigma \right) \right." />
-              <BlockMath math="\left. + \, \log \, {y^{(i)}} \cdot p\left(y^{(i)} = 1; \phi\right) + \, \log \, (1 - y^{(i)}) \cdot p\left(y^{(i)} = 0; \phi\right) \right)" />
+              <BlockMath math="\sum_{i=1}^n \left[{y^{(i)}} \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 1; \mu_1, \Sigma \right) + \, (1-y^{(i)}) \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 0; \mu_0, \Sigma \right) \right." />
+              <BlockMath math="\left. + \, \log \, {y^{(i)}} \cdot p\left(y^{(i)} = 1; \phi\right) + \, \log \, (1 - y^{(i)}) \cdot p\left(y^{(i)} = 0; \phi\right) \right]" />
             </div>
           </DerivationContent>
           <DerivationContent>
@@ -186,8 +186,8 @@ export default function GDA() {
         <Derivation>
           <DerivationContent>
             <div className="flex flex-col">
-              <BlockMath math="\arg \max \, \sum_{i=1}^n \left({y^{(i)}} \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 1; \mu_1, \Sigma \right) + \, (1-y^{(i)}) \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 0; \mu_0, \Sigma \right) \right." />
-              <BlockMath math="\left. + \, \log \, {y^{(i)}} \cdot p\left(y^{(i)} = 1; \phi\right) + \, \log \, (1 - y^{(i)}) \cdot p\left(y^{(i)} = 0; \phi\right) \right)" />
+              <BlockMath math="\sum_{i=1}^n \left[{y^{(i)}} \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 1; \mu_1, \Sigma \right) + \, (1-y^{(i)}) \cdot \log \, p \left(x^{(i)} \mid y^{(i)} = 0; \mu_0, \Sigma \right) \right." />
+              <BlockMath math="\left. + \, \log \, {y^{(i)}} \cdot p\left(y^{(i)} = 1; \phi\right) + \, \log \, (1 - y^{(i)}) \cdot p\left(y^{(i)} = 0; \phi\right) \right]" />
             </div>
           </DerivationContent>
           <DerivationContent>
