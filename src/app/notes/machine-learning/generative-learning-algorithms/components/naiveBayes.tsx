@@ -148,7 +148,7 @@ export default function NaiveBayes() {
         </div>
       </Content>
       <Content>
-        <div>However, there is a problem with this approach. If any of the <InlineMath math="p(x_j|y = 1)" />, then our prediction will be 0. This happens if we don't have any training example for which a particular <InlineMath math="x_j" /> is <InlineMath math="1" />.</div>
+        <div>However, there is a problem with this approach. If any of the <InlineMath math="p(x_j|y = 1)" />, then our prediction will be 0. This happens if we don&apos;t have any training example for which a particular <InlineMath math="x_j" /> is <InlineMath math="1" />.</div>
         <div>As a work around, we apply Laplace smoothing. Our parameters then become:</div>
         <div className="flex flex-col">
           <BlockMath math="\phi_{j \mid y = 1} = \frac{1 + \sum_{i=1}^{n} 1\left\{x_j^{(i)} = 1 \land y^{(i)} = 1\right\}}{2 + \sum_{i=1}^{n} 1\left\{y^{(i)} = 1\right\}}" />
