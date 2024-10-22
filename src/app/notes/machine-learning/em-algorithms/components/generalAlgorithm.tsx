@@ -156,7 +156,7 @@ export default function GeneralAlgorithm() {
       <Algorithm>
         <BlockMath math="\text{Repeat until convergence \{}" />
         <BlockMath math="\hspace{2em} \text{(E-step) For each } i, \text{ set } \text{\{}" />
-        <BlockMath math="\hspace{4em} Q_i(z^{(i)}) := p(z^{(i)} | x^{(i)}; \theta)." />
+        <BlockMath math="\hspace{4em} Q_i(z^{(i)}) := p(z^{(i)} | x^{(i)}; \theta)" />
         <BlockMath math="\hspace{2em} \text{\}}" />
         <BlockMath math="\hspace{2em} \text{(M-step) Set } \text{\{}" />
         <BlockMath math="\hspace{4em} \theta := \arg \max_{\theta} \sum_{i=1}^{n} \text{ELBO}(x^{(i)}; Q_i, \theta) " />

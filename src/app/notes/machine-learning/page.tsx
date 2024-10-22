@@ -24,6 +24,10 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/learning-theory",
     },
     {
+      title: "Clustering",
+      link: "/notes/machine-learning/clustering",
+    },
+    {
       title: "Principal Component Analysis",
       link: "/notes/machine-learning/principal-component-analysis",
     },

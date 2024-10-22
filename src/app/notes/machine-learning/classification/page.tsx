@@ -2,7 +2,7 @@ import MainWithSidebar from "../../_components/mainWithSidebar";
 import LogisticRegression from "./components/logisticRegression";
 import MulticlassClassification from "./components/multiclassClassification";
 
-export default function Classification() {
+export default function Page() {
   return (
     <MainWithSidebar>
       <LogisticRegression />
