@@ -36,8 +36,8 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/independent-component-analysis",
     },
     {
-      title: "Expectation Maximization Algorithm",
-      link: "/notes/machine-learning/em-algorithm",
+      title: "Expectancy Maximization Algorithms",
+      link: "/notes/machine-learning/em-algorithms",
     },
     {
       title: "Gaussian Mixture Models",
