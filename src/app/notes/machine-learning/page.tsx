@@ -8,7 +8,7 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/linear-regression",
     },
     {
-      title: "Classification and Logistic Regression",
+      title: "Classification",
       link: "/notes/machine-learning/classification",
     },
     {
@@ -36,8 +36,8 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/independent-component-analysis",
     },
     {
-      title: "Expectation Maximization Algorithms",
-      link: "/notes/machine-learning/em-algorithms",
+      title: "Expectation Maximization Algorithm",
+      link: "/notes/machine-learning/em-algorithm",
     },
     {
       title: "Gaussian Mixture Models",

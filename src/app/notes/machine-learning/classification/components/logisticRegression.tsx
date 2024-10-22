@@ -7,7 +7,7 @@ import Section from "~/app/notes/_components/section";
 
 export default function LogisticRegression() {
   return (
-    <Section heading="Logistic Regression" title="Classification and Logistic Regression">
+    <Section heading="Logistic Regression" title="Classification">
       <Content>
         <div>
           The classification problem is different from the regression problem in that <InlineMath math="y" /> takes a discrete value (a category label) rather than a continuous value.

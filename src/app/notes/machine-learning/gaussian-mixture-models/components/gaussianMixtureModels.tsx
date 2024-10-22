@@ -8,14 +8,18 @@ import Lemma from "~/app/notes/_components/lemma";
 import MyLink from "~/app/notes/_components/myLink";
 import Section from "~/app/notes/_components/section";
 
-export default function MixturesOfGaussians() {
+export default function GaussianMixtureModels() {
   return (
     <Section title="Gaussian Mixture Models">
       <Content>
         <div>
-          Suppose that we are given a training set <InlineMath math="(x^{(1)}, x^{(2)}, \ldots, x^{(n)})" /> and we wish to model the data by specifying a joint distribution{" "}
-          <InlineMath math="p(x^{(i)}, z^{(i)})" /> where <InlineMath math="z^{(i)} \sim \text{Multinomial}(\phi)" /> is a latent variable where <InlineMath math="p(z^{(i)} = j) = \phi_j" />.
-          Moreover, we assume that <InlineMath math="\left(x^{(i)} | z^{(i)} = j\right) \sim \mathcal{N}(\mu_j, \Sigma_j)" />.
+          Suppose that we are given a training set <InlineMath math="x^{(1)}, \ldots, x^{(n)}" /> and we wish to model the data by specifying a joint distribution{" "}
+          <InlineMath math="p(x^{(i)}, z^{(i)})" /> where <InlineMath math="z^{(i)} \sim \text{Multinomial}(\phi)" /> is a latent variable where <InlineMath math="p(z^{(i)} = j) = \phi_j" /> and{" "}
+          <InlineMath math="\sum_{j=1}^k \phi_j = 1" /> where <InlineMath math="k" /> is the number of values that <InlineMath math="z^{(i)}" /> can take.
+        </div>
+        <div>
+          Moreover, we assume that <InlineMath math="x^{(i)} | z^{(i)} = j \sim \mathcal{N}(\mu_j, \Sigma_j)" />. Gaussian mixture models are similar to the <MyLink href="clustering">k-means algorithm</MyLink> except that
+          we allow for overlapping clusters and each each cluster follows a Gaussian distribution.
         </div>
         <div>To maximize the log likelihood, we need to maximize:</div>
         <div>
