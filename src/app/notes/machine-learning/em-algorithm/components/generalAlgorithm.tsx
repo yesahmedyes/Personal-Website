@@ -9,7 +9,7 @@ import Section from "~/app/notes/_components/section";
 
 export default function GeneralAlgorithm() {
   return (
-    <Section title="Expectancy Maximization Algorithms" heading="General Algorithm">
+    <Section title="Expectancy Maximization Algorithm" heading="General Algorithm">
       <Content>
         <div>
           Suppose we have a latent variable model <InlineMath math="p(x, z; \theta)" /> with <InlineMath math="z" /> being the latent variable. The density of <InlineMath math="x" /> can be obtained

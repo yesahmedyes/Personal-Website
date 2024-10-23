@@ -6,7 +6,7 @@ import Section from "~/app/notes/_components/section";
 
 export default function KernelsMethods() {
   return (
-    <Section title="Kernel Methods">
+    <Section title="Kernel Methods" heading="Introduction">
       <Content>
         <div>The gradient descent update for the least mean squares looks like this:</div>
         <div>

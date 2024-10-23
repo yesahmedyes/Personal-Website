@@ -1,10 +1,10 @@
 import MainWithSidebar from "../../_components/mainWithSidebar";
-import MixturesOfGaussians from "./components/gaussianMixtureModels";
+import PCA from "./components/pca";
 
 export default function Page() {
   return (
     <MainWithSidebar>
-      <MixturesOfGaussians />
+      <PCA />
     </MainWithSidebar>
   );
 }

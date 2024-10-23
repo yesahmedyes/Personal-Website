@@ -1,10 +1,12 @@
 import MainWithSidebar from "../../_components/mainWithSidebar";
-import Clustering from "./components/clustering";
+import GaussianMixtureModels from "./components/gaussianMixtureModels";
+import KMeansAlgorithm from "./components/kMeansAlgorithm";
 
 export default function Page() {
   return (
     <MainWithSidebar>
-      <Clustering />
+      <KMeansAlgorithm />
+      <GaussianMixtureModels />
     </MainWithSidebar>
   );
 }

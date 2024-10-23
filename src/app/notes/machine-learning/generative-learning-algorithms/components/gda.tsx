@@ -120,7 +120,7 @@ export default function GDA() {
               </Info>
               <BlockMath math="= \nabla_{\mu_0} \sum_{i=1}^n \left(1 - y^{(i)}\right) \left( -\frac{1}{2} (x^{(i)} - \mu_0)^T \Sigma^{-1} (x^{(i)} - \mu_0)  \right)" />
               <BlockMath math="= \sum_{i=1}^n \left(1 - y^{(i)}\right) \left( \nabla_{\mu_0} \left[-\frac{1}{2} (x^{(i)} - \mu_0)^T \Sigma^{-1} (x^{(i)} - \mu_0) \right] \right)" />
-              <BlockMath math="= \sum_{i=1}^n \left(1 - y^{(i)}\right) \left( \nabla_{\mu_0} \left[-\frac{1}{2} \left( x^{(i)T}\Sigma^{-1} x^{(i)} - \mu_0^T \Sigma^{-1} x^{(i)} - x^{(i)T}\Sigma^{-1} \mu_0 + \mu_0^T \Sigma^{-1} \mu_0 \right) \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n \left(1 - y^{(i)}\right) \left( \nabla_{\mu_0} \left[-\frac{1}{2} \left( x^{(i) T}\Sigma^{-1} x^{(i)} - \mu_0^T \Sigma^{-1} x^{(i)} - x^{(i) T}\Sigma^{-1} \mu_0 + \mu_0^T \Sigma^{-1} \mu_0 \right) \right] \right)" />
               <Info
                 info={
                   <div className="flex flex-col">

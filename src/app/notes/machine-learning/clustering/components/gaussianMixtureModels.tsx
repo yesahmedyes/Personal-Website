@@ -10,7 +10,7 @@ import Section from "~/app/notes/_components/section";
 
 export default function GaussianMixtureModels() {
   return (
-    <Section title="Gaussian Mixture Models">
+    <Section heading="Gaussian Mixture Models">
       <Content>
         <div>
           Suppose that we are given a training set <InlineMath math="x^{(1)}, \ldots, x^{(n)}" /> and we wish to model the data by specifying a joint distribution{" "}
@@ -18,8 +18,8 @@ export default function GaussianMixtureModels() {
           <InlineMath math="\sum_{j=1}^k \phi_j = 1" /> where <InlineMath math="k" /> is the number of values that <InlineMath math="z^{(i)}" /> can take.
         </div>
         <div>
-          Moreover, we assume that <InlineMath math="x^{(i)} | z^{(i)} = j \sim \mathcal{N}(\mu_j, \Sigma_j)" />. Gaussian mixture models are similar to the <MyLink href="clustering">k-means algorithm</MyLink> except that
-          we allow for overlapping clusters and each each cluster follows a Gaussian distribution.
+          Moreover, we assume that <InlineMath math="x^{(i)} | z^{(i)} = j \sim \mathcal{N}(\mu_j, \Sigma_j)" />. Gaussian mixture models are similar to the k-means algorithm except that we allow for
+          overlapping clusters and each each cluster follows a Gaussian distribution.
         </div>
         <div>To maximize the log likelihood, we need to maximize:</div>
         <div>
@@ -148,7 +148,7 @@ export default function GaussianMixtureModels() {
               >
                 <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} (x^{(i)} - \mu_l)^T \Sigma_l^{-1} (x^{(i)} - \mu_l) \right] \right)" />
               </Info>
-              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} \left( x^{(i)T}\Sigma_l^{-1} x^{(i)} - \mu_l^T \Sigma_l^{-1} x^{(i)} - x^{(i)T}\Sigma_l^{-1} \mu_l + \mu_l^T \Sigma_l^{-1} \mu_l \right) \right] \right)" />
+              <BlockMath math="= \sum_{i=1}^n w_l^{(i)} \left( \nabla_{\mu_l} \left[-\frac{1}{2} \left( x^{(i) T}\Sigma_l^{-1} x^{(i)} - \mu_l^T \Sigma_l^{-1} x^{(i)} - x^{(i) T}\Sigma_l^{-1} \mu_l + \mu_l^T \Sigma_l^{-1} \mu_l \right) \right] \right)" />
               <Info
                 info={
                   <div className="flex flex-col">

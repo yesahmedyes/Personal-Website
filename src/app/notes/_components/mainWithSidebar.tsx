@@ -114,7 +114,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
             </div>
           </div>
         )}
-        <div className={`transition-all duration-300 flex min-h-full place-self-center w-full flex-col place-items-center overflow-y-auto gap-12 py-16 overflow-x-hidden ${isSidebarOpen ? "ml-[350px]" : "w-10/12 p-16"}`}>
+        <div className={`transition-all duration-300 flex min-h-full place-self-center w-full flex-col place-items-center overflow-y-auto gap-12 pt-16 pb-32 overflow-x-hidden ${isSidebarOpen ? "ml-[350px]" : "w-10/12 p-16"}`}>
           {childrenWithRefs}
         </div>
       </div>

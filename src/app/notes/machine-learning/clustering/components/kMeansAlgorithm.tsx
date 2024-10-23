@@ -3,9 +3,9 @@ import Section from "../../../_components/section";
 import Algorithm from "~/app/notes/_components/algorithm";
 import { BlockMath, InlineMath } from "react-katex";
 
-export default function Clustering() {
+export default function KMeansAlgorithm() {
   return (
-    <Section title="Clustering">
+    <Section heading="K-Means Algorithm" title="Clustering">
       <Content>
         <div>
           For a given dataset <InlineMath math="x^{(1)}, \ldots, x^{(n)}" /> without any labels <InlineMath math="y^{(i)}" />, clustering is the task of finding a partition of the data into subsets
