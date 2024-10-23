@@ -118,7 +118,7 @@ export default function PCA() {
       </Derivation>
       <Content>
         <div>
-          However, we don't know which <InlineMath math="\lambda" /> to choose if there are multiple that satisfy this equation.
+          However, we don&apos;t know which <InlineMath math="\lambda" /> to choose if there are multiple that satisfy this equation.
         </div>
         <div>
           But we can show we get the maximum variance when we choose the largest eigenvalue <InlineMath math="\lambda" />.
