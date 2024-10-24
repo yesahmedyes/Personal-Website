@@ -24,16 +24,24 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/learning-theory",
     },
     {
-      title: "Expectancy Maximization Algorithm",
-      link: "/notes/machine-learning/em-algorithm",
-    },
-    {
       title: "Clustering",
       link: "/notes/machine-learning/clustering",
     },
     {
-      title: "Dimensionality Reduction",
-      link: "/notes/machine-learning/dimensionality-reduction",
+      title: "Principal Component Analysis",
+      link: "/notes/machine-learning/principal-component-analysis",
+    },
+    {
+      title: "Expectancy Maximization Algorithm",
+      link: "/notes/machine-learning/em-algorithm",
+    },
+    {
+      title: "Gaussian Mixture Models",
+      link: "/notes/machine-learning/gaussian-mixture-models",
+    },
+    {
+      title: "Factor Analysis",
+      link: "/notes/machine-learning/factor-analysis",
     },
     {
       title: "Variational Autoencoders",

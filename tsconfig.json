@@ -38,6 +38,6 @@
     "**/*.js",
     ".next/types/**/*.ts",
     "src/types/**/*.d.ts"
-  ],
+, "src/app/notes/machine-learning/factor-analysis"  ],
   "exclude": ["node_modules"]
 }
