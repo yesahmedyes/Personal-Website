@@ -20,6 +20,10 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/kernel-methods",
     },
     {
+      title: "Bayesian Learning",
+      link: "/notes/machine-learning/bayesian-learning",
+    },
+    {
       title: "Learning Theory",
       link: "/notes/machine-learning/learning-theory",
     },

@@ -353,17 +353,18 @@ export default function Page() {
               <div className="flex flex-col">
                 <BlockMath math="\sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} - W z^{(i)}\right] = \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i}  \left[\mu\right]" />
                 <BlockMath math="\Rightarrow \sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} \right] - W \cdot \mathbb{E}_{z^{(i)} \sim Q_i} \left[ z^{(i)}\right]\right) = n \cdot \mu" />
-                <Info
-                  info={
-                    <div className="flex flex-col">
-                      <div>
-                        <BlockMath math="\mathbb{E} \left[ z^{(i)} \right] = 0" />
-                      </div>
-                    </div>
-                  }
-                >
-                  <BlockMath math="\Rightarrow \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} \right] = n \cdot \mu" />
-                </Info>
+              </div>
+            </DerivationContent>
+            <DerivationContent>
+              <div>
+                Note that <InlineMath math="\mu" /> does not affect how each <InlineMath math="z^{(i)}" /> changes for each <InlineMath math="x^{(i)}" />. It simply shifts the mean of the
+                distribution. Therefore, we can assume that for a large enough value of <InlineMath math="n" />,{" "}
+                <InlineMath math="\mathbb{E}_{z^{(i)} \sim Q_i} \left[z^{(i)}\right] = \mu_{z^{(i)}|x^{(i)}}" /> is equal to the mean of the prior distribution which is <InlineMath math="0" />.
+                Therefore, we get:
+              </div>
+              <div className="flex flex-col">
+                <BlockMath math="\Rightarrow \sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} \right] - W \cdot 0\right) = n \cdot \mu" />
+                <BlockMath math="\Rightarrow \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} \right] = n \cdot \mu" />
                 <Info
                   info={
                     <div className="flex flex-col">
@@ -376,9 +377,8 @@ export default function Page() {
                     </div>
                   }
                 >
-                  <BlockMath math="\Rightarrow \sum_{i=1}^{n} x^{(i)} = n \cdot \mu" />
+                  <BlockMath math="\Rightarrow \mu = \frac{1}{n} \sum_{i=1}^{n} x^{(i)}" />
                 </Info>
-                <BlockMath math="\Rightarrow \mu = \frac{1}{n} \sum_{i=1}^{n} x^{(i)}" />
               </div>
             </DerivationContent>
           </Derivation>

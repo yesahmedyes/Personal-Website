@@ -8,7 +8,7 @@ interface MyLinkProps {
 
 export default function MyLink({ children, href }: MyLinkProps) {
   return (
-    <Link className="font-medium hover:underline" href={href}>
+    <Link className="underline text-gray-600 hover:text-textBlack" href={href}>
       {children}
     </Link>
   );

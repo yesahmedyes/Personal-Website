@@ -20,7 +20,7 @@ export default function Page() {
             <InlineMath math="\sum_{j=1}^k \phi_j = 1" /> where <InlineMath math="k" /> is the number of values that <InlineMath math="z^{(i)}" /> can take.
           </div>
           <div>
-            Moreover, we assume that <InlineMath math="x^{(i)} | z^{(i)} = j \sim \mathcal{N}(\mu_j, \Sigma_j)" />. Gaussian mixture models are similar to the k-means algorithm except that we allow
+            Moreover, we assume that <InlineMath math="x^{(i)} | z^{(i)} = j \sim \mathcal{N}(\mu_j, \Sigma_j)" />. Gaussian mixture models are similar to the <MyLink href="/notes/machine-learning/clustering">K-means Algorithm</MyLink> except that we allow
             for overlapping clusters and each each cluster follows a Gaussian distribution.
           </div>
           <div>To maximize the log likelihood, we need to maximize:</div>
