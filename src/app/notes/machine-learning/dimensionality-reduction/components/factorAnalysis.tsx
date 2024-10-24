@@ -252,9 +252,316 @@ export default function FactorAnalysis() {
         <div className="flex flex-col">
           <BlockMath math="\mu = \frac{1}{n} \sum_{i=1}^n x^{(i)}" />
           <BlockMath math="W = \left( \sum_{i=1}^{n} (x^{(i)} - \mu) \mu_{z^{(i)}|x^{(i)}}^T \right) \left( \sum_{i=1}^{n} \mu_{z^{(i)}|x^{(i)}} \mu_{z^{(i)}|x^{(i)}}^T + \Sigma_{z^{(i)}|x^{(i)}} \right)^{-1}" />
-          <BlockMath math="\Phi = \frac{1}{n} \sum_{i=1}^{n} \left( x^{(i)} {x^{(i)}}^T - x^{(i)} \mu_{z^{(i)}|x^{(i)}}^T W^T - W \mu_{z^{(i)}|x^{(i)}} {x^{(i)}}^T + W \left( \mu_{z^{(i)}|x^{(i)}} \mu_{z^{(i)}|x^{(i)}}^T + \Sigma_{z^{(i)}|x^{(i)}} \right) W^T \right)" />
+          <BlockMath math="\Psi = \frac{1}{n} \, \sum_{i=1}^{n} \left(\left(x^{(i)} - \mu\right) \left(x^{(i)} - \mu\right)^T - W \mu_{z^{(i)} \mid x^{(i)}} \left(x^{(i)} - \mu\right)^T - \left(x^{(i)} - \mu\right) \mu_{z^{(i)} \mid x^{(i)}}^T W^T \right." />
+          <BlockMath math="\left. + \, W \left( \mu_{z^{(i)}|x^{(i)}} \, \mu_{z^{(i)}|x^{(i)}}^T + \Sigma_{z^{(i)}|x^{(i)}} \right) W^T \right)" />
         </div>
       </Content>
+      <div className="flex flex-col">
+        <Derivation>
+          <DerivationContent>
+            <div className="flex flex-col">
+              <BlockMath math="\text{ELBO}\left(x; Q, \mu, W, \Psi \right) = \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log \frac{p\left(x^{(i)}, z^{(i)}; \mu, W, \Psi\right)}{Q_i(z^{(i)})} \right]" />
+              <BlockMath math="= \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log p\left(x^{(i)} \mid z^{(i)}; \mu, W, \Psi\right) + \log p\left(z^{(i)}\right) - \log Q_i\left(z^{(i)}\right) \right] " />
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>Dropping terms that do not depend on our parameters.</div>
+                    <div>
+                      Note that in the <InlineMath math="M" />
+                      -step, <InlineMath math="Q_i(z^{(i)})" /> is just a constant.
+                    </div>
+                  </div>
+                }
+              >
+                <BlockMath math="\approx \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log p\left(x^{(i)} \mid z^{(i)}; \mu, W, \Psi\right) \right] " />
+              </Info>
+              <BlockMath math="= \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log \left( \frac{1}{(2\pi)^{d/2} |\Psi|^{1/2}} \exp \left( -\frac{1}{2} (x^{(i)} - \mu - W z^{(i)})^T \Psi^{-1} (x^{(i)} - \mu - W z^{(i)}) \right) \right) \right]" />
+              <BlockMath math="= \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[ -\frac{1}{2} \log |\Psi| - \frac{n}{2} \log(2\pi) - \frac{1}{2} (x^{(i)} - \mu - W z^{(i)})^T \Psi^{-1} (x^{(i)} - \mu - W z^{(i)}) \right]" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>
+              Taking the derivative with respect to <InlineMath math="\mu" />, we get:
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="-\frac{1}{2} \, \nabla_{\mu} \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \left(x^{(i)} - \mu - W z^{(i)}\right)^T \Psi^{-1} \left(x^{(i)} - \mu - W z^{(i)}\right) \right]" />
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="\mu" />.
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-\nabla_{\mu} \left(\mu^T \Psi^{-1} \left(x^{(i)} - W z^{(i)}\right) \right) + \nabla_{\mu} \left(\mu^T \Psi^{-1} \mu\right) - \nabla_{\mu} \left(\left(x^{(i)} - Wz^{(i)}\right)^T \Psi^{-1} \mu \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      All the three terms simplify to a scalar. And for a scalar <InlineMath math="s" />:
+                    </div>
+                    <BlockMath math="\text{tr}(s) = s" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-\nabla_{\mu} \text{ tr} \left(\mu^T \Psi^{-1} \left(x^{(i)} - W z^{(i)}\right) \right) + \nabla_{\mu} \text{ tr} \left(\mu^T \Psi^{-1} \mu\right) - \nabla_{\mu} \text{ tr} \left(\left(x^{(i)} - Wz^{(i)}\right)^T \Psi^{-1} \mu \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <BlockMath math="\text{tr}(AB) = \text{tr}(BA)" />
+                    <BlockMath math="\text{tr}(A^T) = \text{tr}(A)" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-\nabla_{\mu} \text{ tr} \left(\mu^T \Psi^{-1} \left(x^{(i)} - W z^{(i)}\right) \right) + \nabla_{\mu} \text{ tr} \left(\mu^T \Psi^{-1} \mu\right) - \nabla_{\mu} \text{ tr} \left(\mu^{T} \Psi^{-T} \left(x^{(i)} - Wz^{(i)}\right) \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      <InlineMath math="\Psi" /> is a symmetric matrix, therefore
+                    </div>
+                    <BlockMath math="\Psi^{-T} = \Psi^{-1}" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-2\, \nabla_{\mu} \text{ tr} \left(\mu^T \Psi^{-1} \left(x^{(i)} - W z^{(i)}\right) \right) + \nabla_{\mu} \text{ tr} \left(\mu^T \Psi^{-1} \mu\right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      For a symmetric matrix <InlineMath math="A" />
+                    </div>
+                    <BlockMath math="\nabla_x \, x^T A x = 2Ax" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-2 \cdot \Psi^{-1} \left(x^{(i)} - W z^{(i)}\right) + 2 \cdot \Psi^{-1} \mu \right]" />
+              </Info>
+              <BlockMath math="= \frac{1}{2} \, \Psi^{-1} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[\left(x^{(i)} - W z^{(i)}\right) - \mu \right]" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>Setting the derivative to zero and simplifying, we get:</div>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} - W z^{(i)}\right] = \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i}  \left[\mu\right]" />
+              <BlockMath math="\Rightarrow \sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} \right] - W \cdot \mathbb{E}_{z^{(i)} \sim Q_i} \left[ z^{(i)}\right]\right) = n \cdot \mu" />
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      <BlockMath math="\mathbb{E} \left[ z^{(i)} \right] = 0" />
+                    </div>
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[x^{(i)} \right] = n \cdot \mu" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      Expectation is over <InlineMath math="z^{(i)}" />, therefore:
+                    </div>
+                    <div>
+                      <BlockMath math="\mathbb{E} \left[ x^{(i)} \right] = x^{(i)}" />
+                    </div>
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow \sum_{i=1}^{n} x^{(i)} = n \cdot \mu" />
+              </Info>
+              <BlockMath math="\Rightarrow \mu = \frac{1}{n} \sum_{i=1}^{n} x^{(i)}" />
+            </div>
+          </DerivationContent>
+        </Derivation>
+        <Derivation>
+          <DerivationContent>
+            <div className="flex flex-col">
+              <BlockMath math="\text{ELBO}\left(x; Q, \mu, W, \Psi \right) = \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log \frac{p\left(x^{(i)}, z^{(i)}; \mu, W, \Psi\right)}{Q_i(z^{(i)})} \right]" />
+              <Info info={<div>Dropping terms that do not depend on our parameters.</div>}>
+                <BlockMath math="\approx \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[ -\frac{1}{2} \log |\Psi| - \frac{n}{2} \log(2\pi) - \frac{1}{2} (x^{(i)} - \mu - W z^{(i)})^T \Psi^{-1} (x^{(i)} - \mu - W z^{(i)}) \right]" />
+              </Info>
+            </div>
+          </DerivationContent>
+          <Lemma>
+            <div>We won&apos;t prove this here but for any three matrices, the following lemma holds:</div>
+            <div>
+              <BlockMath math="\nabla_A \text{ tr}\left(ABA^TC\right) = CAB + C^TAB" />
+            </div>
+          </Lemma>
+          <DerivationContent>
+            <div>
+              Taking the derivative with respect to <InlineMath math="W" />, we get:
+            </div>
+            <div className="flex flex-col">
+              <BlockMath math="-\frac{1}{2} \, \nabla_{W} \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \left(x^{(i)} - \mu - W z^{(i)}\right)^T \Psi^{-1} \left(x^{(i)} - \mu - W z^{(i)}\right) \right]" />
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="W" />.
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-\nabla_{\mu} \left(z^{(i)T} W^T \Psi^{-1} \left(x^{(i)} - \mu \right)  \right) + \nabla_{\mu} \left(z^{(i)T} W^T \Psi^{-1} W z^{(i)} \right) - \nabla_{\mu} \left(\left(x^{(i)} - \mu\right)^T \Psi^{-1} W z^{(i)} \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      All the three terms simplify to a scalar. And for a scalar <InlineMath math="s" />:
+                    </div>
+                    <BlockMath math="\text{tr}(s) = s" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-\nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-1} \left(x^{(i)} - \mu \right)  \right) + \nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-1} W z^{(i)} \right) - \nabla_{\mu} \text{ tr} \left(\left(x^{(i)} - \mu\right)^T \Psi^{-1} W z^{(i)} \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <BlockMath math="\text{tr}(AB) = \text{tr}(BA)" />
+                    <BlockMath math="\text{tr}(A^T) = \text{tr}(A)" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-\nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-1} \left(x^{(i)} - \mu \right)  \right) + \nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-1} W z^{(i)} \right) - \nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-T} \left(x^{(i)} - \mu\right) \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      <InlineMath math="\Psi" /> is a symmetric matrix, therefore
+                    </div>
+                    <BlockMath math="\Psi^{-T} = \Psi^{-1}" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-2 \, \nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-1} \left(x^{(i)} - \mu \right)  \right) + \nabla_{\mu} \text{ tr} \left(z^{(i)T} W^T \Psi^{-1} W z^{(i)} \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>Traces are cyclicly permutable.</div>
+                    <BlockMath math="\text{tr}(ABC) = \text{tr}(BCA) = \text{tr}(CAB)" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-2 \, \nabla_{\mu} \text{ tr} \left(W^T \Psi^{-1} \left(x^{(i)} - \mu \right) z^{(i)T} \right) + \nabla_{\mu} \text{ tr} \left(W z^{(i)} z^{(i)T} W^T \Psi^{-1} \right) \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <BlockMath math="\nabla_A \text{ tr}\left(ABA^TC\right) = CAB + C^TAB" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[-2 \, \Psi^{-1} \left(x^{(i)} - \mu \right) z^{(i)T} + \Psi^{-1} W z^{(i)} z^{(i)T} + \Psi^{-T} W z^{(i)} z^{(i)T} \right]" />
+              </Info>
+              <Info
+                info={
+                  <div className="flex flex-col">
+                    <div>
+                      <InlineMath math="\Psi" /> is a symmetric matrix, therefore
+                    </div>
+                    <BlockMath math="\Psi^{-T} = \Psi^{-1}" />
+                  </div>
+                }
+              >
+                <BlockMath math="= \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[\, \Psi^{-1} \left(x^{(i)} - \mu \right) z^{(i)T} - \Psi^{-1} W z^{(i)} z^{(i)T} \right]" />
+              </Info>
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>Setting the derivative equal to zero and simplifying, we get:</div>
+            <div className="flex flex-col">
+              <BlockMath math="\Psi^{-1} \left(\sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[\left(x^{(i)} - \mu \right) z^{(i)T} \right] \right) = \Psi^{-1} W \left(\sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[z^{(i)} z^{(i)T} \right] \right)" />
+              <BlockMath math="\Rightarrow W = \left(\sum_{i=1}^{n} \left(x^{(i)} - \mu \right) \mathbb{E}_{z^{(i)} \sim Q_i} \left[z^{(i)T} \right] \right) \left(\sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[z^{(i)} z^{(i)T} \right] \right)^{-1}" />
+              <Info
+                info={
+                  <div>
+                    <BlockMath math="\mathbb{E}(AB) = \mathbb{E}(A) \cdot \mathbb{E}(B) + \text{Cov}(A, B)" />
+                  </div>
+                }
+              >
+                <BlockMath math="\Rightarrow W = \left(\sum_{i=1}^{n} \left(x^{(i)} - \mu \right) \mathbb{E}_{z^{(i)} \sim Q_i} \left[z^{(i)} \right]^T \right) \left(\sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i}\left[z^{(i)}\right] \cdot \mathbb{E}_{z^{(i)} \sim Q_i}\left[z^{(i)}\right]^T + \text{Cov}_{z^{(i)} \sim Q_i}\left(z^{(i)}, z^{(i)T}\right) \right) \right)^{-1}" />
+              </Info>
+              <BlockMath math="W = \left( \sum_{i=1}^{n} (x^{(i)} - \mu) \mu_{z^{(i)}|x^{(i)}}^T \right) \left( \sum_{i=1}^{n} \mu_{z^{(i)}|x^{(i)}} \mu_{z^{(i)}|x^{(i)}}^T + \Sigma_{z^{(i)}|x^{(i)}} \right)^{-1}" />
+            </div>
+          </DerivationContent>
+        </Derivation>
+        <Derivation>
+          <DerivationContent>
+            <div className="flex flex-col">
+              <BlockMath math="\text{ELBO}\left(x; Q, \mu, W, \Psi \right) = \sum_{i=1}^n \mathbb{E}_{z^{(i)} \sim Q_i} \left[ \log \frac{p\left(x^{(i)}, z^{(i)}; \mu, W, \Psi\right)}{Q_i(z^{(i)})} \right]" />
+              <Info info={<div>Dropping terms that do not depend on our parameters.</div>}>
+                <BlockMath math="\approx \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[ -\frac{1}{2} \log |\Psi| - \frac{n}{2} \log(2\pi) - \frac{1}{2} (x^{(i)} - \mu - W z^{(i)})^T \Psi^{-1} (x^{(i)} - \mu - W z^{(i)}) \right]" />
+              </Info>
+            </div>
+          </DerivationContent>
+          <Lemma>
+            <div className="flex flex-col place-items-start">
+              <div className="pb-1">We won&apos;t prove this here, but there are two Lemmas we need here:</div>
+              <BlockMath math="\text{1. } \nabla_A | A | = |A|(A^{-1})^T" />
+              <BlockMath math="\text{2. } \nabla_A \left(x^T A^{-1} x \right) = -A^{-1} x x^T A^{-1}" />
+            </div>
+          </Lemma>
+          <DerivationContent>
+            <div>
+              Taking the derivative with respect to <InlineMath math="\Psi" />, we get:
+            </div>
+            <div className="flex flex-col">
+              <Info
+                info={
+                  <div>
+                    Ignoring terms that do not depend on <InlineMath math="W" />.
+                  </div>
+                }
+              >
+                <BlockMath math="-\frac{1}{2} \, \nabla_{\Psi} \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i} \left[\log |\Psi| + \left(x^{(i)} - \mu - W z^{(i)}\right)^T \Psi^{-1} \left(x^{(i)} - \mu - W z^{(i)}\right) \right]" />
+              </Info>
+              <Info info={<div>Using Lemma 2</div>}>
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i} \left[\frac{1}{|\Psi|} \cdot \nabla_{\Psi} |\Psi| \right] + \mathbb{E}_{z^{(i)} \sim Q_i}\left[-\Psi^{-1} \left(x^{(i)} - \mu - W z^{(i)}\right) \left(x^{(i)} - \mu - W z^{(i)}\right)^T \Psi^{-1} \right] \right)" />
+              </Info>
+              <Info info={<div>Using Lemma 1</div>}>
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i} \left[\frac{1}{|\Psi|} \cdot |\Psi| \cdot \Psi^{-T} \right] + \mathbb{E}_{z^{(i)} \sim Q_i}\left[-\Psi^{-1} \left(x^{(i)} - \mu - W z^{(i)}\right) \left(x^{(i)} - \mu - W z^{(i)}\right)^T \Psi^{-1} \right] \right)" />
+              </Info>
+              <Info
+                info={
+                  <div>
+                    <InlineMath math="\Psi^{-1}" /> is a symmetric matrix and therefore <InlineMath math="\Psi^{-T} = \Psi^{-1}" />
+                  </div>
+                }
+              >
+                <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \left(\mathbb{E}_{z^{(i)} \sim Q_i} \left[\Psi^{-1} \right] + \mathbb{E}_{z^{(i)} \sim Q_i}\left[-\Psi^{-1} \left(x^{(i)} - \mu - W z^{(i)}\right) \left(x^{(i)} - \mu - W z^{(i)}\right)^T \Psi^{-1} \right] \right)" />
+              </Info>
+              <BlockMath math="= -\frac{1}{2} \, \sum_{i=1}^{n} \left(\Psi^{-1} - \Psi^{-1} \cdot \mathbb{E}_{z^{(i)} \sim Q_i}\left[ \left(x^{(i)} - \mu - W z^{(i)}\right) \left(x^{(i)} - \mu - W z^{(i)}\right)^T \right] \cdot \Psi^{-1} \right)" />
+            </div>
+          </DerivationContent>
+          <DerivationContent>
+            <div>Setting the derivative to zero and simplifying, we get:</div>
+            <div className="flex flex-col">
+              <BlockMath math="\sum_{i=1}^{n} \Psi^{-1} = \Psi^{-1} \cdot \left(\sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i}\left[ \left(x^{(i)} - \mu - W z^{(i)}\right) \left(x^{(i)} - \mu - W z^{(i)}\right)^T \right] \right) \cdot \Psi^{-1}" />
+              <BlockMath math="\Rightarrow n\cdot\Psi = \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i}\left[ \left(x^{(i)} - \mu - W z^{(i)}\right) \left(x^{(i)} - \mu - W z^{(i)}\right)^T \right]" />
+              <BlockMath math="\Rightarrow \Psi = \frac{1}{n} \, \sum_{i=1}^{n} \mathbb{E}_{z^{(i)} \sim Q_i}\left[ \left(x^{(i)} - \mu\right) \left(x^{(i)} - \mu\right)^T - W z^{(i)} \left(x^{(i)} - \mu\right)^T - \left(x^{(i)} - \mu\right) z^{(i)T} W^T + W z^{(i)} z^{(i)T} W^T \right]" />
+              <BlockMath math="\Rightarrow \Psi = \frac{1}{n} \, \sum_{i=1}^{n} \left(\left(x^{(i)} - \mu\right) \left(x^{(i)} - \mu\right)^T - W \mu_{z^{(i)} \mid x^{(i)}} \left(x^{(i)} - \mu\right)^T - \left(x^{(i)} - \mu\right) \mu_{z^{(i)} \mid x^{(i)}}^T W^T \right." />
+              <Info
+                info={
+                  <div>
+                    <BlockMath math="\mathbb{E}(AB) = \mathbb{E}(A) \mathbb{E}(B) + \text{Cov}(A, B)" />
+                  </div>
+                }
+              >
+                <BlockMath math="\left. + \, W \left(\mathbb{E}_{z^{(i)} \sim Q_i}\left[z^{(i)}\right] \mathbb{E}_{z^{(i)} \sim Q_i}\left[z^{(i)}\right]^T + \text{Cov}_{z^{(i)} \sim Q_i}\left(z^{(i)}, z^{(i)T}\right)\right) W^T \right)" />
+              </Info>
+              <BlockMath math="\Rightarrow \Psi = \frac{1}{n} \, \sum_{i=1}^{n} \left(\left(x^{(i)} - \mu\right) \left(x^{(i)} - \mu\right)^T - W \mu_{z^{(i)} \mid x^{(i)}} \left(x^{(i)} - \mu\right)^T - \left(x^{(i)} - \mu\right) \mu_{z^{(i)} \mid x^{(i)}}^T W^T \right." />
+              <BlockMath math="\left. + \, W \left( \mu_{z^{(i)}|x^{(i)}} \, \mu_{z^{(i)}|x^{(i)}}^T + \Sigma_{z^{(i)}|x^{(i)}} \right) W^T \right)" />
+            </div>
+          </DerivationContent>
+        </Derivation>
+      </div>
     </Section>
   );
 }
