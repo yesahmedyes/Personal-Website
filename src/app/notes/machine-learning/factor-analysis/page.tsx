@@ -47,11 +47,13 @@ export default function Page() {
           </div>
         </Content>
         <Detour>
-          <div>
-            For any random variable that follows a normal distribution <InlineMath math="x \sim \mathcal{N}(\mu, \sigma^2)" />, it can be written in terms of <InlineMath math="\epsilon" /> where{" "}
-            <InlineMath math="\epsilon \sim \mathcal{N}(0, 1)" />.
-            <BlockMath math="x = \mu + \sigma \cdot \epsilon" />
-          </div>
+          <Content>
+            <div>
+              For any random variable that follows a normal distribution <InlineMath math="x \sim \mathcal{N}(\mu, \sigma^2)" />, it can be written in terms of <InlineMath math="\epsilon" /> where{" "}
+              <InlineMath math="\epsilon \sim \mathcal{N}(0, 1)" />.
+              <BlockMath math="x = \mu + \sigma \cdot \epsilon" />
+            </div>
+          </Content>
         </Detour>
         <Content>
           <div>

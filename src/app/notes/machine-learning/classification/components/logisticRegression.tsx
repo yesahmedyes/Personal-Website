@@ -41,7 +41,7 @@ export default function LogisticRegression() {
         </div>
         <div>And so our gradient descent update rule to maximize the log-likelihood becomes:</div>
         <div>
-          <BlockMath math="\theta_j = \theta_j + \alpha \left(y^{(i)} - h_{\theta}(x^{(i)}) \right) x_j^{(i)}" />
+          <BlockMath math="\theta_j \leftarrow \theta_j + \alpha \left(y^{(i)} - h_{\theta}(x^{(i)}) \right) x_j^{(i)}" />
         </div>
       </Content>
       <div className="flex flex-col">

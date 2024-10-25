@@ -53,14 +53,14 @@ export default function LMSAlgorithm() {
           With this derivative, we can now use gradient descent to take small steps towards the optimal <InlineMath math="\theta" /> with the following update rule:
         </div>
         <div>
-          <BlockMath math="\theta_j := \theta_j + \alpha \left( y^{(i)} - h_\theta (x^{(i)}) \right) x_j^{(i)}" />
+          <BlockMath math="\theta_j \leftarrow \theta_j + \alpha \left( y^{(i)} - h_\theta (x^{(i)}) \right) x_j^{(i)}" />
         </div>
       </Content>
       <Algorithm>
         <BlockMath math="\text{Repeat until convergence \{}" />
         <BlockMath math="\hspace{2em} \text{For } i = 1 \text{ to } n, \text{\{}" />
         <BlockMath math="\hspace{4em} \text{For } j = 1 \text{ to } d, \text{\{}" />
-        <BlockMath math="\hspace{6em} \theta_j := \theta_j + \alpha \left( y^{(i)} - h_\theta (x^{(i)}) \right) x_j^{(i)}" />
+        <BlockMath math="\hspace{6em} \theta_j \leftarrow \theta_j + \alpha \left( y^{(i)} - h_\theta (x^{(i)}) \right) x_j^{(i)}" />
         <BlockMath math="\hspace{4em} \text{\}}" />
         <BlockMath math="\hspace{2em} \text{\}}" />
         <BlockMath math="\text{\}}" />

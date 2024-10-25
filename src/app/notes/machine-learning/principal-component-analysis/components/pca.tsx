@@ -16,7 +16,7 @@ export default function PCA() {
         </div>
         <BlockMath math="\mu_j = \frac{1}{m} \sum_{i=1}^{m} x^{(i)}_j" />
         <BlockMath math="\sigma_j^2 = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)}_j - \mu_j)^2" />
-        <BlockMath math="x^{(i)}_j := \frac{x^{(i)}_j - \mu_j}{\sigma_j}" />
+        <BlockMath math="x^{(i)}_j \leftarrow \frac{x^{(i)}_j - \mu_j}{\sigma_j}" />
       </Content>
       <Content>
         <div>

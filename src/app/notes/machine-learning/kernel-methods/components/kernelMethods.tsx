@@ -10,14 +10,14 @@ export default function KernelsMethods() {
       <Content>
         <div>The gradient descent update for the least mean squares looks like this:</div>
         <div>
-          <BlockMath math="\theta := \theta + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T x^{(i)}\right)x^{(i)}" />
+          <BlockMath math="\theta \leftarrow \theta + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T x^{(i)}\right)x^{(i)}" />
         </div>
         <div>
           However, sometimes our data is not linearly separable. For this, we can use a feature mapping to transform the data into a higher-dimensional space, and then apply the gradient descent as
           follows:
         </div>
         <div>
-          <BlockMath math="\theta := \theta + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T \phi(x^{(i)})\right)\phi(x^{(i)})" />
+          <BlockMath math="\theta \leftarrow \theta + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T \phi(x^{(i)})\right)\phi(x^{(i)})" />
         </div>
         <div>
           However, this can become computationally expensive if the feature mapping is too complex. For example, if <InlineMath math="\phi(x)" /> is a vector that contains all the monomials of{" "}
@@ -37,9 +37,9 @@ export default function KernelsMethods() {
         </div>
         <div>We can then rewrite the gradient descent update as follows:</div>
         <div className="flex flex-col">
-          <BlockMath math="\theta := \theta + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T \phi(x^{(i)})\right)\phi(x^{(i)})" />
-          <BlockMath math="\theta := \sum_{i=1}^{n} \beta_i \phi(x^{(i)}) + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T \phi(x^{(i)})\right)\phi(x^{(i)})" />
-          <BlockMath math="\theta := \sum_{i=1}^{n} \left( \underbrace{\beta_i + \alpha \left( y^{(i)} - \theta^T \phi(x^{(i)}) \right)}_{\text{new } \beta_i} \right) \phi(x^{(i)})" />
+          <BlockMath math="\theta \leftarrow \theta + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T \phi(x^{(i)})\right)\phi(x^{(i)})" />
+          <BlockMath math="\theta \leftarrow \sum_{i=1}^{n} \beta_i \phi(x^{(i)}) + \alpha \sum_{i=1}^{n} \left(y^{(i)} - \theta^T \phi(x^{(i)})\right)\phi(x^{(i)})" />
+          <BlockMath math="\theta \leftarrow \sum_{i=1}^{n} \left( \underbrace{\beta_i + \alpha \left( y^{(i)} - \theta^T \phi(x^{(i)}) \right)}_{\text{new } \beta_i} \right) \phi(x^{(i)})" />
         </div>
         <div>
           With this, to fine the new <InlineMath math="\theta" />, we only need to compute the new <InlineMath math="\beta_i" />
@@ -47,9 +47,9 @@ export default function KernelsMethods() {
           &apos;s can be found using the following update:
         </div>
         <div className="flex flex-col">
-          <BlockMath math="\beta_i := \beta_i + \alpha \left( y^{(i)} - \theta^T \phi(x^{(i)}) \right)" />
-          <BlockMath math="\beta_i := \beta_i + \alpha \left( y^{(i)} - \left(\sum_{j=1}^{n} \beta_j \phi(x^{(j)})\right)^T \phi(x^{(i)}) \right)" />
-          <BlockMath math="\beta_i := \beta_i + \alpha \left( y^{(i)} - \sum_{j=1}^{n} \beta_j \, \phi(x^{(j)})^T \phi(x^{(i)}) \right)" />
+          <BlockMath math="\beta_i \leftarrow \beta_i + \alpha \left( y^{(i)} - \theta^T \phi(x^{(i)}) \right)" />
+          <BlockMath math="\beta_i \leftarrow \beta_i + \alpha \left( y^{(i)} - \left(\sum_{j=1}^{n} \beta_j \phi(x^{(j)})\right)^T \phi(x^{(i)}) \right)" />
+          <BlockMath math="\beta_i \leftarrow \beta_i + \alpha \left( y^{(i)} - \sum_{j=1}^{n} \beta_j \, \phi(x^{(j)})^T \phi(x^{(i)}) \right)" />
         </div>
       </Content>
       <Content>
@@ -80,7 +80,7 @@ export default function KernelsMethods() {
           The update rule for <InlineMath math="\beta_i" /> is now:
         </div>
         <div>
-          <BlockMath math="\beta_i := \beta_i + \alpha \left( y^{(i)} - \sum_{j=1}^{n} \beta_j \, K(x^{(i)}, x^{(j)}) \right)" />
+          <BlockMath math="\beta_i \leftarrow \beta_i + \alpha \left( y^{(i)} - \sum_{j=1}^{n} \beta_j \, K(x^{(i)}, x^{(j)}) \right)" />
         </div>
         <div>
           Similarly, for inference, we can predict the value of a new example <InlineMath math="x" /> as follows:

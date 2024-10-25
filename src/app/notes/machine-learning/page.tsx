@@ -36,6 +36,10 @@ export default function MachineLearning() {
       link: "/notes/machine-learning/principal-component-analysis",
     },
     {
+      title: "Independent Component Analysis",
+      link: "/notes/machine-learning/independent-component-analysis",
+    },
+    {
       title: "Expectancy Maximization Algorithm",
       link: "/notes/machine-learning/em-algorithm",
     },
@@ -50,10 +54,6 @@ export default function MachineLearning() {
     {
       title: "Variational Autoencoders",
       link: "/notes/machine-learning/variational-autoencoders",
-    },
-    {
-      title: "Independent Component Analysis",
-      link: "/notes/machine-learning/independent-component-analysis",
     },
     {
       title: "Decision Trees",

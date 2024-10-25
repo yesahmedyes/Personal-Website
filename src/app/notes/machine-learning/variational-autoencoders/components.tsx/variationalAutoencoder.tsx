@@ -71,9 +71,9 @@ export default function VariationalAutoencoder() {
           gradient ascent.
         </div>
         <div className="flex flex-col">
-          <BlockMath math="\theta := \theta + \eta \, \nabla_{\theta} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right)" />
-          <BlockMath math="\phi := \phi + \eta \, \nabla_{\phi} \, \text{ELBO}\left(x^{(i)}; \,\phi, \psi, \theta \right)" />
-          <BlockMath math="\psi := \psi + \eta \, \nabla_{\psi} \, \text{ELBO}\left(x^{(i)}; \,\phi, \psi, \theta \right)" />
+          <BlockMath math="\theta \leftarrow \theta + \eta \, \nabla_{\theta} \, \text{ELBO}\left(x^{(i)}; \, \phi, \psi, \theta \right)" />
+          <BlockMath math="\phi \leftarrow \phi + \eta \, \nabla_{\phi} \, \text{ELBO}\left(x^{(i)}; \,\phi, \psi, \theta \right)" />
+          <BlockMath math="\psi \leftarrow \psi + \eta \, \nabla_{\psi} \, \text{ELBO}\left(x^{(i)}; \,\phi, \psi, \theta \right)" />
         </div>
         <div>
           Taking the derivative of our <InlineMath math="\text{ELBO}" /> with respect to <InlineMath math="\theta" />, we get:

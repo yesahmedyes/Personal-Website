@@ -16,10 +16,10 @@ export default function KMeansAlgorithm() {
         <BlockMath math="\text{Initialize cluster centroids } \mu_1, \ldots, \mu_k \text{ randomly}" />
         <BlockMath math="\text{Repeat until convergence \{}" />
         <BlockMath math="\hspace{2em} \text{For each } i, \text{ set } \text{\{}" />
-        <BlockMath math="\hspace{4em} c^{(i)} := \arg \min_j \| x^{(i)} - \mu_j \|^2" />
+        <BlockMath math="\hspace{4em} c^{(i)} \leftarrow \arg \min_j \| x^{(i)} - \mu_j \|^2" />
         <BlockMath math="\hspace{2em} \text{\}}" />
         <BlockMath math="\hspace{2em} \text{For each } j, \text{ set } \text{\{}" />
-        <BlockMath math="\hspace{4em} \mu_j := \frac{\sum_{i=1}^n 1\left\{c^{(i)} = j\right\} \, x^{(i)}}{\sum_{i=1}^n 1\left\{c^{(i)} = j\right\}}" />
+        <BlockMath math="\hspace{4em} \mu_j \leftarrow \frac{\sum_{i=1}^n 1\left\{c^{(i)} = j\right\} \, x^{(i)}}{\sum_{i=1}^n 1\left\{c^{(i)} = j\right\}}" />
         <BlockMath math="\hspace{2em} \text{\}}" />
         <BlockMath math="\text{\}}" />
       </Algorithm>

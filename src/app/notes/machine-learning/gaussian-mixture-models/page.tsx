@@ -383,12 +383,12 @@ export default function Page() {
         <Algorithm>
           <BlockMath math="\text{Repeat until convergence \{}" />
           <BlockMath math="\hspace{2em} \text{(E-step) For each } i \text{ and } j, \text{ set } \text{\{}" />
-          <BlockMath math="\hspace{4em} w_j^{(i)} := p(z^{(i)} = j \mid x^{(i)}; \phi, \mu, \Sigma)." />
+          <BlockMath math="\hspace{4em} w_j^{(i)} \leftarrow p(z^{(i)} = j \mid x^{(i)}; \phi, \mu, \Sigma)." />
           <BlockMath math="\hspace{2em} \text{\}}" />
           <BlockMath math="\hspace{2em} \text{(M-step) For each } j, \text{ set } \text{\{}" />
-          <BlockMath math="\hspace{4em} \phi_j := \frac{1}{n} \sum_{i=1}^n w_j^{(i)} " />
-          <BlockMath math="\hspace{4em} \mu_j := \frac{\sum_{i=1}^n w_j^{(i)} x^{(i)}}{\sum_{i=1}^n w_j^{(i)}} " />
-          <BlockMath math="\hspace{4em} \Sigma_j := \frac{\sum_{i=1}^n w_j^{(i)} (x^{(i)} - \mu_j)(x^{(i)} - \mu_j)^T}{\sum_{i=1}^n w_j^{(i)}} " />
+          <BlockMath math="\hspace{4em} \phi_j \leftarrow \frac{1}{n} \sum_{i=1}^n w_j^{(i)} " />
+          <BlockMath math="\hspace{4em} \mu_j \leftarrow \frac{\sum_{i=1}^n w_j^{(i)} x^{(i)}}{\sum_{i=1}^n w_j^{(i)}} " />
+          <BlockMath math="\hspace{4em} \Sigma_j \leftarrow \frac{\sum_{i=1}^n w_j^{(i)} (x^{(i)} - \mu_j)(x^{(i)} - \mu_j)^T}{\sum_{i=1}^n w_j^{(i)}} " />
           <BlockMath math="\hspace{2em} \text{\}}" />
           <BlockMath math="\text{\}}" />
         </Algorithm>

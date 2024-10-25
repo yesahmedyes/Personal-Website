@@ -49,7 +49,7 @@ export default function ComplexityBounds() {
             Imagine a biased coin that comes up heads with a probability of <InlineMath math="\phi" />. We toss this coin <InlineMath math="n" /> times and record the average number of times we got
             heads. We denote this average by <InlineMath math="\hat{\phi}" />.
           </div>
-          <div>
+          <div className="pb-2.5">
             The probability that &quot;the true probability of getting heads is away from our estimated probability by a difference more than <InlineMath math="\gamma" />
             &quot; is denoted by <InlineMath math="P(|\phi - \hat{\phi}| > \gamma)" />. This is always less than or equal to <InlineMath math="2\exp\left(-2\gamma^2 n\right)" />.
           </div>

@@ -33,7 +33,7 @@ export default function MulticlassClassification() {
         </div>
         <div>Our gradient descent update rule is then:</div>
         <div>
-          <BlockMath math="\theta_j = \theta_j - \alpha \sum_{i=1}^m \left( \phi_j^{(i)} - 1\left\{y^{(i)} = j\right\} \right) x^{(i)}" />
+          <BlockMath math="\theta_j \leftarrow \theta_j - \alpha \sum_{i=1}^m \left( \phi_j^{(i)} - 1\left\{y^{(i)} = j\right\} \right) x^{(i)}" />
         </div>
       </Content>
       <Derivation>
