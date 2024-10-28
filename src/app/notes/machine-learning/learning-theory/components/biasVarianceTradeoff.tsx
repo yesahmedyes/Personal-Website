@@ -65,7 +65,7 @@ export default function BiasVarianceTradeoff() {
         <DerivationContent>
           <div className="flex flex-col">
             <BlockMath math="MSE = \mathbb{E} \left[ (y - h_{s}(x))^2 \right]" />
-            <BlockMath math="= \mathbb{E} \left[ (h^*(x + \xi - h_{s}(x))^2 \right]" />
+            <BlockMath math="= \mathbb{E} \left[ \left(h^*(x) + \xi - h_{s}(x)\right)^2 \right]" />
             <BlockMath math="= \mathbb{E} \left[ \left(\xi + (h^*(x) - h_{s}(x))\right)^2 \right]" />
             <Info
               info={
@@ -86,46 +86,55 @@ export default function BiasVarianceTradeoff() {
             >
               <BlockMath math="= \sigma^2 + \mathbb{E} \left[ \left(h^*(x) - h_{s}(x)\right)^2\right]" />
             </Info>
-            <BlockMath math="= \sigma^2 + \mathbb{E}\left[([h^*(x) - h_{avg}(x)] + [h_{avg}(x) - h_{s}(x)])^2\right]" />
+            <BlockMath math="= \sigma^2 + \mathbb{E}\left[\left(h^*(x) - h_{avg}(x) + h_{avg}(x) - h_{s}(x)\right)^2\right]" />
           </div>
         </DerivationContent>
-        <Lemma>
-          <div className="flex flex-col">
-            Note that since
-            <BlockMath math="h_{avg}(x) = \mathbb{E}[h_s(x)]" />
-            <Info info={<div>Expectancy of a constant is the constant itself</div>}>
-              <BlockMath math="\Rightarrow \mathbb{E}[h_{avg}(x)] = h_{avg}(x)" />
-            </Info>
-          </div>
-          <div className="flex flex-col">
-            Thus,
-            <BlockMath math="\mathbb{E}\left[h_{avg}(x) - h_s(x)\right] = h_{avg}(x) - \mathbb{E}\left[h_s(x)\right] = 0" />
-          </div>
-          <div>
-            Also, <BlockMath math="\mathbb{E}\left[(h_{avg}(x) - h_s(x))^2\right] = \mathbb{E}\left[(\mathbb{E}[h_s(x)] - h_s(x))^2\right] = var(h_s(x))" />
-          </div>
-        </Lemma>
         <DerivationContent>
           <div className="flex flex-col">
+            <div>
+              Since <InlineMath math="h_{avg}(x) = \mathbb{E}[h_s(x)]" />, therefore:
+            </div>
+            <div>
+              <Info
+                info={
+                  <div>
+                    <InlineMath math="\mathbb{E}\left[h_{avg}(x)\right] = h_{avg}(x)" /> since it&apos;s a constant.
+                  </div>
+                }
+              >
+                <BlockMath math="\mathbb{E}\left[h_{avg}(x) - h_s(x)\right] = h_{avg}(x) - \mathbb{E}\left[h_s(x)\right] = 0" />
+              </Info>
+            </div>
+            <div>
+              Also, <BlockMath math="\mathbb{E}\left[\left(h_{avg}(x) - h_s(x)\right)^2\right] = \mathbb{E}\left[\left(\mathbb{E}[h_s(x)] - h_s(x)\right)^2\right] = \text{var}(h_s(x))" />
+            </div>
+          </div>
+        </DerivationContent>
+        <DerivationContent>
+          <div>Now finally, we can rewrite our Mean Squared Error as:</div>
+          <div className="flex flex-col">
             <Info
               info={
-                <div>
-                  Using the identity we prove above and the fact that <InlineMath math="\mathbb{E}[A] = 0" /> where <InlineMath math="A = h_{avg}(x) - h_{s}(x)" />.
+                <div className="flex flex-col">
+                  <div>Using the identity we prove above and the fact that:</div>
+                  <div>
+                    <BlockMath math="\mathbb{E}\left[h_{avg}(x) - h_{s}(x) \right] = 0" />
+                  </div>
                 </div>
               }
             >
-              <BlockMath math="MSE = \sigma^2 + \mathbb{E}\left[(h^*(x) - h_{avg}(x))^2\right] + \mathbb{E}\left[(h_{avg}(x) - h_{s}(x))^2\right]" />
+              <BlockMath math="MSE = \sigma^2 + \mathbb{E}\left[\left(h^*(x) - h_{avg}(x)\right)^2\right] + \mathbb{E}\left[\left(h_{avg}(x) - h_{s}(x)\right)^2\right]" />
             </Info>
             <Info
               info={
                 <div>
-                  <InlineMath math="h_{avg}(x)" /> and <InlineMath math="h^*(x)" /> are both constants. And expectation of a constant is the constant itself.
+                  <InlineMath math="h_{avg}(x)" /> and <InlineMath math="h^*(x)" /> are both constants.
                 </div>
               }
             >
-              <BlockMath math="\Rightarrow MSE = \sigma^2 + (h^*(x) - h_{avg}(x))^2 + \mathbb{E}\left[(h_{avg}(x) - h_{s}(x))^2\right]" />
+              <BlockMath math="MSE = \sigma^2 + \left(h^*(x) - h_{avg}(x)\right)^2 + \mathbb{E}\left[\left(h_{avg}(x) - h_{s}(x)\right)^2\right]" />
             </Info>
-            <BlockMath math="\Rightarrow MSE = \sigma^2 + (h^*(x) - h_{avg}(x))^2 + var(h_s(x))" />
+            <BlockMath math="MSE = \sigma^2 + \left(h^*(x) - h_{avg}(x)\right)^2 + \text{var}(h_s(x))" />
           </div>
         </DerivationContent>
       </Derivation>
