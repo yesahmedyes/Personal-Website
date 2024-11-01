@@ -24,20 +24,20 @@ export default function BiasVarianceTradeoff() {
           Also, let <InlineMath math="{h}_s" /> be our best fit model for the dataset <InlineMath math="S" />. The Mean Squared Error (MSE) can be written as:
         </div>
         <div>
-          <BlockMath math="MSE = \mathbb{E} \left[ (y - h_{s}(x))^2 \right]" />
+          <BlockMath math="\mathbb{E} \left[ (y - h_{s}(x))^2 \right]" />
         </div>
         <div>
-          Also, let <InlineMath math="h_{avg}(x) = \mathbb{E_s}[h_s(x)]" /> be the &quot;average model&quot; - the model obtained by drawing an infinite number of datasets, training on them, and
+          Also, let <InlineMath math="h_{avg}(x) = \mathbb{E}\left[h_s(x)\right]" /> be the &quot;average model&quot; - the model obtained by drawing an infinite number of datasets, training on them, and
           averaging their predictions on <InlineMath math="x" />.
         </div>
         <div>Then, the Mean Squared Error can be further broken down into 3 components:</div>
         <div>
-          <BlockMath math="MSE = \sigma^2 + (h^*(x) - h_{avg}(x))^2 + var(h_s(x))" />
+          <BlockMath math="\mathbb{E} \left[ (y - h_s(x))^2 \right] = \sigma^2 + \underbrace{\left( h^*(x) - h_{\text{avg}}(x) \right)^2}_{\text{bias}^2} + \underbrace{\text{var}(h_s(x))}_{\text{variance}}" />
         </div>
-        <div>
-          The first part is the inherent, unavoidable error. It is the noise in the data that cannot be explained by any model, regardless of its complexity. The second part is the bias which is the
-          error introduced by the &quot;expressivity handicap&quot; of our classifier. This error occurs because of underfitting. And, the third term is the variance which is an error that measures
-          how much the model&apos;s predictions would change if it were trained on a different dataset.
+        <div className="flex flex-col gap-2 pb-2">
+          <div>The first part is the unavoidable error. It is the noise in the data that cannot be explained by any model, regardless of its complexity.</div>
+          <div>The bias is the error introduced by the &quot;expressivity handicap&quot; of our classifier. This error occurs because of underfitting.</div>
+          <div>The variance is the error that measures how much the model&apos;s predictions would change if it were trained on a different dataset.</div>
         </div>
       </Content>
       <Derivation>
@@ -64,7 +64,7 @@ export default function BiasVarianceTradeoff() {
         </Lemma>
         <DerivationContent>
           <div className="flex flex-col">
-            <BlockMath math="MSE = \mathbb{E} \left[ (y - h_{s}(x))^2 \right]" />
+            <BlockMath math="\mathbb{E} \left[ (y - h_{s}(x))^2 \right] = \mathbb{E} \left[ (y - h_{s}(x))^2 \right]" />
             <BlockMath math="= \mathbb{E} \left[ \left(h^*(x) + \xi - h_{s}(x)\right)^2 \right]" />
             <BlockMath math="= \mathbb{E} \left[ \left(\xi + (h^*(x) - h_{s}(x))\right)^2 \right]" />
             <Info
@@ -123,7 +123,7 @@ export default function BiasVarianceTradeoff() {
                 </div>
               }
             >
-              <BlockMath math="MSE = \sigma^2 + \mathbb{E}\left[\left(h^*(x) - h_{avg}(x)\right)^2\right] + \mathbb{E}\left[\left(h_{avg}(x) - h_{s}(x)\right)^2\right]" />
+              <BlockMath math="\sigma^2 + \mathbb{E}\left[\left(h^*(x) - h_{avg}(x)\right)^2\right] + \mathbb{E}\left[\left(h_{avg}(x) - h_{s}(x)\right)^2\right]" />
             </Info>
             <Info
               info={
@@ -132,15 +132,15 @@ export default function BiasVarianceTradeoff() {
                 </div>
               }
             >
-              <BlockMath math="MSE = \sigma^2 + \left(h^*(x) - h_{avg}(x)\right)^2 + \mathbb{E}\left[\left(h_{avg}(x) - h_{s}(x)\right)^2\right]" />
+              <BlockMath math="= \sigma^2 + \left(h^*(x) - h_{avg}(x)\right)^2 + \mathbb{E}\left[\left(h_{avg}(x) - h_{s}(x)\right)^2\right]" />
             </Info>
-            <BlockMath math="MSE = \sigma^2 + \left(h^*(x) - h_{avg}(x)\right)^2 + \text{var}(h_s(x))" />
+            <BlockMath math="\sigma^2 + \left(h^*(x) - h_{avg}(x)\right)^2 + \text{var}(h_s(x))" />
           </div>
         </DerivationContent>
       </Derivation>
       <Content>
         <div>
-          The Bias-Variance tradeoff tells us that as we increase the number of parameters in our neural network, the test error will decreasebecause the bias is decreasing. However, after a certain
+          The Bias-Variance tradeoff tells us that as we increase the number of parameters in our neural network, the test error will decrease because the bias is decreasing. However, after a certain
           point the variance starts increasing faster than the bias is decreasing and therefore, the test error will start to increase.
         </div>
         <div>
