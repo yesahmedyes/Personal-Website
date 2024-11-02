@@ -19,10 +19,10 @@ export default function MachineLearning() {
       title: "Kernel Methods",
       link: "/notes/machine-learning/kernel-methods",
     },
-    {
-      title: "Bayesian Learning",
-      link: "/notes/machine-learning/bayesian-learning",
-    },
+    // {
+    //   title: "Bayesian Learning",
+    //   link: "/notes/machine-learning/bayesian-learning",
+    // },
     {
       title: "Learning Theory",
       link: "/notes/machine-learning/learning-theory",
@@ -68,9 +68,9 @@ export default function MachineLearning() {
   return (
     <Main heading="Machine Learning">
       <LinksSection links={data} />
-      <div className="italic">
+      <div className="">
         <span className="font-semibold">Acknowledgments: </span>
-        These notes are adapted from and meant to be a supplementary resource to the Andrew Ng&apos;s Notes for the CS229 Machine Learning Course at Stanford.
+        These notes are adapted from and meant to be a supplementary resource to the CS229 Machine Learning Notes at Stanford.
       </div>
     </Main>
   );
