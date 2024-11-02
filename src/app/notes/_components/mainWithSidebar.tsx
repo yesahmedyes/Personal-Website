@@ -19,6 +19,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
+    return;
     setIsSidebarOpen(!isSidebarOpen);
   };
 
@@ -87,7 +88,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
   return (
     <div className="flex flex-col h-full w-full justify-center bg-bgLessDark">
       <div className="flex h-full w-full flex-row justify-center transition-all duration-300">
-        {isSidebarOpen && (
+        {/* {isSidebarOpen && (
           <div className="transition-all duration-300 no-scrollbar left-0 fixed bg-bgDark flex min-h-full w-[350px] flex-col gap-5 overflow-y-auto bg-componentDark px-8 pb-12 pt-6 font-light text-white text-opacity-95">
             <div onClick={toggleSidebar} className="place-self-end text-white hover:text-orange-500 cursor-pointer">
               <ArrowLeft2 size={20} />
@@ -113,7 +114,7 @@ export default function MainWithSidebar(props: MainWithSidebarProps) {
               <ArrowRight2 size={20} />
             </div>
           </div>
-        )}
+        )} */}
         <div className={`transition-all duration-300 flex min-h-full place-self-center w-full flex-col place-items-center overflow-y-auto gap-12 pt-16 pb-32 overflow-x-hidden ${isSidebarOpen ? "ml-[350px]" : "w-10/12 p-16"}`}>
           {childrenWithRefs}
         </div>
