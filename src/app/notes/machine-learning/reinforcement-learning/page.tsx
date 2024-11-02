@@ -2,7 +2,6 @@ import { BlockMath, InlineMath } from "react-katex";
 import Content from "../../_components/content";
 import Main from "../../_components/main";
 import Section from "../../_components/section";
-import Derivation, { DerivationContent } from "../../_components/derivation";
 import Algorithm from "../../_components/algorithm";
 
 export default function Page() {
@@ -107,8 +106,85 @@ export default function Page() {
       </Section>
       <Section heading="Value Function Approximation">
         <Content>
-          <div></div>
+          <div>
+            One way to deal with continuous state spaces in MDPs is to descretize the state space. If we have <InlineMath math="d" /> dimensions and we discretize each dimension with{" "}
+            <InlineMath math="k" /> values, then we have <InlineMath math="k^d" /> states. As we increase <InlineMath math="k" />, the number of states grows exponentially.
+          </div>
+          <div>To deal with this, we can use function approximation.</div>
+          <div>
+            One way to do this is using a model-based approach. We use a simulator to execute <InlineMath math="n" /> trials, each for <InlineMath math="T" /> time steps.
+          </div>
+          <div>
+            <BlockMath math="s_0^{(1)} \xrightarrow{a_0^{(1)}} s_1^{(1)} \xrightarrow{a_1^{(1)}} s_2^{(1)} \xrightarrow{a_2^{(1)}} \cdots \xrightarrow{a_{T-1}^{(1)}} s_T^{(1)}" />
+            <BlockMath math="s_0^{(2)} \xrightarrow{a_0^{(2)}} s_1^{(2)} \xrightarrow{a_1^{(2)}} s_2^{(2)} \xrightarrow{a_2^{(2)}} \cdots \xrightarrow{a_{T-1}^{(2)}} s_T^{(2)}" />
+            <BlockMath math="\vdots" />
+            <BlockMath math="s_0^{(n)} \xrightarrow{a_0^{(n)}} s_1^{(n)} \xrightarrow{a_1^{(n)}} s_2^{(n)} \xrightarrow{a_2^{(n)}} \cdots \xrightarrow{a_{T-1}^{(n)}} s_T^{(n)}" />
+          </div>
+          <div>
+            We can then use these to learn a linear model to predict <InlineMath math="s_{t+1}" /> as a function of <InlineMath math="s_t" /> and <InlineMath math="a_t" />:
+          </div>
+          <div>
+            <BlockMath math="s_{t+1} = A s_t + B a_t" />
+          </div>
+          <div>
+            We can then minimize the squared error over all trials using gradient descent to find <InlineMath math="A" /> and <InlineMath math="B" />:
+          </div>
+          <div>
+            <BlockMath math="\arg \min_{A, B} \, \sum_{i=1}^n \sum_{t=0}^{T-1} \left(s_{t+1}^{(i)} - \left(A s_t^{(i)} + B a_t^{(i)}\right) \right)^2" />
+          </div>
+          <div>However, this is a deterministic model. Most real world systems are stochastic. So we can modify the model to be stochastic by adding a noise term:</div>
+          <div className="flex flex-col">
+            <BlockMath math="s_{t+1} = A s_t + B a_t + \epsilon" />
+            <BlockMath math="\epsilon \sim \mathcal{N}(0, \Sigma)" />
+          </div>
+          <div>Now, if we assume that the our state space is continous but our action space is small and discrete, we can use the Fitted value iteration algorithm.</div>
+          <div>
+            <BlockMath math="s_{t+1} - (A s_t + B a_t) = \epsilon" />
+          </div>
+          <div>
+            Since <InlineMath math="\epsilon" /> is normally distributed, the term <InlineMath math="s_{t+1} - (A s_t + B a_t)" /> is also normally distributed. We can then write:
+          </div>
+          <div>
+            <BlockMath math="s_{t+1} \sim \mathcal{N}\left(A s_t + B a_t, \Sigma\right)" />
+          </div>
+          <div>Our state transition function can now be written as:</div>
+          <div>
+            <BlockMath math="P_{sa}(s') = \mathcal{N}\left(A s + B a, \, \Sigma\right)" />
+          </div>
+          <div>Moreover, our value iteration update rule for the continuous case can be written as:</div>
+          <div>
+            <BlockMath math="V(s) \leftarrow R(s) + \gamma \cdot \max_{a \in A} \left(\int_{s'} P_{sa}(s') V(s') \, ds' \right)" />
+          </div>
+          <div>
+            However, since out states <InlineMath math="s" /> are continuous, we have to approximate the value function <InlineMath math="V(s)" /> as well. We do so by finding a linear or non-linear
+            mapping from states to the value function:
+          </div>
+          <div>
+            <BlockMath math="V(s) = \theta^T \phi(s)" />
+          </div>
+          <div>
+            We also can not directly update our <InlineMath math="V(s)" /> from the value iteration update rule. Instead, we have to update our <InlineMath math="\theta" /> parameters.
+          </div>
+          <div>We do this by minimizing the squared error:</div>
+          <div className="flex flex-col">
+            <BlockMath math="\arg \min_{\theta} \sum_{i=1}^n \left(y^{(i)} - \theta^T \phi(s^{(i)})\right)^2" />
+            <BlockMath math="y^{(i)} = R(s^{(i)}) + \gamma \cdot \max_{a \in A} \left(\int_{s'} P_{sa}(s') V(s') \, ds' \right)" />
+          </div>
         </Content>
+        <Algorithm>
+          <BlockMath math="\text{Randomly sample } n \text{ states}" />
+          <BlockMath math="\text{Initialize } \theta = 0" />
+          <BlockMath math="\text{Repeat until convergence \{}" />
+          <BlockMath math="\hspace{2em} \text{For i = 1 to n } \text{\{}" />
+          <BlockMath math="\hspace{4em} \text{For each action } a \in A \text{ \{}" />
+          <BlockMath math="\hspace{6em} \text{Sample } s_1', s_2', \ldots, s_k' \sim P_{s^{(i)}a}(s')" />
+          <BlockMath math="\hspace{6em} \text{Set } q(a) \leftarrow R(s^{(i)}) + \gamma \cdot \frac{1}{k} \cdot \sum_{j=1}^k V(s_j')" />
+          <BlockMath math="\hspace{4em} \text{\}}" />
+          <BlockMath math="\hspace{4em} y^{(i)} \leftarrow \max_{a} q(a)" />
+          <BlockMath math="\hspace{2em} \text{\}}" />
+          <BlockMath math="\hspace{2em} \theta \leftarrow \arg \min_{\theta} \sum_{i=1}^n \left(y^{(i)} - \theta^T \phi(s^{(i)})\right)^2" />
+          <BlockMath math="\text{\}}" />
+        </Algorithm>
       </Section>
     </Main>
   );
