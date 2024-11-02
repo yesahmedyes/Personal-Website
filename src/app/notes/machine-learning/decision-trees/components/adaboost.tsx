@@ -262,13 +262,13 @@ export default function AdaBoost() {
         </div>
       </Content>
       <Algorithm>
-        <BlockMath math="\text{For each } i, \text{ let }w^{(i)} = \frac{1}{n}" />
+        <BlockMath math="\text{For each } i, \text{ let }w^{(i)} \leftarrow \frac{1}{n}" />
         <BlockMath math="\text{Repeat } \{" />
-        <BlockMath math="\hspace{2em} h = \arg \min_{h \in \mathcal{H}} \, \sum_{i=1}^n 1\left\{y^{(i)} \neq h(x^{(i)}) \right\} \cdot w^{(i)}" />
-        <BlockMath math="\hspace{2em} \epsilon = \sum_{i=1}^n 1\left\{y^{(i)} \neq h(x^{(i)}) \right\} \cdot w^{(i)}" />
+        <BlockMath math="\hspace{2em} h \leftarrow \arg \min_{h \in \mathcal{H}} \, \sum_{i=1}^n 1\left\{y^{(i)} \neq h(x^{(i)}) \right\} \cdot w^{(i)}" />
+        <BlockMath math="\hspace{2em} \epsilon \leftarrow \sum_{i=1}^n 1\left\{y^{(i)} \neq h(x^{(i)}) \right\} \cdot w^{(i)}" />
         <BlockMath math="\hspace{2em} \text{if } \left(\epsilon < 0.5 \right) \text{ then } \{" />
-        <BlockMath math="\hspace{4em} \alpha = \frac{1}{2} \ln\left(\frac{1 - \epsilon}{\epsilon}\right)" />
-        <BlockMath math="\hspace{4em} H = H + \alpha \cdot h" />
+        <BlockMath math="\hspace{4em} \alpha \leftarrow \frac{1}{2} \ln\left(\frac{1 - \epsilon}{\epsilon}\right)" />
+        <BlockMath math="\hspace{4em} H \leftarrow H + \alpha \cdot h" />
         <BlockMath math="\hspace{4em} \text{For each } i, \text{ let }w^{(i)} \leftarrow w^{(i)} \cdot \frac{e^{-\alpha y^{(i)} h_{t+1}(x^{(i)})}}{2 \sqrt{\epsilon(1 - \epsilon)}}" />
         <BlockMath math="\hspace{2em} \}" />
         <BlockMath math="\hspace{2em} \text{else } \{" />

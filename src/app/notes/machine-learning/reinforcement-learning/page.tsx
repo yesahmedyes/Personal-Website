@@ -173,9 +173,9 @@ export default function Page() {
         </Content>
         <Algorithm>
           <BlockMath math="\text{Randomly sample } n \text{ states}" />
-          <BlockMath math="\text{Initialize } \theta = 0" />
+          <BlockMath math="\text{Initialize } \theta \text{ to } 0" />
           <BlockMath math="\text{Repeat until convergence \{}" />
-          <BlockMath math="\hspace{2em} \text{For i = 1 to n } \text{\{}" />
+          <BlockMath math="\hspace{2em} \text{For } i = 1 \text{ to } n \text{ \{}" />
           <BlockMath math="\hspace{4em} \text{For each action } a \in A \text{ \{}" />
           <BlockMath math="\hspace{6em} \text{Sample } s_1', s_2', \ldots, s_k' \sim P_{s^{(i)}a}(s')" />
           <BlockMath math="\hspace{6em} \text{Set } q(a) \leftarrow R(s^{(i)}) + \gamma \cdot \frac{1}{k} \cdot \sum_{j=1}^k V(s_j')" />

@@ -104,11 +104,11 @@ export default function Boosting() {
       </Content>
       <Algorithm>
         <BlockMath math="\text{Repeat } \{" />
-        <BlockMath math="\hspace{2em} \text{For each } i, \text{ let }r^{(i)} = \frac{\partial \ell}{\partial H(x^{(i)})}" />
-        <BlockMath math="\hspace{2em} h = \arg \min_{h \in \mathcal{H}} \, \sum_{i=1}^n r^{(i)} h(x^{(i)})" />
-        <BlockMath math="\hspace{2em} \text{temp} = \sum_{i=1}^n r^{(i)} h(x^{(i)})" />
+        <BlockMath math="\hspace{2em} \text{For each } i, \text{ let }r^{(i)} \leftarrow \frac{\partial \ell}{\partial H(x^{(i)})}" />
+        <BlockMath math="\hspace{2em} h \leftarrow \arg \min_{h \in \mathcal{H}} \, \sum_{i=1}^n r^{(i)} h(x^{(i)})" />
+        <BlockMath math="\hspace{2em} \text{temp} \leftarrow \sum_{i=1}^n r^{(i)} h(x^{(i)})" />
         <BlockMath math="\hspace{2em} \text{if } \left( \text{temp} < 0 \right) \text{ then } \{" />
-        <BlockMath math="\hspace{4em} H = H + \alpha \cdot h" />
+        <BlockMath math="\hspace{4em} H \leftarrow H + \alpha \cdot h" />
         <BlockMath math="\hspace{2em} \} \text{ else } \{" />
         <BlockMath math="\hspace{4em} \text{return } H" />
         <BlockMath math="\hspace{2em} \}" />

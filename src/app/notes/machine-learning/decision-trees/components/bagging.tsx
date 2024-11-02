@@ -62,16 +62,6 @@ export default function Bagging() {
           Usually <InlineMath math="k = \sqrt{d}" /> where <InlineMath math="d" /> is the total number of features in each example.
         </div>
       </Content>
-      <Algorithm>
-        <BlockMath math="\text{For } t = 1 \text{ to } T \text{ \{}" />
-        <BlockMath math="\hspace{2em} \text{Bootstrap a sample } D_i \in D" />
-        <BlockMath math="\hspace{2em} \text{Train a decision tree } h_{D_i}(x) \text{ \{}" />
-        <BlockMath math="\hspace{4em} \text{At each node, randomly select } k \text{ features}" />
-        <BlockMath math="\hspace{4em} \text{Choose best split among } k \text{ features based on impurity}" />
-        <BlockMath math="\hspace{4em} \text{Repeat until no impurity reduction possible}" />
-        <BlockMath math="\hspace{2em} \text{\}}" />
-        <BlockMath math="\text{\}}" />
-      </Algorithm>
     </Section>
   );
 }
