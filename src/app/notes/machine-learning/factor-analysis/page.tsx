@@ -1,17 +1,17 @@
-import MainWithSidebar from "../../_components/mainWithSidebar";
+import Main from "../../_components/main";
 import Section from "~/app/notes/_components/section";
 import Content from "~/app/notes/_components/content";
 import { BlockMath, InlineMath } from "react-katex";
 import MyLink from "~/app/notes/_components/myLink";
 import Detour from "~/app/notes/_components/detour";
-import Derivation from "~/app/notes/_components/derivation";
-import DerivationContent from "~/app/notes/_components/derivationContent";
+ 
+import Derivation, { DerivationContent } from "~/app/notes/_components/derivation";
 import Info from "~/app/notes/_components/info";
 import Lemma from "~/app/notes/_components/lemma";
 
 export default function Page() {
   return (
-    <MainWithSidebar>
+    <Main>
       <Section title="Factor Analysis">
         <Content>
           <div>
@@ -570,6 +570,6 @@ export default function Page() {
           </Derivation>
         </div>
       </Section>
-    </MainWithSidebar>
+    </Main>
   );
 }

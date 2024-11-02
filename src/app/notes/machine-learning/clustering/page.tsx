@@ -1,10 +1,10 @@
-import MainWithSidebar from "../../_components/mainWithSidebar";
+import Main from "../../_components/main";
 import KMeansAlgorithm from "./components/kMeansAlgorithm";
 
 export default function Page() {
   return (
-    <MainWithSidebar>
+    <Main>
       <KMeansAlgorithm />
-    </MainWithSidebar>
+    </Main>
   );
 }

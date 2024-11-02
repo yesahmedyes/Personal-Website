@@ -1,5 +1,6 @@
 import LinksSection from "../_components/linksSection";
 import Main from "../_components/main";
+import Section from "../_components/section";
 
 export default function MachineLearning() {
   const data = [
@@ -66,12 +67,15 @@ export default function MachineLearning() {
   ];
 
   return (
-    <Main heading="Machine Learning">
-      <LinksSection links={data} />
-      <div className="">
-        <span className="font-semibold">Acknowledgments: </span>
-        These notes are adapted from and meant to be a supplementary resource to the CS229 Machine Learning Notes at Stanford.
-      </div>
+    <Main>
+      <Section title="Machine Learning">
+        <LinksSection links={data} />
+
+        <div className="text-base leading-9">
+          <span className="font-semibold">Acknowledgments: </span>
+          These notes are adapted from and meant to be a supplementary resource to the CS229 Machine Learning Notes at Stanford.
+        </div>
+      </Section>
     </Main>
   );
 }

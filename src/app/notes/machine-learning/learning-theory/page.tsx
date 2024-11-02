@@ -1,12 +1,12 @@
-import MainWithSidebar from "../../_components/mainWithSidebar";
+import Main from "../../_components/main";
 import BiasVarianceTradeoff from "./components/biasVarianceTradeoff";
 import ComplexityBounds from "./components/complexityBounds";
 
 export default function Page() {
   return (
-    <MainWithSidebar>
+    <Main>
       <BiasVarianceTradeoff />
       <ComplexityBounds />
-    </MainWithSidebar>
+    </Main>
   );
 }

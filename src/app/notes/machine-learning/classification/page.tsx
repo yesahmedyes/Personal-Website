@@ -1,12 +1,12 @@
-import MainWithSidebar from "../../_components/mainWithSidebar";
+import Main from "../../_components/main";
 import LogisticRegression from "./components/logisticRegression";
 import MulticlassClassification from "./components/multiclassClassification";
 
 export default function Page() {
   return (
-    <MainWithSidebar>
+    <Main>
       <LogisticRegression />
       <MulticlassClassification />
-    </MainWithSidebar>
+    </Main>
   );
 }

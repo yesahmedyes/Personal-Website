@@ -1,14 +1,14 @@
-import MainWithSidebar from "../../_components/mainWithSidebar";
+import Main from "../../_components/main";
 import ConvergenceProof from "./components/convergenceProof";
 import GeneralAlgorithm from "./components/generalAlgorithm";
 import OtherInterpretations from "./components/otherInterpretations";
 
 export default function Page() {
   return (
-    <MainWithSidebar>
+    <Main>
       <GeneralAlgorithm />
       <ConvergenceProof />
       <OtherInterpretations />
-    </MainWithSidebar>
+    </Main>
   );
 }

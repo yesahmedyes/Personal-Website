@@ -1,12 +1,12 @@
-import MainWithSidebar from "../../_components/mainWithSidebar";
+import Main from "../../_components/main";
 import KernelsMethods from "./components/kernelMethods";
 import ValidKernels from "./components/validKernels";
 
 export default function Page() {
   return (
-    <MainWithSidebar>
+    <Main>
       <KernelsMethods />
       <ValidKernels />
-    </MainWithSidebar>
+    </Main>
   );
 }

@@ -1,8 +1,8 @@
 import Content from "~/app/notes/_components/content";
 import Section from "~/app/notes/_components/section";
 import { InlineMath, BlockMath } from "react-katex";
-import Derivation from "~/app/notes/_components/derivation";
-import DerivationContent from "~/app/notes/_components/derivationContent";
+ 
+import Derivation, { DerivationContent } from "~/app/notes/_components/derivation";
 import Info from "~/app/notes/_components/info";
 import Lemma from "~/app/notes/_components/lemma";
 
