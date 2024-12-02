@@ -76,7 +76,7 @@ export default function Page() {
           <BlockMath math="\text{For each state } s, \text{ initialize } V(s) = 0" />
           <BlockMath math="\text{Repeat until convergence \{}" />
           <BlockMath math="\hspace{2em} \text{For each state } s, \text{ set } \text{\{}" />
-          <BlockMath math="\hspace{4em} V(s) \leftarrow R(s) + \max_{a \in A} \left(\gamma \sum_{s' \in S} P_{sa}(s') V^*(s') \right)" />
+          <BlockMath math="\hspace{4em} V(s) \leftarrow R(s) + \max_{a \in A} \left(\gamma \sum_{s' \in S} P_{sa}(s') V(s') \right)" />
           <BlockMath math="\hspace{2em} \text{\}}" />
           <BlockMath math="\text{\}}" />
         </Algorithm>
@@ -86,7 +86,7 @@ export default function Page() {
           <BlockMath math="\text{Repeat until convergence \{}" />
           <BlockMath math="\hspace{2em} \text{Let } V = V^{\pi} \hspace{8em} \Rightarrow \textit{typically by a linear system solver}" />
           <BlockMath math="\hspace{2em} \text{For each state } s, \text{ set } \text{\{}" />
-          <BlockMath math="\hspace{4em} π(s) \leftarrow \arg\max_{a \in A} \left(\sum_{s' \in S} P_{sa}(s') V^*(s') \right)" />
+          <BlockMath math="\hspace{4em} π(s) \leftarrow \arg\max_{a \in A} \left(\sum_{s' \in S} P_{sa}(s') V(s') \right)" />
           <BlockMath math="\hspace{2em} \text{\}}" />
           <BlockMath math="\text{\}}" />
         </Algorithm>
