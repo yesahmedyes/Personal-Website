@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-
 interface MyLinkProps {
   children: React.ReactNode;
   href: string;
@@ -8,7 +7,7 @@ interface MyLinkProps {
 
 export default function MyLink({ children, href }: MyLinkProps) {
   return (
-    <Link className="underline text-gray-600 hover:text-textBlack" href={href}>
+    <Link className="underline font-light text-blue-500 hover:text-blue-900" href={href}>
       {children}
     </Link>
   );
