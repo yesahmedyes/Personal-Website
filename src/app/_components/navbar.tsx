@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-export default function Navbar({ dark = true }) {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
@@ -46,16 +46,16 @@ export default function Navbar({ dark = true }) {
   };
 
   return (
-    <nav className={`flex flex-row text-textDarkGray font-normal py-6 lg:py-8 px-6`}>
+    <nav className={`flex flex-row text-textDarkGray font-normal py-6 lg:py-10 px-6`}>
       {/* Mobile hamburger button */}
       <button className="lg:hidden ml-auto" onClick={toggleMenu}>
-        <HambergerMenu className={dark ? "stroke-textWhite" : "stroke-textBlack"} />
+        <HambergerMenu className={`stroke-textBlack`} />
       </button>
 
       {/* Desktop navigation */}
       <div className={`hidden lg:flex lg:flex-row gap-6 mx-auto`}>
         {links.map((link) => (
-          <Link key={link.name} href={link.href} className={`cursor-pointer text-sm whitespace-nowrap ${isActiveDark(link.href)}`}>
+          <Link key={link.name} href={link.href} className={`cursor-pointer text-sm font-medium whitespace-nowrap ${isActiveDark(link.href)}`}>
             {link.name}
           </Link>
         ))}
