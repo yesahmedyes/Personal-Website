@@ -71,9 +71,9 @@ export default function MachineLearning() {
       <Section title="Machine Learning">
         <LinksSection links={data} />
 
-        <div className="text-base leading-9">
-          <span className="font-semibold">Acknowledgments: </span>
-          These notes are adapted from and meant to be a supplementary resource to the CS229 Machine Learning Notes at Stanford.
+        <div className="text-sm leading-7 pt-4">
+          <span className="font-semibold">Note: </span>I wrote these notes for my own reference while I was taking the CS229 Machine Learning course at Stanford offered by Anand Avati in Summer 2020.
+          I hope they are useful for others.
         </div>
       </Section>
     </Main>
