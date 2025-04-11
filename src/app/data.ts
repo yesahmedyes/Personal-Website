@@ -2,7 +2,7 @@ export const notes_data = [
   {
     title: "Machine Learning",
     description: "Supervised Learning, Unsupervised Learning, Learning Theory, etc.",
-    image: "/images/covers/machine-learning.png",
+    image: "/images/covers/ml-1.png",
     href: "/notes/machine-learning",
   },
   // {
@@ -13,54 +13,31 @@ export const notes_data = [
   // },
 ];
 
-const paper_summaries_tags = ["Calibration", "Neural Networks", "Continual Learning", "Language Models", "Diffusion Models"];
+const literature_reviews_tags = ["model calibration", "continual learning", "catastrophic forgetting", "language models", "diffusion models"];
 
-export const paper_summaries_data = [
+export const literature_reviews_data = [
   {
-    title: "On Calibration of Modern Neural Networks",
-    link: "https://www.google.com",
-    tags: ["Calibration", "Neural Networks"],
+    title: "Calibration in Deep Learning",
+    link: "https://honey-slayer-e27.notion.site/Calibration-in-Deep-Learning-1d2dd5296691801da3e9c6602bd7855b",
+    tags: ["model calibration"],
   },
   {
-    title: "Mix-n-Match: Ensemble and Compositional Methods for Uncertainty Calibration in Deep Learning",
-    link: "https://www.google.com",
-    tags: ["Calibration", "Neural Networks"],
-  },
-  {
-    title: "Toward Continual Knowledge Learning of Language Models",
-    link: "https://www.google.com",
-    tags: ["Continual Learning", "Language Models"],
+    title: "Lifelong and Continual Learning",
+    link: "https://honey-slayer-e27.notion.site/Lifelong-and-Continual-Learning-1d2dd52966918081aea0f71a488db174?pvs=74",
+    tags: ["continual learning", "catastrophic forgetting"],
   },
   {
     title: "Large Language Diffusion Models",
-    link: "https://www.google.com",
-    tags: ["Language Models", "Diffusion Models"],
+    link: "https://honey-slayer-e27.notion.site/Large-Language-Diffusion-Models-1d2dd529669180379e8bc69c4c6dda10",
+    tags: ["language models", "diffusion models"],
   },
 ];
 
 export const course_assignments_data = [
   {
-    title: "Machine Learning",
-    university: "Stanford University",
-    image: "/images/covers/ml-icon-f.png",
-    link: "https://github.com/yesahmedyes/EECS598-Deep-Learning-for-Computer-Vision",
-  },
-  {
     title: "Deep Learning for Computer Vision",
     university: "University of Michigan",
-    image: "/images/covers/vision-icon-f.png",
-    link: "https://github.com/yesahmedyes/",
-  },
-  {
-    title: "Reinforcement Learning",
-    university: "Stanford University",
-    image: "/images/covers/rl-icon-f.png",
-    link: "https://github.com/yesahmedyes/",
-  },
-  {
-    title: "Deep Unsupervised Learning",
-    university: "UC Berkeley",
-    image: "/images/covers/gen-ai-icon-f.png",
-    link: "https://github.com/yesahmedyes/",
+    image: "/images/covers/cv-2.png",
+    link: "https://github.com/yesahmedyes/EECS598-Deep-Learning-for-Computer-Vision",
   },
 ];

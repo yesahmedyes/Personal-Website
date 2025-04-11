@@ -1,20 +1,21 @@
 import Navbar from "./_components/navbar";
 import Socials from "./_components/socials";
 import NotesList from "./_components/notesList";
-import PaperSummariesList from "./_components/paperSummariesList";
+
 import CourseAssignments from "./_components/courseAssignments";
+import LiteratureReviewsList from "./_components/literatureReviewsList";
 
 export default function Main() {
   return (
     <div className="flex w-full flex-col">
       <div className="bg-bgDark w-full py-32">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-10 justify-center place-items-center max-w-4xl mx-auto pb-4">
-          <div className="aspect-square cursor-pointer rounded-2xl bg-[#E2D6CD] bg-[url('/images/me.png')] bg-[length:80%] bg-[left_1rem_top_2rem] bg-no-repeat w-2/3"></div>
+          <div className="aspect-square cursor-pointer rounded-2xl bg-[#E2D6CD] bg-[url('/images/me.png')] bg-[length:80%] bg-[left_1rem_top_2rem] bg-no-repeat w-2/3 lg:w-1/3"></div>
 
-          <div className="flex flex-col gap-5 lg:gap-4 text-textWhite text-lg lg:text-xl px-6 lg:px-0">
+          <div className="flex flex-col gap-5 lg:gap-4 text-textWhite text-lg px-6 lg:px-0 w-full lg:w-2/3">
             <p className="font-serif font-medium text-xl lg:text-2xl text-center lg:text-left">Hey, I&apos;m Ahmed.</p>
-            <p className="font-sans font-normal leading-loose lg:leading-relaxed text-center lg:text-justify">
-              An aspiring machine learning researcher with an interest in continual learning, reinforcement learning and reasoning and alignment of large language models.
+            <p className="font-sans font-light leading-relaxed text-center lg:text-justify pb-0 lg:pb-2">
+              An aspiring machine learning researcher with an interest in continual learning, reinforcement learning and large language models.
             </p>
           </div>
         </div>
@@ -22,27 +23,34 @@ export default function Main() {
 
       <Navbar />
 
-      <div className="flex flex-col h-full w-full lg:w-9/12 2xl:w-8/12 place-self-center py-5 lg:py-6 px-6 lg:px-0 gap-12">
+      <div className="flex flex-col h-full w-full lg:w-9/12 2xl:w-8/12 place-self-center py-5 lg:py-8 px-6 lg:px-0 gap-8">
+        <div className="flex flex-col gap-6">
+          <div className="text-textBlack text-xl font-bold">Literature Reviews</div>
+
+          <LiteratureReviewsList viewAll={false} />
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-0 lg:gap-12 justify-center place-items-center w-full pb-4">
+          <div className="aspect-square cursor-pointer rounded-2xl bg-[url('/images/machine-learning.png')] bg-cover bg-no-repeat w-11/12 lg:w-1/3"></div>
+
+          <div className="text-sm lg:text-base w-full lg:w-2/3">
+            <p className="font-sans font-normal leading-loose text-justify lg:text-justify">
+              My spirit animal? The loss landscape. Twisted, chaotic, occasionally smooth — but always the place where everything in machine learning quietly unfolds.
+            </p>
+          </div>
+        </div>
+
         <div className="flex flex-col gap-6">
           <div className="text-textBlack text-xl font-bold">Notes</div>
 
           <NotesList />
         </div>
-        {/* <div className="flex flex-col gap-6">
-          <div className="text-textBlack text-xl font-bold">Paper Summaries</div>
 
-          <PaperSummariesList viewAll={false} />
-        </div> */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 pt-4">
           <div className="text-textBlack text-xl font-bold">Course Assignments</div>
 
           <CourseAssignments />
         </div>
-        {/* <div className="flex flex-col gap-6">
-          <div className="text-textBlack text-xl font-bold">Research Projects</div>
-
-          <NotesList />
-        </div> */}
       </div>
 
       <div className="bg-bgDark w-full py-16 mt-10">

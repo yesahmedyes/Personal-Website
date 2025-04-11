@@ -9,8 +9,8 @@ export default function CourseAssignments() {
         <Link key={index} href={item.link} target="_blank">
           <div className="flex flex-col group w-full rounded-lg border border-black/10 hover:border-black/20 px-4 py-6">
             <div className="group-hover:text-orange-500 text-center text-textBlack font-semibold">{item.title}</div>
-            <div className="flex p-2 flex-col rounded h-[300px] place-items-center justify-center">
-              <Image src={item.image} alt="Notes" width={250} height={250} className="rounded mix-blend-multiply" />
+            <div className="flex flex-col rounded h-[280px] place-items-center justify-center">
+              <Image src={item.image} alt="Notes" width={250} height={280} className="rounded contrast-[1.1]" />
             </div>
             <div className="group-hover:text-orange-500 text-center text-textBlack font-semibold">By {item.university}</div>
           </div>

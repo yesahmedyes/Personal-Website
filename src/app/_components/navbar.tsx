@@ -14,12 +14,12 @@ export default function Navbar() {
       href: "/",
     },
     {
-      name: "Notes",
-      href: "/notes",
+      name: "Literature Reviews",
+      href: "/literature-reviews",
     },
     {
-      name: "Paper Summaries",
-      href: "/paper-summaries",
+      name: "Notes",
+      href: "/notes",
     },
     {
       name: "Assignments",

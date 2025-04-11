@@ -1,4 +1,4 @@
-import PaperSummariesList from "../_components/paperSummariesList";
+import PaperSummariesList from "../_components/literatureReviewsList";
 
 export default function PaperSummaries() {
   return (
