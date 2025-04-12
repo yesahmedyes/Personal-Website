@@ -13,8 +13,6 @@ export const notes_data = [
   // },
 ];
 
-const literature_reviews_tags = ["model calibration", "continual learning", "catastrophic forgetting", "language models", "diffusion models"];
-
 export const literature_reviews_data = [
   {
     title: "Calibration in Deep Learning",
@@ -30,6 +28,31 @@ export const literature_reviews_data = [
     title: "Large Language Diffusion Models",
     link: "https://honey-slayer-e27.notion.site/Large-Language-Diffusion-Models-1d2dd529669180379e8bc69c4c6dda10",
     tags: ["language models", "diffusion models"],
+  },
+  {
+    title: "Deep Learning for Computer Vision",
+    link: "https://honey-slayer-e27.notion.site/Deep-Learning-for-Computer-Vision-1d2dd529669180379e8bc69c4c6dda10",
+    tags: ["computer vision", "deep learning"],
+  },
+  {
+    title: "Reinforcement Learning",
+    link: "https://honey-slayer-e27.notion.site/Reinforcement-Learning-1d2dd529669180379e8bc69c4c6dda10",
+    tags: ["reinforcement learning"],
+  },
+  {
+    title: "Generative AI",
+    link: "https://honey-slayer-e27.notion.site/Generative-AI-1d2dd529669180379e8bc69c4c6dda10",
+    tags: ["generative ai"],
+  },
+  {
+    title: "Generative AI",
+    link: "https://honey-slayer-e27.notion.site/Generative-AI-1d2dd529669180379e8bc69c4c6dda10",
+    tags: ["generative ai"],
+  },
+  {
+    title: "Generative AI",
+    link: "https://honey-slayer-e27.notion.site/Generative-AI-1d2dd529669180379e8bc69c4c6dda10",
+    tags: ["generative ai"],
   },
 ];
 

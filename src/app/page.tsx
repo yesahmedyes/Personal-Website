@@ -3,7 +3,7 @@ import Socials from "./_components/socials";
 import NotesList from "./_components/notesList";
 
 import CourseAssignments from "./_components/courseAssignments";
-import LiteratureReviewsList from "./_components/literatureReviewsList";
+import LiteratureReviewsList from "./literature-reviews/literatureReviewsList";
 
 export default function Main() {
   return (
@@ -23,9 +23,9 @@ export default function Main() {
 
       <Navbar />
 
-      <div className="flex flex-col h-full w-full lg:w-9/12 2xl:w-8/12 place-self-center py-5 lg:py-8 px-6 lg:px-0 gap-8">
+      <div className="flex flex-col h-full w-full lg:w-9/12 2xl:w-8/12 place-self-center pb-4 lg:py-8 px-6 lg:px-0 gap-8">
         <div className="flex flex-col gap-6">
-          <div className="text-textBlack text-xl font-bold">Literature Reviews</div>
+          <div className="text-textBlack text-lg lg:text-xl font-bold text-center lg:text-left">Literature Reviews</div>
 
           <LiteratureReviewsList viewAll={false} />
         </div>
@@ -41,13 +41,13 @@ export default function Main() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="text-textBlack text-xl font-bold">Notes</div>
+          <div className="text-textBlack text-lg lg:text-xl font-bold text-center lg:text-left">Notes</div>
 
           <NotesList />
         </div>
 
         <div className="flex flex-col gap-6 pt-4">
-          <div className="text-textBlack text-xl font-bold">Course Assignments</div>
+          <div className="text-textBlack text-lg lg:text-xl font-bold text-center lg:text-left">Course Assignments</div>
 
           <CourseAssignments />
         </div>
