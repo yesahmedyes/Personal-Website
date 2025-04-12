@@ -2,7 +2,7 @@ import Navbar from "./_components/navbar";
 import Socials from "./_components/socials";
 import NotesList from "./_components/notesList";
 
-import CourseAssignments from "./_components/courseAssignments";
+import CourseAssignments from "./assignments/courseAssignments";
 import LiteratureReviewsList from "./literature-reviews/literatureReviewsList";
 
 export default function Main() {
@@ -47,7 +47,7 @@ export default function Main() {
         </div>
 
         <div className="flex flex-col gap-6 pt-4">
-          <div className="text-textBlack text-lg lg:text-xl font-bold text-center lg:text-left">Course Assignments</div>
+          <div className="text-textBlack text-lg lg:text-xl font-bold text-center lg:text-left">Assignments</div>
 
           <CourseAssignments />
         </div>

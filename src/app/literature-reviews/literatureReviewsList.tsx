@@ -72,7 +72,7 @@ export default function LiteratureReviewsList({ viewAll = false }: LiteratureRev
           <SearchNormal1 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
         </div>
 
-        <Filter label="Filter by tags" options={tagOptions} onChange={handleTagFilterChange} />
+        {viewAll && <Filter label="Filter by tags" options={tagOptions} onChange={handleTagFilterChange} />}
       </div>
 
       <div className="flex flex-col gap-4">

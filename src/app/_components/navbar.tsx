@@ -18,16 +18,16 @@ export default function Navbar() {
       href: "/literature-reviews",
     },
     {
+      name: "Research",
+      href: "/research",
+    },
+    {
       name: "Notes",
       href: "/notes",
     },
     {
       name: "Assignments",
       href: "/assignments",
-    },
-    {
-      name: "Research Projects",
-      href: "/research-projects",
     },
   ];
 
